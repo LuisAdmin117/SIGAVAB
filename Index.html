@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Gerencial</title>
+<link href="Fuentes/css2.css" rel="stylesheet">
+<script src="Fuentes/chart.umd.min.js"></script>
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar animate-item" style="animation-delay:0s;">
+  <div class="sidebar-logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <span>SIGAVAB</span>
+  </div>
+
+  <div class="sidebar-section-label nav-label">Modulos</div>
+  <nav class="sidebar-nav">
+    <a href="Index.html" class="nav-item active" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      <span class="nav-label">Panel Gerencial</span>
+    </a>
+    <a href="Inventario.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      <span class="nav-label">Inventario</span>
+    </a>
+    <a href="Clientes.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      <span class="nav-label">Clientes y crédito</span>
+    </a>
+    <a href="Proveedores.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 4v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      <span class="nav-label">Proveedores</span>
+    </a>
+    <a href="Estadisticas.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <span class="nav-label">Estadísticas</span>
+    </a>
+    <a href="FlujoCaja.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><path d="M8 10.5c0-1.4 1.8-2.5 4-2.5s4 1.1 4 2.5-1.8 2.5-4 2.5-4 1.1-4 2.5 1.8 2.5 4 2.5 4-1.1 4-2.5"/></svg>
+      <span class="nav-label">Flujo de caja</span>
+    </a>
+    <a href="Promociones.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+      <span class="nav-label">Promociones</span>
+    </a>
+  </nav>
+  
+
+  <div class="sidebar-section-label nav-label">Configuración</div>
+  <nav class="sidebar-nav">
+    <div class="nav-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/></svg>
+      <span class="nav-label">Ajustes</span>
+    </div>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <div class="user-avatar-row">
+      <div class="avatar">JD</div>
+      <div class="user-info">
+        <div class="user-name">John Doe</div>
+        <div class="user-email">john@gmail.com</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+  <!-- TOPBAR -->
+  <div class="topbar animate-item" style="animation-delay:0.05s;">
+    <div>
+      <div class="topbar-title">Panel Gerencial</div>
+      <div class="topbar-subtitle">Bienvenido, John</div>
+    </div>
+    <div class="topbar-right"></div>
+  </div>
+
+  <!-- Tarjeta fija esquina superior derecha -->
+  <div class="topbar-pill">
+    <!-- Toggle sidebar -->
+    <button id="sidebarToggle" title="Ocultar/Mostrar menú" style="box-shadow:none;border:none;background:transparent;cursor:pointer;transition:color 0.15s;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;color:var(--foreground);">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+        <line x1="9" y1="3" x2="9" y2="21"/>
+      </svg>
+    </button>
+    <!-- Campana -->
+    <button id="bellBtn" style="box-shadow:none;border:none;background:transparent;cursor:pointer;transition:color 0.15s;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;color:var(--foreground);">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+    </button>
+    <!-- Role selector — sin texto, solo icono + flecha -->
+    <div style="position:relative;" id="roleWrap">
+      <button id="roleBtn" onclick="toggleRoleMenu()" style="display:flex;align-items:center;gap:0.3rem;padding:0.3rem 0.5rem;border-radius:9999px;border:none;background:transparent;cursor:pointer;color:var(--foreground);transition:color 0.15s;">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" id="roleArrow" style="transition:transform 0.18s;"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <!-- Dropdown -->
+      <div id="roleDropdown" style="display:none;position:fixed;background:var(--card);border:1px solid var(--border);border-radius:1rem;box-shadow:0 8px 24px rgba(0,0,0,0.14);z-index:9999;padding:0.35rem;min-width:160px;">
+        <div onclick="selectRole('Gerente')" id="roleOpt1" style="display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.75rem;border-radius:0.65rem;font-size:0.82rem;font-family:var(--font-sans);cursor:pointer;color:var(--foreground);transition:background 0.12s;background:#2c3754;color:#f8fafc;">
+          <svg width="13" height="13" fill="none" stroke="#f8fafc" stroke-width="2.5" viewBox="0 0 24 24" id="checkGerente"><polyline points="20 6 9 17 4 12"/></svg>
+          Gerente
+        </div>
+        <div onclick="selectRole('Cajero')" id="roleOpt2" style="display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.75rem;border-radius:0.65rem;font-size:0.82rem;font-family:var(--font-sans);cursor:pointer;color:var(--foreground);transition:background 0.12s;">
+          <svg width="13" height="13" fill="none" stroke="transparent" stroke-width="2.5" viewBox="0 0 24 24" id="checkCajero"><polyline points="20 6 9 17 4 12"/></svg>
+          Cajero
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- STATS ROW -->
+    <div class="stats-row animate-item" style="animation-delay:0.10s;">
+      <div class="stat-card">
+        <div class="stat-card-header">
+          <span class="stat-label">Ventas del día</span>
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+        </div>
+        <div class="stat-value">$45,231</div>
+        <div class="stat-change up">Ingresos del dia</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-card-header">
+          <span class="stat-label">Ventas del mes</span>
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+        </div>
+        <div class="stat-value">+2,350</div>
+        <div class="stat-change up">Ingresos del mes pasado</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-card-header">
+          <span class="stat-label">Productos en Stock</span>
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </div>
+        </div>
+        <div class="stat-value">+12,234</div>
+        <div class="stat-change up">Disponibilidad alta</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-card-header">
+          <span class="stat-label">Clientes activos</span>
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+        </div>
+        <div class="stat-value">+573</div>
+        <div class="stat-change up">Clientes con credito asignado</div>
+      </div>
+    </div>
+
+    <!-- VENTAS ROW: área chart + productos más vendidos -->
+    <div class="animate-item" style="display:grid;grid-template-columns:2fr 1fr;gap:0.75rem;animation-delay:0.20s;min-width:0;">
+
+      <!-- Gráfica de área ventas -->
+      <div class="chart-card">
+        <div class="chart-card-header" style="align-items:center;">
+          <div>
+            <div class="chart-card-title" id="salesChartTitle" style="font-size:1rem;">Ventas de Marzo 2026</div>
+            <div class="chart-card-subtitle">Datos actualizados en tiempo real</div>
+          </div>
+                    <div style="display:flex;gap:0.5rem;align-items:center;">
+            <!-- Período -->
+            <div class="cs-wrap" id="csPeriodo">
+              <div class="cs-trigger" onclick="toggleIdx('csPeriodo')">
+                <span id="csPeriodoLabel">Mes</span>
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="cs-dropdown" id="csPeriodoDropdown">
+                <div class="cs-option" data-value="dia"    onclick="pickIdx('csPeriodo','dia','Día')">Día</div>
+                <div class="cs-option" data-value="semana" onclick="pickIdx('csPeriodo','semana','Semana')">Semana</div>
+                <div class="cs-option selected" data-value="mes" onclick="pickIdx('csPeriodo','mes','Mes')">Mes</div>
+                <div class="cs-option" data-value="año"   onclick="pickIdx('csPeriodo','año','Año')">Año</div>
+              </div>
+            </div>
+            <!-- Mes -->
+            <div class="cs-wrap" id="csMes">
+              <div class="cs-trigger" onclick="toggleIdx('csMes')">
+                <span id="csMesLabel">Marzo</span>
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="cs-dropdown" id="csMesDropdown">
+                <div class="cs-option" onclick="pickIdx('csMes','01','Enero')">Enero</div>
+                <div class="cs-option" onclick="pickIdx('csMes','02','Febrero')">Febrero</div>
+                <div class="cs-option selected" onclick="pickIdx('csMes','03','Marzo')">Marzo</div>
+                <div class="cs-option" onclick="pickIdx('csMes','04','Abril')">Abril</div>
+                <div class="cs-option" onclick="pickIdx('csMes','05','Mayo')">Mayo</div>
+                <div class="cs-option" onclick="pickIdx('csMes','06','Junio')">Junio</div>
+                <div class="cs-option" onclick="pickIdx('csMes','07','Julio')">Julio</div>
+                <div class="cs-option" onclick="pickIdx('csMes','08','Agosto')">Agosto</div>
+                <div class="cs-option" onclick="pickIdx('csMes','09','Septiembre')">Septiembre</div>
+                <div class="cs-option" onclick="pickIdx('csMes','10','Octubre')">Octubre</div>
+                <div class="cs-option" onclick="pickIdx('csMes','11','Noviembre')">Noviembre</div>
+                <div class="cs-option" onclick="pickIdx('csMes','12','Diciembre')">Diciembre</div>
+              </div>
+            </div>
+            <!-- Año -->
+            <div class="cs-wrap" id="csAnio">
+              <div class="cs-trigger" onclick="toggleIdx('csAnio')">
+                <span id="csAnioLabel">2026</span>
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="cs-dropdown" id="csAnioDropdown">
+                <div class="cs-option" onclick="pickIdx('csAnio','2024','2024')">2024</div>
+                <div class="cs-option" onclick="pickIdx('csAnio','2025','2025')">2025</div>
+                <div class="cs-option selected" onclick="pickIdx('csAnio','2026','2026')">2026</div>
+              </div>
+            </div>
+          </div>        </div>
+        <div class="chart-container" style="height:240px;">
+          <canvas id="salesAreaChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Productos Más Vendidos — estático -->
+      <div class="chart-card" style="display:flex;flex-direction:column;">
+        <div class="chart-card-header" style="margin-bottom:0.6rem;">
+          <div>
+            <div class="chart-card-title">Productos Más Vendidos</div>
+            <div class="chart-card-subtitle">Top productos del mes actual</div>
+          </div>
+        </div>
+
+        <!-- Producto 1 -->
+        <div style="display:flex;align-items:center;gap:0.6rem;padding:0.4rem 0;border-bottom:1px solid rgba(0,0,0,0.07);">
+          <div style="flex:1;min-width:0;">
+            <div class="activity-text" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Samsung Galaxy A54</div>
+            <div class="activity-time">145 unidades vendidas</div>
+          </div>
+          <div style="width:12px;height:12px;border-radius:50%;background:#72717b;flex-shrink:0;box-shadow:0 0 0 3px #72717b33;"></div>
+          <div style="text-align:right;min-width:54px;">
+            <div class="activity-text" style="font-weight:700;font-size:0.72rem;">$72,355</div>
+          </div>
+        </div>
+
+        <!-- Producto 2 -->
+        <div style="display:flex;align-items:center;gap:0.6rem;padding:0.4rem 0;border-bottom:1px solid rgba(0,0,0,0.07);">
+          <div style="flex:1;min-width:0;">
+            <div class="activity-text" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Auriculares Sony WH-1000XM5</div>
+            <div class="activity-time">112 unidades vendidas</div>
+          </div>
+          <div style="width:12px;height:12px;border-radius:50%;background:#3a557e;flex-shrink:0;box-shadow:0 0 0 3px #3a557e33;"></div>
+          <div style="text-align:right;min-width:54px;">
+            <div class="activity-text" style="font-weight:700;font-size:0.72rem;">$44,688</div>
+          </div>
+        </div>
+
+        <!-- Producto 3 -->
+        <div style="display:flex;align-items:center;gap:0.6rem;padding:0.4rem 0;border-bottom:1px solid rgba(0,0,0,0.07);">
+          <div style="flex:1;min-width:0;">
+            <div class="activity-text" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Laptop Lenovo IdeaPad 3</div>
+            <div class="activity-time">98 unidades vendidas</div>
+          </div>
+          <div style="width:12px;height:12px;border-radius:50%;background:#1d2549;flex-shrink:0;box-shadow:0 0 0 3px #1d254933;"></div>
+          <div style="text-align:right;min-width:54px;">
+            <div class="activity-text" style="font-weight:700;font-size:0.72rem;">$97,020</div>
+          </div>
+        </div>
+
+        <!-- Producto 4 -->
+        <div style="display:flex;align-items:center;gap:0.6rem;padding:0.4rem 0;border-bottom:1px solid rgba(0,0,0,0.07);">
+          <div style="flex:1;min-width:0;">
+            <div class="activity-text" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Teclado Mecánico Logitech G Pro</div>
+            <div class="activity-time">87 unidades vendidas</div>
+          </div>
+          <div style="width:12px;height:12px;border-radius:50%;background:#6b7081;flex-shrink:0;box-shadow:0 0 0 3px #6b708133;"></div>
+          <div style="text-align:right;min-width:54px;">
+            <div class="activity-text" style="font-weight:700;font-size:0.72rem;">$12,993</div>
+          </div>
+        </div>
+
+        <!-- Producto 5 -->
+        <div style="display:flex;align-items:center;gap:0.6rem;padding:0.4rem 0;border-bottom:1px solid rgba(0,0,0,0.07);">
+          <div style="flex:1;min-width:0;">
+            <div class="activity-text" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Monitor LG 27" 4K UHD</div>
+            <div class="activity-time">74 unidades vendidas</div>
+          </div>
+          <div style="width:12px;height:12px;border-radius:50%;background:#a09fa9;flex-shrink:0;box-shadow:0 0 0 3px #a09fa933;"></div>
+          <div style="text-align:right;min-width:54px;">
+            <div class="activity-text" style="font-weight:700;font-size:0.72rem;">$29,526</div>
+          </div>
+        </div>
+
+        <!-- Producto 6 -->
+        <div style="display:flex;align-items:center;gap:0.6rem;padding:0.4rem 0;">
+          <div style="flex:1;min-width:0;">
+            <div class="activity-text" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Mouse Inalámbrico MX Master 3</div>
+            <div class="activity-time">61 unidades vendidas</div>
+          </div>
+          <div style="width:12px;height:12px;border-radius:50%;background:#72717b;flex-shrink:0;box-shadow:0 0 0 3px #72717b33;"></div>
+          <div style="text-align:right;min-width:54px;">
+            <div class="activity-text" style="font-weight:700;font-size:0.72rem;">$7,503</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- BOTTOM ROW -->
+    <div class="bottom-row animate-item" style="grid-template-columns:1fr;animation-delay:0.30s;">
+      <div class="table-card">
+        <div class="chart-card-header">
+          <div>
+            <div class="chart-card-title">Productos con bajo Stock</div>
+            <div class="chart-card-subtitle">Tienes 5 productos con bajas existencias en inventario</div>
+          </div>
+          <a href="Inventario.html" class="date-range-btn btn-ver-todos" style="font-size:0.7rem;padding:0.3rem 0.65rem;cursor:pointer;text-decoration:none;">Ver todos</a>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:48px;">Imagen</th>
+              <th>Producto</th>
+              <th>Categoría</th>
+              <th>Stock Mínimo</th>
+              <th>Estado</th>
+              <th style="text-align:right">Stock Actual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div style="width:44px;height:44px;border-radius:0.75rem;overflow:hidden;flex-shrink:0;background:oklch(0.88 0.003 80);border:1px solid oklch(0.9 0 0);">
+                  <img src="" alt="Samsung Galaxy A54" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';">
+                </div>
+              </td>
+              <td><div class="td-label">Smartphone Samsung Galaxy A54</div><div class="td-sub">SKU: SAM-A54-128</div></td>
+              <td>Electrónica</td>
+              <td>20 uds.</td>
+              <td><span class="badge badge-red">Crítico</span></td>
+              <td style="text-align:right;font-weight:600">8 uds.</td>
+            </tr>
+            <tr>
+              <td>
+                <div style="width:44px;height:44px;border-radius:0.75rem;overflow:hidden;flex-shrink:0;background:oklch(0.88 0.003 80);border:1px solid oklch(0.9 0 0);">
+                  <img src="" alt="Auriculares Sony WH-1000XM5" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';">
+                </div>
+              </td>
+              <td><div class="td-label">Auriculares Sony WH-1000XM5</div><div class="td-sub">SKU: SON-WH1000-BLK</div></td>
+              <td>Audio</td>
+              <td>15 uds.</td>
+              <td><span class="badge badge-red">Crítico</span></td>
+              <td style="text-align:right;font-weight:600">5 uds.</td>
+            </tr>
+            <tr>
+              <td>
+                <div style="width:44px;height:44px;border-radius:0.75rem;overflow:hidden;flex-shrink:0;background:oklch(0.88 0.003 80);border:1px solid oklch(0.9 0 0);">
+                  <img src="" alt="Monitor LG 27" 4K UHD" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';">
+                </div>
+              </td>
+              <td><div class="td-label">Monitor LG 27" 4K UHD</div><div class="td-sub">SKU: LG-27UK850-B</div></td>
+              <td>Periféricos</td>
+              <td>10 uds.</td>
+              <td><span class="badge badge-blue">Bajo</span></td>
+              <td style="text-align:right;font-weight:600">12 uds.</td>
+            </tr>
+            <tr>
+              <td>
+                <div style="width:44px;height:44px;border-radius:0.75rem;overflow:hidden;flex-shrink:0;background:oklch(0.88 0.003 80);border:1px solid oklch(0.9 0 0);">
+                  <img src="" alt="Teclado Mecánico Logitech G Pro" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';">
+                </div>
+              </td>
+              <td><div class="td-label">Teclado Mecánico Logitech G Pro</div><div class="td-sub">SKU: LOG-GPRO-TKL</div></td>
+              <td>Periféricos</td>
+              <td>15 uds.</td>
+              <td><span class="badge badge-blue">Bajo</span></td>
+              <td style="text-align:right;font-weight:600">14 uds.</td>
+            </tr>
+            <tr>
+              <td>
+                <div style="width:44px;height:44px;border-radius:0.75rem;overflow:hidden;flex-shrink:0;background:oklch(0.88 0.003 80);border:1px solid oklch(0.9 0 0);">
+                  <img src="" alt="Laptop Lenovo IdeaPad 3" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';">
+                </div>
+              </td>
+              <td><div class="td-label">Laptop Lenovo IdeaPad 3</div><div class="td-sub">SKU: LEN-IP3-15IAU7</div></td>
+              <td>Computadoras</td>
+              <td>8 uds.</td>
+              <td><span class="badge badge-gray">Vigilancia</span></td>
+              <td style="text-align:right;font-weight:600">9 uds.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ── SIDEBAR TOGGLE ─────────────────────────────────────────────
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+  document.querySelector('.sidebar').classList.toggle('collapsed');
+});
+
+// ── GRÁFICA DE ÁREA — ESTILO GRAFICALINEAL ─────────────────────
+const salesCtx = document.getElementById('salesAreaChart').getContext('2d');
+
+const gradientBlue = salesCtx.createLinearGradient(0, 0, 0, 240);
+gradientBlue.addColorStop(0, 'rgba(58,85,126,0.50)');
+gradientBlue.addColorStop(1, 'rgba(58,85,126,0.03)');
+
+const gradientGray = salesCtx.createLinearGradient(0, 0, 0, 240);
+gradientGray.addColorStop(0, 'rgba(155,165,200,0.32)');
+gradientGray.addColorStop(1, 'rgba(155,165,200,0.02)');
+
+new Chart(salesCtx, {
+  type: 'line',
+  data: {
+    labels: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+    datasets: [
+      {
+        label: 'Ventas',
+        data: [18000, 14000, 22000, 19000, 38000, 52000, 46000, 61000, 42000, 55000, 48000, 70000],
+        borderColor: '#3a557e',
+        borderWidth: 2,
+        backgroundColor: gradientBlue,
+        fill: true,
+        tension: 0.55,
+        pointRadius: 0,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: '#3a557e',
+        pointHoverBorderColor: '#fff',
+        pointHoverBorderWidth: 2,
+      },
+      {
+        label: 'Meta',
+        data: [30000, 28000, 32000, 26000, 34000, 38000, 32000, 40000, 30000, 36000, 32000, 44000],
+        borderColor: '#9ba5c8',
+        borderWidth: 1.5,
+        backgroundColor: gradientGray,
+        fill: true,
+        tension: 0.55,
+        pointRadius: 0,
+        pointHoverRadius: 0,
+        pointHitRadius: 0,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#cfcac9',
+        titleColor: '#1d2549',
+        bodyColor: '#1d2549',
+        borderColor: '#b8b3b2',
+        borderWidth: 1,
+        cornerRadius: 10,
+        padding: 10,
+        filter: item => item.datasetIndex === 0,
+        callbacks: {
+          label: ctx => {
+            const productos = [
+              'Samsung Galaxy A54',
+              'Auriculares Sony WH-1000XM5',
+              'Laptop Lenovo IdeaPad 3',
+              'Teclado Mecánico Logitech G Pro',
+              'Monitor LG 27" 4K UHD',
+              'Mouse Inalámbrico MX Master 3',
+              'Samsung Galaxy A54',
+              'Auriculares Sony WH-1000XM5',
+              'Laptop Lenovo IdeaPad 3',
+              'Teclado Mecánico Logitech G Pro',
+              'Monitor LG 27" 4K UHD',
+              'Mouse Inalámbrico MX Master 3',
+            ];
+            const prod = productos[ctx.dataIndex] || '';
+            return [
+              ' Ventas: $' + ctx.parsed.y.toLocaleString('es-MX'),
+              prod ? ' Producto: ' + prod : ''
+            ];
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: 'rgba(0,0,0,0.05)', borderDash: [4,4] },
+        border: { display: false },
+        ticks: { font: { size: 10, family: 'Inter' }, color: '#999' }
+      },
+      y: {
+        min: 0,
+        max: 80000,
+        grid: { color: 'rgba(0,0,0,0.05)', borderDash: [4,4] },
+        border: { display: false },
+        ticks: {
+          font: { size: 10, family: 'Inter' },
+          color: '#999',
+          stepSize: 10000,
+          callback: v => '$' + (v / 1000).toFixed(0) + 'k'
+        }
+      }
+    }
+  }
+});
+
+// ── Role selector ─────────────────────────────────────────────
+
+
+
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#roleWrap')) {
+    const dd = document.getElementById('roleDropdown');
+    if (dd) { dd.style.display = 'none'; document.getElementById('roleArrow').style.transform = 'rotate(0deg)'; }
+  }
+});
+
+// Hover en opciones del role dropdown
+// ── Custom Select para los selectores del chart de ventas ────────
+function toggleIdx(id) {
+  const wrap = document.getElementById(id);
+  const isOpen = wrap.classList.contains('open');
+  document.querySelectorAll('.cs-wrap.open').forEach(w => w.classList.remove('open'));
+  if (!isOpen) wrap.classList.add('open');
+}
+
+function pickIdx(id, value, label) {
+  document.getElementById(id + 'Label').textContent = label;
+  document.querySelectorAll('#' + id + 'Dropdown .cs-option').forEach(o =>
+    o.classList.toggle('selected', o.dataset.value === value || o.textContent.trim() === label));
+  document.getElementById(id).classList.remove('open');
+  // Update chart title
+  const mes = document.getElementById('csMesLabel') ? document.getElementById('csMesLabel').textContent : 'Marzo';
+  const anio = document.getElementById('csAnioLabel') ? document.getElementById('csAnioLabel').textContent : '2026';
+  const periodo = document.getElementById('csPeriodoLabel') ? document.getElementById('csPeriodoLabel').textContent : 'Mes';
+  const title = document.getElementById('salesChartTitle');
+  if (title) title.textContent = 'Ventas de ' + mes + ' ' + anio + ' — ' + periodo;
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.cs-wrap')) document.querySelectorAll('.cs-wrap.open').forEach(w => w.classList.remove('open'));
+  if (!e.target.closest('#roleWrap')) {
+    const dd = document.getElementById('roleDropdown');
+    const arrow = document.getElementById('roleArrow');
+    if (dd && dd.style.display === 'block') {
+      dd.style.display = 'none';
+      arrow.style.transform = 'rotate(0deg)';
+    }
+  }
+});
+
+// ── Role selector ─────────────────────────────────────────────
+function toggleRoleMenu() {
+  const dd    = document.getElementById('roleDropdown');
+  const arrow = document.getElementById('roleArrow');
+  const isOpen = dd.style.display === 'block';
+  if (isOpen) {
+    dd.style.display = 'none';
+    arrow.style.transform = 'rotate(0deg)';
+  } else {
+    const wrap = document.getElementById('roleWrap');
+    const rect = wrap.getBoundingClientRect();
+    dd.style.top   = (rect.bottom + 6) + 'px';
+    dd.style.right = (window.innerWidth - rect.right) + 'px';
+    dd.style.left  = 'auto';
+    dd.style.display = 'block';
+    arrow.style.transform = 'rotate(180deg)';
+  }
+}
+
+function selectRole(role) {
+  const opt1 = document.getElementById('roleOpt1');
+  const opt2 = document.getElementById('roleOpt2');
+  if (role === 'Gerente') {
+    opt1.style.background = '#2c3754'; opt1.style.color = '#f8fafc';
+    document.getElementById('checkGerente').style.stroke = '#f8fafc';
+    opt2.style.background = 'transparent'; opt2.style.color = 'var(--foreground)';
+    document.getElementById('checkCajero').style.stroke = 'transparent';
+    document.getElementById('roleDropdown').style.display = 'none';
+    document.getElementById('roleArrow').style.transform = 'rotate(0deg)';
+  } else {
+    opt2.style.background = '#2c3754'; opt2.style.color = '#f8fafc';
+    document.getElementById('checkCajero').style.stroke = '#f8fafc';
+    opt1.style.background = 'transparent'; opt1.style.color = 'var(--foreground)';
+    document.getElementById('checkGerente').style.stroke = 'transparent';
+    document.getElementById('roleDropdown').style.display = 'none';
+    document.getElementById('roleArrow').style.transform = 'rotate(0deg)';
+    window.location.href = 'Cobro.html';
+  }
+}
+
+// Hover opciones role
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Toggle: primer clic activa fondo #2c3754 + icono #f8fafc, segundo clic restaura
+  ['sidebarToggle','bellBtn','roleBtn'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var active = false;
+    // sidebarToggle empieza activo si el sidebar está visible
+    el.addEventListener('click', function() {
+      active = !active;
+      el.style.background   = active ? '#2c3754' : 'transparent';
+      el.style.color        = active ? '#f8fafc' : '';
+      el.style.borderRadius = active ? '50%' : '';
+    });
+  });
+
+  // Hover opciones role
+  ['roleOpt1','roleOpt2'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('mouseover', function() {
+      if (el.style.background !== 'rgb(44, 55, 84)') el.style.background = 'oklch(0.65 0.01 39 / 0.5)';
+    });
+    el.addEventListener('mouseout', function() {
+      if (el.style.background !== 'rgb(44, 55, 84)') el.style.background = 'transparent';
+    });
+  });
+
+});
+</script>
+</body>
+</html>

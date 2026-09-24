@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proveedores — SIGAVAB</title>
+<link href="Fuentes/css2.css" rel="stylesheet">
+<link rel="stylesheet" href="css/proveedores.css">
+
+</head>
+<body>
+
+<!-- ── SIDEBAR ─────────────────────────────────────────────────── -->
+<aside class="sidebar animate-item" id="sidebar" style="animation-delay:0s;">
+  <div class="sidebar-logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="nav-label">SIGAVAB</span>
+  </div>
+
+  <div class="sidebar-section-label nav-label">Módulos</div>
+ <nav class="sidebar-nav">
+    <a href="Index_prueba.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      <span class="nav-label">Panel Gerencial</span>
+    </a>
+    <a href="Inventario.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      <span class="nav-label">Inventario</span>
+    </a>
+    <a href="Clientes.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      <span class="nav-label">Clientes y crédito</span>
+    </a>
+    <a href="Proveedores.html" class="nav-item active"  style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 4v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      <span class="nav-label">Proveedores</span>
+    </a>
+    <a href="Estadisticas.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <span class="nav-label">Estadísticas</span>
+    </a>
+    <a href="FlujoCaja.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><path d="M8 10.5c0-1.4 1.8-2.5 4-2.5s4 1.1 4 2.5-1.8 2.5-4 2.5-4 1.1-4 2.5 1.8 2.5 4 2.5 4-1.1 4-2.5"/></svg>
+      <span class="nav-label">Flujo de caja</span>
+    </a>
+    <a href="Promociones.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+      <span class="nav-label">Promociones</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-section-label nav-label">Configuración</div>
+  <nav class="sidebar-nav">
+    <div class="nav-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/></svg>
+      <span class="nav-label">Ajustes</span>
+    </div>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <div class="user-avatar-row">
+      <div class="avatar">JD</div>
+      <div class="user-info">
+        <div class="user-name">John Doe</div>
+        <div class="user-email">john@gmail.com</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ── MAIN ─────────────────────────────────────────────────────── -->
+<div class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar animate-item" style="animation-delay:0.08s;">
+    <div>
+      <div class="topbar-title">Proveedores</div>
+      <div class="topbar-subtitle">Administra proveedores y calendario de entregas</div>
+    </div>
+    <div class="topbar-right">
+      <div class="icon-btn" id="sidebarToggle" title="Ocultar menú">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </div>
+      <div class="icon-btn">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
+      </div>
+      <div class="icon-btn" style="background:oklch(0.3408 0.0533 267.6812);border:none;color:white;font-size:0.7rem;font-weight:600;">JD</div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- Page header -->
+    <div class="page-header animate-item" style="animation-delay:0.13s;">
+      <div class="page-header-left">
+        <h1>Gestión de Proveedores</h1>
+        <p>Administra proveedores y calendario de entregas</p>
+      </div>
+      <button class="btn-primary" onclick="openSupplierModal(null)">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Nuevo Proveedor
+      </button>
+    </div>
+
+    <!-- Two-column layout -->
+    <div class="two-col">
+
+      <!-- ── LEFT: search + list ──────────────────────────────── -->
+      <div class="left-col">
+
+        <!-- Search + date filter dentro de tarjeta de fondo -->
+        <div class="animate-item" style="animation-delay:0.20s; background:var(--card); border-radius:1.5rem; border:1px solid var(--border); box-shadow:var(--shadow-sm); padding:0.85rem 1.1rem; display:flex; align-items:center; gap:0.75rem;">
+          <!-- Campo de búsqueda -->
+          <div class="search-card" style="flex:1; box-shadow:none; border-radius:0.85rem; background:oklch(0.93 0.004 80); border:1px solid oklch(0.88 0.003 80);">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="searchInput" placeholder="Buscar proveedor..." oninput="filterSuppliers()">
+          </div>
+          <!-- Selector de fecha personalizado -->
+          <div class="cal-wrap" id="calWrap">
+            <div class="cal-trigger" id="calTrigger" onclick="toggleCalendar()">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span id="calTriggerLabel">Seleccionar fecha</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Supplier list -->
+        <div class="list-card animate-item" style="animation-delay:0.28s;">
+          <div class="list-card-header"><h2>Lista de Proveedores</h2></div>
+
+          <!-- ── Proveedor 1 ── -->
+          <div class="supplier-item" data-name="distribuidora abc">
+            <div class="si-header">
+              <div class="si-header-left">
+                <div class="si-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 4v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+                <div>
+                  <div class="si-name">Distribuidora ABC</div>
+                  <div class="si-contact">Contacto: Pedro López</div>
+                </div>
+              </div>
+              <button class="si-edit-btn" onclick="openSupplierModal(this)" title="Editar">
+                <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </button>
+            </div>
+            <div class="si-info-row">
+              <div class="si-info-item">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+                2222-2222
+              </div>
+              <div class="si-info-item">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                abc@gmail.com
+              </div>
+            </div>
+            <div class="si-footer">
+              <div class="si-delivery">
+                <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Entregas: <strong>Lunes y Jueves</strong>
+              </div>
+              <div class="si-footer-right">
+                <div class="si-last-order">Último pedido: <span>$8,450</span></div>
+                <span class="badge-active">Activo</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Proveedor 2 ── -->
+          <div class="supplier-item" data-name="importadora xyz">
+            <div class="si-header">
+              <div class="si-header-left">
+                <div class="si-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 4v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+                <div>
+                  <div class="si-name">Importadora XYZ</div>
+                  <div class="si-contact">Contacto: Laura Sánchez</div>
+                </div>
+              </div>
+              <button class="si-edit-btn" onclick="openSupplierModal(this)" title="Editar">
+                <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </button>
+            </div>
+            <div class="si-info-row">
+              <div class="si-info-item">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+                3333-3333
+              </div>
+              <div class="si-info-item">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                xyz@gmail.com
+              </div>
+            </div>
+            <div class="si-footer">
+              <div class="si-delivery">
+                <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Entregas: <strong>Martes</strong>
+              </div>
+              <div class="si-footer-right">
+                <div class="si-last-order">Último pedido: <span>$12,300</span></div>
+                <span class="badge-active">Activo</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Proveedor 3 ── -->
+          <div class="supplier-item" data-name="mayorista 123">
+            <div class="si-header">
+              <div class="si-header-left">
+                <div class="si-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 4v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+                <div>
+                  <div class="si-name">Mayorista 123</div>
+                  <div class="si-contact">Contacto: Carlos Mendoza</div>
+                </div>
+              </div>
+              <button class="si-edit-btn" onclick="openSupplierModal(this)" title="Editar">
+                <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </button>
+            </div>
+            <div class="si-info-row">
+              <div class="si-info-item">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+                4444-4444
+              </div>
+              <div class="si-info-item">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                mayorista@email.com
+              </div>
+            </div>
+            <div class="si-footer">
+              <div class="si-delivery">
+                <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Entregas: <strong>Viernes</strong>
+              </div>
+              <div class="si-footer-right">
+                <div class="si-last-order">Último pedido: <span>$6,780</span></div>
+                <span class="badge-active">Activo</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Proveedor 4 ── -->
+          <div class="supplier-item" data-name="abarrotes el sol">
+            <div class="si-header">
+              <div class="si-header-left">
+                <div class="si-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 4v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+                <div>
+                  <div class="si-name">Abarrotes El Sol</div>
+                  <div class="si-contact">Contacto: Rosa Guerrero</div>
+                </div>
+              </div>
+              <button class="si-edit-btn" onclick="openSupplierModal(this)" title="Editar">
+                <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </button>
+            </div>
+            <div class="si-info-row">
+              <div class="si-info-item">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+                5555-5555
+              </div>
+              <div class="si-info-item">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                elsol@email.com
+              </div>
+            </div>
+            <div class="si-footer">
+              <div class="si-delivery">
+                <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Entregas: <strong>Miércoles y Sábado</strong>
+              </div>
+              <div class="si-footer-right">
+                <div class="si-last-order">Último pedido: <span>$4,120</span></div>
+                <span class="badge-inactive">Inactivo</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /list-card -->
+      </div><!-- /left-col -->
+
+      <!-- ── RIGHT: Próximas entregas ──────────────────────────── -->
+      <div class="right-col animate-item" style="animation-delay:0.34s;">
+        <div class="calendar-card">
+          <div class="calendar-header">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <h3>Próximas Entregas</h3>
+          </div>
+          <div class="delivery-list">
+
+            <div class="delivery-card">
+              <div class="dc-top">
+                <span class="dc-date">Lun 17 de Mar</span>
+                <span class="dc-badge-soon manana">Mañana</span>
+              </div>
+              <div class="dc-name">Distribuidora ABC</div>
+              <div class="dc-meta">
+                <div class="dc-meta-item">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  08:00 – 10:00
+                </div>
+                <div class="dc-meta-item">
+                  <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/></svg>
+                  45 productos
+                </div>
+              </div>
+            </div>
+
+            <div class="delivery-card">
+              <div class="dc-top">
+                <span class="dc-date">Mar 18 de Mar</span>
+                <span class="dc-badge-soon pronto">Próximo</span>
+              </div>
+              <div class="dc-name">Importadora XYZ</div>
+              <div class="dc-meta">
+                <div class="dc-meta-item">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  09:00 – 11:00
+                </div>
+                <div class="dc-meta-item">
+                  <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/></svg>
+                  120 productos
+                </div>
+              </div>
+            </div>
+
+            <div class="delivery-card">
+              <div class="dc-top">
+                <span class="dc-date">Jue 20 de Mar</span>
+                <span class="dc-badge-soon pronto">Próximo</span>
+              </div>
+              <div class="dc-name">Distribuidora ABC</div>
+              <div class="dc-meta">
+                <div class="dc-meta-item">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  07:00 – 09:00
+                </div>
+                <div class="dc-meta-item">
+                  <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/></svg>
+                  80 productos
+                </div>
+              </div>
+            </div>
+
+            <div class="delivery-card">
+              <div class="dc-top">
+                <span class="dc-date">Vie 21 de Mar</span>
+                <span class="dc-badge-soon pronto">Próximo</span>
+              </div>
+              <div class="dc-name">Mayorista 123</div>
+              <div class="dc-meta">
+                <div class="dc-meta-item">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  06:00 – 08:00
+                </div>
+                <div class="dc-meta-item">
+                  <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/></svg>
+                  35 productos
+                </div>
+              </div>
+            </div>
+
+            <div class="delivery-card">
+              <div class="dc-top">
+                <span class="dc-date">Lun 24 de Mar</span>
+                <span class="dc-badge-soon pronto">Próximo</span>
+              </div>
+              <div class="dc-name">Distribuidora ABC</div>
+              <div class="dc-meta">
+                <div class="dc-meta-item">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  08:00 – 10:00
+                </div>
+                <div class="dc-meta-item">
+                  <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/></svg>
+                  60 productos
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div><!-- /right-col -->
+
+    </div><!-- /two-col -->
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<!-- ── MODAL: PROVEEDOR ────────────────────────────────────────── -->
+<div class="modal-overlay" id="overlaySupplier">
+  <div class="modal-box" id="modalSupplierInner">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modalSupplierTitle">Nuevo Proveedor</div>
+        <div class="modal-subtitle">Completa los datos del proveedor</div>
+      </div>
+      <button class="modal-close" onclick="closeSupplierModal()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="form-grid">
+      <div class="form-field full">
+        <label class="form-label">Nombre del proveedor</label>
+        <input class="form-input" type="text" id="sNombre" placeholder="Ej. Distribuidora ABC">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Nombre del contacto</label>
+        <input class="form-input" type="text" id="sContacto" placeholder="Ej. Pedro López">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Teléfono</label>
+        <input class="form-input" type="tel" id="sTelefono" placeholder="Ej. 477 123 4567">
+      </div>
+      <div class="form-field full">
+        <label class="form-label">Correo electrónico</label>
+        <input class="form-input" type="email" id="sCorreo" placeholder="proveedor@email.com">
+      </div>
+
+      <hr class="form-divider full">
+      <div class="form-section-label full">Entregas</div>
+
+      <div class="form-field full">
+        <label class="form-label">Días de entrega</label>
+        <div class="days-wrap" id="daysWrap">
+          <span class="day-chip" onclick="toggleDay(this)">Lunes</span>
+          <span class="day-chip" onclick="toggleDay(this)">Martes</span>
+          <span class="day-chip" onclick="toggleDay(this)">Miércoles</span>
+          <span class="day-chip" onclick="toggleDay(this)">Jueves</span>
+          <span class="day-chip" onclick="toggleDay(this)">Viernes</span>
+          <span class="day-chip" onclick="toggleDay(this)">Sábado</span>
+        </div>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Hora estimada de llegada</label>
+        <input class="form-input" type="text" id="sHora" placeholder="Ej. 08:00 – 10:00">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Promedio de productos por entrega</label>
+        <input class="form-input" type="number" id="sProductos" placeholder="Ej. 50" min="1">
+      </div>
+
+      <hr class="form-divider full">
+      <div class="form-section-label full">Información adicional</div>
+
+      <div class="form-field full">
+        <label class="form-label">Fecha de llegada</label>
+        <div class="cal-wrap" id="calWrapModal" style="width:100%;">
+          <div class="cal-trigger" id="calTriggerModal" onclick="toggleCalendarModal()" style="width:100%; border-radius:0.75rem; justify-content:space-between; background:var(--card); border-color:var(--border);">
+            <div style="display:flex;align-items:center;gap:0.4rem;">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:var(--muted-foreground);stroke-width:2;flex-shrink:0;"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span id="calTriggerLabelModal">Seleccionar fecha</span>
+            </div>
+            <svg viewBox="0 0 24 24" style="width:12px;height:12px;fill:none;stroke:var(--muted-foreground);stroke-width:2;flex-shrink:0;"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <!-- hidden value para usar en el formulario -->
+        <input type="hidden" id="sFechaLlegada">
+      </div>
+      <div class="form-field full">
+        <label class="form-label">Notas / Comentarios</label>
+        <textarea class="form-input" id="sNotas" placeholder="Observaciones sobre el proveedor..."></textarea>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeSupplierModal()">Cancelar</button>
+      <button class="btn-save" onclick="saveSupplier()">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Guardar Proveedor
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Constantes globales ──────────────────────────────────────────
+const MONTHS_EN = ['January','February','March','April','May','June',
+                   'July','August','September','October','November','December'];
+const MONTHS_ES = ['enero','febrero','marzo','abril','mayo','junio',
+                   'julio','agosto','septiembre','octubre','noviembre','diciembre'];
+const DAYS_HDR  = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+
+// ── Variables de estado ──────────────────────────────────────────
+let calSelectedDate  = null;
+let calViewYear      = new Date().getFullYear();
+let calViewMonth     = new Date().getMonth();
+let calModalSelectedDate = null;
+let calModalViewYear     = new Date().getFullYear();
+let calModalViewMonth    = new Date().getMonth();
+
+// ── Helpers de calendario (búsqueda) ────────────────────────────
+function renderCalendar() {
+  const lbl = document.getElementById('calMonthLabel'); if(!lbl) return;
+  lbl.textContent = MONTHS_EN[calViewMonth] + ' ' + calViewYear;
+  const grid = document.getElementById('calGrid'); grid.innerHTML = '';
+  DAYS_HDR.forEach(d => { const h=document.createElement('div'); h.className='cal-dow'; h.textContent=d; grid.appendChild(h); });
+  const today=new Date(), firstDay=new Date(calViewYear,calViewMonth,1).getDay();
+  const daysInMonth=new Date(calViewYear,calViewMonth+1,0).getDate();
+  const prevDays=new Date(calViewYear,calViewMonth,0).getDate();
+  for(let i=firstDay-1;i>=0;i--){const d=document.createElement('div');d.className='cal-day cal-day--other-month';d.textContent=prevDays-i;grid.appendChild(d);}
+  for(let day=1;day<=daysInMonth;day++){
+    const d=document.createElement('div'); d.className='cal-day'; d.textContent=day;
+    const isToday=today.getFullYear()===calViewYear&&today.getMonth()===calViewMonth&&today.getDate()===day;
+    const isSel=calSelectedDate&&calSelectedDate.getFullYear()===calViewYear&&calSelectedDate.getMonth()===calViewMonth&&calSelectedDate.getDate()===day;
+    if(isSel) d.classList.add('cal-day--selected'); else if(isToday) d.classList.add('cal-day--today');
+    d.addEventListener('click',()=>selectCalDay(calViewYear,calViewMonth,day));
+    grid.appendChild(d);
+  }
+  const rem=(firstDay+daysInMonth)%7===0?0:7-(firstDay+daysInMonth)%7;
+  for(let i=1;i<=rem;i++){const d=document.createElement('div');d.className='cal-day cal-day--other-month';d.textContent=i;grid.appendChild(d);}
+}
+function selectCalDay(year,month,day){
+  calSelectedDate=new Date(year,month,day);
+  document.getElementById('calTriggerLabel').textContent=day+' de '+MONTHS_ES[month]+' de '+year;
+  document.getElementById('calTrigger').classList.add('has-date');
+  renderCalendar(); closeCalendar(); filterSuppliers();
+}
+function calNav(dir){ calViewMonth+=dir; if(calViewMonth>11){calViewMonth=0;calViewYear++;}if(calViewMonth<0){calViewMonth=11;calViewYear--;}renderCalendar(); }
+function calClear(){ calSelectedDate=null; document.getElementById('calTriggerLabel').textContent='Seleccionar fecha'; document.getElementById('calTrigger').classList.remove('has-date'); closeCalendar(); filterSuppliers(); }
+function calToday(){ const n=new Date();calViewYear=n.getFullYear();calViewMonth=n.getMonth();renderCalendar();selectCalDay(n.getFullYear(),n.getMonth(),n.getDate()); }
+function toggleCalendar(){
+  const popup=document.getElementById('calPopup'), trigger=document.getElementById('calTrigger');
+  if(popup.classList.contains('open')){popup.classList.remove('open');return;}
+  const r=trigger.getBoundingClientRect();
+  popup.style.top=(r.bottom+8)+'px';
+  let left=r.right-320; if(left<8)left=8;
+  popup.style.left=left+'px'; popup.classList.add('open');
+}
+function closeCalendar(){ const p=document.getElementById('calPopup');if(p)p.classList.remove('open'); }
+
+// ── Helpers de calendario (modal) ───────────────────────────────
+function renderCalendarModal(){
+  const lbl=document.getElementById('calMonthLabelModal'); if(!lbl) return;
+  lbl.textContent=MONTHS_EN[calModalViewMonth]+' '+calModalViewYear;
+  const grid=document.getElementById('calGridModal'); grid.innerHTML='';
+  DAYS_HDR.forEach(d=>{const h=document.createElement('div');h.className='cal-dow';h.textContent=d;grid.appendChild(h);});
+  const today=new Date(),firstDay=new Date(calModalViewYear,calModalViewMonth,1).getDay();
+  const daysInMonth=new Date(calModalViewYear,calModalViewMonth+1,0).getDate();
+  const prevDays=new Date(calModalViewYear,calModalViewMonth,0).getDate();
+  for(let i=firstDay-1;i>=0;i--){const d=document.createElement('div');d.className='cal-day cal-day--other-month';d.textContent=prevDays-i;grid.appendChild(d);}
+  for(let day=1;day<=daysInMonth;day++){
+    const d=document.createElement('div');d.className='cal-day';d.textContent=day;
+    const isToday=today.getFullYear()===calModalViewYear&&today.getMonth()===calModalViewMonth&&today.getDate()===day;
+    const isSel=calModalSelectedDate&&calModalSelectedDate.getFullYear()===calModalViewYear&&calModalSelectedDate.getMonth()===calModalViewMonth&&calModalSelectedDate.getDate()===day;
+    if(isSel) d.classList.add('cal-day--selected'); else if(isToday) d.classList.add('cal-day--today');
+    d.addEventListener('click',()=>selectCalDayModal(calModalViewYear,calModalViewMonth,day));
+    grid.appendChild(d);
+  }
+  const rem=(firstDay+daysInMonth)%7===0?0:7-(firstDay+daysInMonth)%7;
+  for(let i=1;i<=rem;i++){const d=document.createElement('div');d.className='cal-day cal-day--other-month';d.textContent=i;grid.appendChild(d);}
+}
+function selectCalDayModal(year,month,day){
+  calModalSelectedDate=new Date(year,month,day);
+  const label=day+' de '+MONTHS_ES[month]+' de '+year;
+  document.getElementById('calTriggerLabelModal').textContent=label;
+  document.getElementById('calTriggerModal').classList.add('has-date');
+  document.getElementById('sFechaLlegada').value=label;
+  renderCalendarModal(); closeCalendarModal();
+}
+function calNavModal(dir){ calModalViewMonth+=dir; if(calModalViewMonth>11){calModalViewMonth=0;calModalViewYear++;}if(calModalViewMonth<0){calModalViewMonth=11;calModalViewYear--;}renderCalendarModal(); }
+function calClearModal(){ calModalSelectedDate=null; document.getElementById('calTriggerLabelModal').textContent='Seleccionar fecha'; document.getElementById('calTriggerModal').classList.remove('has-date'); document.getElementById('sFechaLlegada').value=''; calModalViewYear=new Date().getFullYear();calModalViewMonth=new Date().getMonth(); renderCalendarModal(); closeCalendarModal(); }
+function calTodayModal(){ const n=new Date();calModalViewYear=n.getFullYear();calModalViewMonth=n.getMonth();renderCalendarModal();selectCalDayModal(n.getFullYear(),n.getMonth(),n.getDate()); }
+function toggleCalendarModal(){
+  const popup=document.getElementById('calPopupModal'),trigger=document.getElementById('calTriggerModal');
+  if(popup.classList.contains('open')){popup.classList.remove('open');return;}
+  const r=trigger.getBoundingClientRect();
+  const popupHeight=320; // altura estimada del popup
+  popup.style.top=(r.top - popupHeight - 6)+'px';
+  let left=r.left; if(left+320>window.innerWidth-8)left=window.innerWidth-328; if(left<8)left=8;
+  popup.style.left=left+'px'; popup.classList.add('open');
+}
+function closeCalendarModal(){ const p=document.getElementById('calPopupModal');if(p)p.classList.remove('open'); }
+
+// ── Búsqueda ─────────────────────────────────────────────────────
+function filterSuppliers(){
+  const q=document.getElementById('searchInput').value.toLowerCase();
+  let idx=0;
+  document.querySelectorAll('.supplier-item').forEach(item=>{
+    const name=item.dataset.name, itemDate=item.dataset.date||'';
+    const matchName=name.includes(q);
+    let matchDate=true;
+    if(calSelectedDate&&itemDate){ const sel=calSelectedDate.getFullYear()+'-'+String(calSelectedDate.getMonth()+1).padStart(2,'0')+'-'+String(calSelectedDate.getDate()).padStart(2,'0'); matchDate=itemDate===sel; }
+    if(matchName&&matchDate){ item.style.display=''; item.style.opacity='0'; item.style.animation='none'; void item.offsetWidth; item.style.animation=`fadeUp 0.42s cubic-bezier(0.22,1,0.36,1) forwards`; item.style.animationDelay=(idx*0.08)+'s'; idx++; }
+    else item.style.display='none';
+  });
+}
+
+// ── Días chips ───────────────────────────────────────────────────
+function toggleDay(chip){ chip.classList.toggle('selected'); }
+
+// ── Animación modal ──────────────────────────────────────────────
+function animateModal(id){
+  const inner=document.getElementById(id); if(!inner) return;
+  const items=[];
+  Array.from(inner.children).forEach(el=>{ if(el.classList.contains('form-grid')) Array.from(el.children).forEach(c=>items.push(c)); else items.push(el); });
+  items.forEach((el,i)=>{ el.style.opacity='0'; el.style.animation='none'; void el.offsetWidth; el.style.animation=`fieldUp 0.38s cubic-bezier(0.22,1,0.36,1) forwards`; el.style.animationDelay=(0.06+i*0.06)+'s'; });
+}
+
+// ── Modal proveedor ──────────────────────────────────────────────
+function openSupplierModal(btn){
+  const isNew=btn===null;
+  document.getElementById('modalSupplierTitle').textContent=isNew?'Nuevo Proveedor':'Editar Proveedor';
+  if(!isNew){
+    const item=btn.closest('.supplier-item');
+    document.getElementById('sNombre').value=item.querySelector('.si-name').textContent.trim();
+    document.getElementById('sContacto').value=item.querySelector('.si-contact').textContent.replace('Contacto:','').trim();
+    document.getElementById('sTelefono').value=item.querySelectorAll('.si-info-item')[0].textContent.trim();
+    document.getElementById('sCorreo').value=item.querySelectorAll('.si-info-item')[1].textContent.trim();
+    const delivDays=item.querySelector('.si-delivery strong')?.textContent.trim()||'';
+    document.querySelectorAll('.day-chip').forEach(c=>c.classList.toggle('selected',delivDays.includes(c.textContent)));
+    document.getElementById('sHora').value=''; document.getElementById('sProductos').value=''; document.getElementById('sNotas').value='';
+  } else {
+    ['sNombre','sContacto','sTelefono','sCorreo','sHora','sProductos','sNotas'].forEach(id=>{ document.getElementById(id).value=''; });
+    document.querySelectorAll('.day-chip').forEach(c=>c.classList.remove('selected'));
+  }
+  calModalSelectedDate=null; calModalViewYear=new Date().getFullYear(); calModalViewMonth=new Date().getMonth();
+  document.getElementById('sFechaLlegada').value='';
+  document.getElementById('calTriggerLabelModal').textContent='Seleccionar fecha';
+  document.getElementById('calTriggerModal').classList.remove('has-date');
+  renderCalendarModal();
+  document.getElementById('overlaySupplier').classList.add('open');
+  animateModal('modalSupplierInner');
+}
+function closeSupplierModal(){ document.getElementById('overlaySupplier').classList.remove('open'); closeCalendarModal(); }
+function saveSupplier(){
+  const nombre=document.getElementById('sNombre').value.trim();
+  if(!nombre){document.getElementById('sNombre').focus();return;}
+  const days=[...document.querySelectorAll('.day-chip.selected')].map(c=>c.textContent).join(', ')||'Sin asignar';
+  const fecha=document.getElementById('sFechaLlegada').value||'Sin fecha';
+  alert('✅ Proveedor "'+nombre+'" guardado.\nDías: '+days+'\nFecha: '+fecha);
+  closeSupplierModal();
+}
+
+// ── Init (solo código que toca el DOM, después de que cargue) ────
+window.addEventListener('load', function(){
+  document.getElementById('sidebarToggle').addEventListener('click',()=>{ document.getElementById('sidebar').classList.toggle('collapsed'); });
+  document.getElementById('overlaySupplier').addEventListener('click',function(e){ if(e.target===this) closeSupplierModal(); });
+  document.querySelectorAll('.supplier-item').forEach((item,i)=>{ item.style.opacity='0'; item.style.animation=`fadeUp 0.42s cubic-bezier(0.22,1,0.36,1) forwards`; item.style.animationDelay=(0.32+i*0.09)+'s'; });
+  document.querySelectorAll('.delivery-card').forEach((card,i)=>{ card.style.opacity='0'; card.style.animation=`fadeUp 0.40s cubic-bezier(0.22,1,0.36,1) forwards`; card.style.animationDelay=(0.38+i*0.08)+'s'; });
+  renderCalendar();
+  document.addEventListener('click',(e)=>{
+    if(!e.target.closest('#calWrap')&&!e.target.closest('#calPopup')) closeCalendar();
+    if(!e.target.closest('#calWrapModal')&&!e.target.closest('#calPopupModal')) closeCalendarModal();
+  });
+});
+</script>
+<!-- ── CALENDAR POPUP (hijo directo de body para evitar clipping) ── -->
+<div class="cal-popup" id="calPopup">
+  <div class="cal-header">
+    <button class="cal-nav-btn" onclick="calNav(-1)" title="Mes anterior">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="cal-month-label" id="calMonthLabel">—</div>
+    <button class="cal-nav-btn" onclick="calNav(1)" title="Mes siguiente">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+  <div class="cal-grid" id="calGrid"></div>
+  <div class="cal-footer">
+    <button class="cal-footer-btn" onclick="calClear()">Borrar</button>
+    <button class="cal-footer-btn" onclick="calToday()">Hoy</button>
+  </div>
+</div>
+
+<!-- ── CALENDAR POPUP MODAL (hijo directo de body) ───────────────── -->
+<div class="cal-popup" id="calPopupModal" style="z-index:10000;">
+  <div class="cal-header">
+    <button class="cal-nav-btn" onclick="calNavModal(-1)" title="Mes anterior">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="cal-month-label" id="calMonthLabelModal">—</div>
+    <button class="cal-nav-btn" onclick="calNavModal(1)" title="Mes siguiente">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+  <div class="cal-grid" id="calGridModal"></div>
+  <div class="cal-footer">
+    <button class="cal-footer-btn" onclick="calClearModal()">Borrar</button>
+    <button class="cal-footer-btn" onclick="calTodayModal()">Hoy</button>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flujo de Caja — SIGAVAB</title>
+<link href="Fuentes/css2.css" rel="stylesheet">
+<script src="Fuentes/chart.umd.min.js"></script>
+<link rel="stylesheet" href="css/flujocaja.css">
+
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar animate-item" id="sidebar" style="animation-delay:0s;">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+    <span class="nav-label">SIGAVAB</span>
+  </div>
+  <div class="sidebar-section-label nav-label">Módulos</div>
+  <nav class="sidebar-nav">
+    <a href="Index.html" class="nav-item">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      <span class="nav-label">Panel Gerencial</span>
+    </a>
+    <a href="Inventario.html" class="nav-item">
+      <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      <span class="nav-label">Inventario</span>
+    </a>
+    <a href="Clientes.html" class="nav-item">
+      <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      <span class="nav-label">Clientes y crédito</span>
+    </a>
+    <a href="Proveedores.html" class="nav-item">
+      <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 4v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      <span class="nav-label">Proveedores</span>
+    </a>
+    <a href="Estadisticas.html" class="nav-item">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <span class="nav-label">Estadísticas</span>
+    </a>
+    <a href="FlujoCaja.html" class="nav-item active">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><path d="M8 10.5c0-1.4 1.8-2.5 4-2.5s4 1.1 4 2.5-1.8 2.5-4 2.5-4 1.1-4 2.5 1.8 2.5 4 2.5 4-1.1 4-2.5"/></svg>
+      <span class="nav-label">Flujo de caja</span>
+    </a>
+    <a href="Promociones.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+      <span class="nav-label">Promociones</span>
+    </a>
+  </nav>
+  <div class="sidebar-section-label nav-label">Configuración</div>
+  <nav class="sidebar-nav">
+    <a href="Ajustes.html" class="nav-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/></svg>
+      <span class="nav-label">Ajustes</span>
+    </a>
+  </nav>
+  <div class="sidebar-bottom">
+    <div class="user-avatar-row">
+      <div class="avatar">JD</div>
+      <div class="user-info">
+        <div class="user-name">John Doe</div>
+        <div class="user-email">john@gmail.com</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar animate-item" style="animation-delay:0.07s;">
+    <div>
+      <div class="topbar-title">Flujo de Caja</div>
+      <div class="topbar-subtitle">Movimientos de ingresos y egresos</div>
+    </div>
+    <div class="topbar-right">
+      <div class="icon-btn" id="sidebarToggle">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </div>
+      <div class="icon-btn">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      </div>
+      <div class="icon-btn" style="background:oklch(0.3408 0.0533 267.6812);border:none;color:white;font-size:0.7rem;font-weight:600;">JD</div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- PAGE HEADER -->
+    <div class="page-header animate-item" style="animation-delay:0.12s;">
+      <div>
+        <h1>Flujo de Caja</h1>
+        <p>Control de ingresos y egresos</p>
+      </div>
+      <div class="header-right">
+        <button class="btn-primary" onclick="openMovModal()">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Nuevo Movimiento
+        </button>
+      </div>
+    </div>
+
+    <!-- STAT CARDS -->
+    <div class="stats-row animate-item" style="animation-delay:0.18s;">
+      <div class="stat-card">
+        <div class="stat-top">
+          <div class="stat-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+          <span class="stat-badge pos" id="badgeIng">+12%</span>
+        </div>
+        <div class="stat-value" id="valIng">$150,430</div>
+        <div class="stat-label">Total Ingresos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-top">
+          <div class="stat-icon" style="background:oklch(0.45 0.18 25);"><svg viewBox="0 0 24 24"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg></div>
+          <span class="stat-badge neg" id="badgeEgr">-8%</span>
+        </div>
+        <div class="stat-value" id="valEgr">$43,300</div>
+        <div class="stat-label">Total Egresos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-top">
+          <div class="stat-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        </div>
+        <div class="stat-value" id="valNeto">$107,130</div>
+        <div class="stat-label">Flujo Neto</div>
+      </div>
+    </div>
+
+    <!-- GRÁFICA + EGRESOS POR CATEGORÍA -->
+    <div class="two-col animate-item" style="animation-delay:0.25s; align-items:stretch;">
+      <div class="section-card">
+        <div class="card-title">
+          <div class="card-title-left">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            Flujo de Caja — Ingresos vs Egresos
+          </div>
+          <div class="cs-wrap" id="csPeriod">
+            <div class="cs-trigger" onclick="toggleCS('csPeriod')" style="font-size:0.75rem;padding:0.38rem 0.75rem;">
+              <span id="csPeriodLabel">Este Mes</span>
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="cs-dropdown" id="csPeriodDropdown">
+              <div class="cs-option selected" data-value="mes"       onclick="pickCS('csPeriod','mes','Este Mes')">Este Mes</div>
+              <div class="cs-option"          data-value="semana"    onclick="pickCS('csPeriod','semana','Esta Semana')">Esta Semana</div>
+              <div class="cs-option"          data-value="trimestre" onclick="pickCS('csPeriod','trimestre','Este Trimestre')">Este Trimestre</div>
+              <div class="cs-option"          data-value="año"       onclick="pickCS('csPeriod','año','Este Año')">Este Año</div>
+            </div>
+          </div>
+        </div>
+        <div class="chart-container"><canvas id="barChart"></canvas></div>
+      </div>
+      <div class="section-card" style="display:flex;flex-direction:column;">
+        <div class="card-title">
+          <div class="card-title-left">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            Egresos por Categoría
+          </div>
+        </div>
+        <div class="egr-list" id="egrList" style="flex:1;"></div>
+      </div>
+    </div>
+
+    <!-- HISTORIAL -->
+    <div class="section-card animate-item" style="animation-delay:0.32s; padding:0; overflow:hidden;">
+      <div style="padding:1.35rem 1.5rem 1rem;">
+        <div class="card-title" style="margin-bottom:1rem;">
+          <div class="card-title-left">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+            Historial de Movimientos
+          </div>
+        </div>
+        <!-- Búsqueda + filtros en la misma fila -->
+        <div class="hist-toolbar">
+          <div class="hist-search">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="histSearch" placeholder="Buscar movimiento..." oninput="searchHist()">
+          </div>
+          <div class="filter-tabs">
+            <button class="tab-btn active" onclick="filterHist('todos',this)">Todos</button>
+            <button class="tab-btn" onclick="filterHist('ingreso',this)">Ingresos</button>
+            <button class="tab-btn" onclick="filterHist('egreso',this)">Egresos</button>
+          </div>
+        </div>
+      </div>
+      <table class="hist-table">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Descripción</th>
+            <th>Categoría</th>
+            <th>Monto</th>
+          </tr>
+        </thead>
+        <tbody id="histBody"></tbody>
+      </table>
+      <div class="table-footer">
+        <span id="histCount">Mostrando 0 de 0 movimientos</span>
+        <div class="pagination" id="histPagination"></div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<!-- ── MODAL: NUEVO MOVIMIENTO ───────────────────────────────────── -->
+<div class="modal-overlay" id="overlayMov">
+  <div class="modal-box" id="modalMovInner">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="movModalTitle">Nuevo Movimiento</div>
+        <div class="modal-subtitle">Registra un ingreso o egreso</div>
+      </div>
+      <button class="modal-close" onclick="closeMovModal()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="form-grid">
+      <div class="form-field full">
+        <label class="form-label">Tipo de movimiento</label>
+        <div class="cs-wrap" id="csMovTipo" style="width:100%;">
+          <div class="cs-trigger form-cs" onclick="toggleCS('csMovTipo')">
+            <span id="csMovTipoLabel">— Seleccionar tipo —</span>
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="cs-dropdown" id="csMovTipoDropdown" style="left:0;right:auto;min-width:100%;">
+            <div class="cs-option" data-value="ingreso" onclick="pickCS('csMovTipo','ingreso','Ingreso')">Ingreso</div>
+            <div class="cs-option" data-value="egreso" onclick="pickCS('csMovTipo','egreso','Egreso')">Egreso</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Fecha</label>
+        <input class="form-input" type="date" id="movFecha">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Monto ($)</label>
+        <input class="form-input" type="number" id="movMonto" placeholder="Ej. 5000" min="0" step="0.01">
+      </div>
+      <div class="form-field full">
+        <label class="form-label">Descripción</label>
+        <input class="form-input" type="text" id="movDesc" placeholder="Ej. Ventas del día">
+      </div>
+      <div class="form-field full">
+        <label class="form-label">Categoría</label>
+        <div style="display:flex;gap:0.5rem;align-items:center;">
+          <div class="cs-wrap" id="csMovCat" style="flex:1;">
+            <div class="cs-trigger form-cs" onclick="toggleCS('csMovCat')">
+              <span id="csMovCatLabel">— Seleccionar categoría —</span>
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="cs-dropdown" id="csMovCatDropdown" style="left:0;right:auto;min-width:100%;"></div>
+          </div>
+          <button class="btn-outline-sm" onclick="openCatModal()">+ Nueva categoría</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeMovModal()">Cancelar</button>
+      <button class="btn-save" onclick="saveMovimiento()">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Registrar Movimiento
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── MODAL: GESTIÓN DE CATEGORÍAS ─────────────────────────────── -->
+<div class="modal-overlay" id="overlayCat" style="z-index:1100;">
+  <div class="modal-box sm" id="modalCatInner">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">Gestión de Categorías</div>
+        <div class="modal-subtitle">Añade o edita categorías de movimientos</div>
+      </div>
+      <button class="modal-close" onclick="closeCatModal()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="form-field" style="margin-bottom:0.75rem;">
+      <label class="form-label">Nombre de categoría</label>
+      <div style="display:flex;gap:0.5rem;">
+        <input class="form-input" type="text" id="newCatName" placeholder="Ej. Proveedores" style="flex:1;">
+        <button class="btn-save" onclick="saveNewCat()">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Guardar
+        </button>
+      </div>
+    </div>
+    <hr class="form-divider">
+    <div class="form-section-label" style="margin:0.5rem 0 0.25rem;">Categorías registradas</div>
+    <div class="cat-manage-list" id="catManageList"></div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeCatModal()">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Custom Select — scope global para que los onclick del HTML funcionen ──
+const csState = { csPeriod:'mes', csMovTipo:'', csMovCat:'' };
+
+window.toggleCS = function(id) {
+  const wrap = document.getElementById(id);
+  const isOpen = wrap.classList.contains('open');
+  document.querySelectorAll('.cs-wrap.open').forEach(w => w.classList.remove('open'));
+  if (!isOpen) wrap.classList.add('open');
+};
+
+window.pickCS = function(id, value, label) {
+  csState[id] = value;
+  document.getElementById(id+'Label').textContent = label;
+  document.querySelectorAll('#'+id+'Dropdown .cs-option').forEach(o => o.classList.toggle('selected', o.dataset.value === value));
+  document.getElementById(id).classList.remove('open');
+  if (id === 'csPeriod' && typeof barChart !== 'undefined') {
+    const d = barData[value] || barData.mes;
+    barChart.data.labels = d.labels;
+    barChart.data.datasets[0].data = d.ing;
+    barChart.data.datasets[1].data = d.egr;
+    barChart.update();
+  }
+};
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.cs-wrap')) document.querySelectorAll('.cs-wrap.open').forEach(w => w.classList.remove('open'));
+});
+
+window.addEventListener('load', function() {
+
+// Sidebar toggle
+document.getElementById('sidebarToggle').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.toggle('collapsed');
+});
+
+// ── Datos ─────────────────────────────────────────────────────────
+let categorias = ['Ventas','Proveedores','Nómina','Servicios','Mantenimiento','Otros'];
+
+let movimientos = [
+  { fecha:'2025-02-16', desc:'Ventas del día',        cat:'Ventas',      monto:15680,  tipo:'ingreso' },
+  { fecha:'2025-02-16', desc:'Pago a proveedor Bimbo',cat:'Proveedores', monto:-6750,  tipo:'egreso'  },
+  { fecha:'2025-02-16', desc:'Pago de luz',            cat:'Servicios',   monto:-2800,  tipo:'egreso'  },
+  { fecha:'2025-02-15', desc:'Ventas del día',         cat:'Ventas',      monto:22450,  tipo:'ingreso' },
+  { fecha:'2025-02-14', desc:'Nómina semanal',         cat:'Nómina',      monto:-15000, tipo:'egreso'  },
+  { fecha:'2025-02-14', desc:'Ventas del día',         cat:'Ventas',      monto:18900,  tipo:'ingreso' },
+  { fecha:'2025-02-13', desc:'Mantenimiento equipo',   cat:'Mantenimiento',monto:-5000, tipo:'egreso'  },
+  { fecha:'2025-02-13', desc:'Ventas del día',         cat:'Ventas',      monto:21400,  tipo:'ingreso' },
+];
+
+const egrCategories = [
+  { name:'Proveedores',  amount:45000, pct:100 },
+  { name:'Nómina',       amount:20000, pct:44  },
+  { name:'Servicios',    amount:8500,  pct:19  },
+  { name:'Mantenimiento',amount:5000,  pct:11  },
+  { name:'Otros',        amount:4000,  pct:9   },
+];
+
+// ── Stats ─────────────────────────────────────────────────────────
+function updateStats() {
+  const ing  = movimientos.filter(m=>m.tipo==='ingreso').reduce((s,m)=>s+m.monto,0);
+  const egr  = movimientos.filter(m=>m.tipo==='egreso').reduce((s,m)=>s+Math.abs(m.monto),0);
+  const neto = ing - egr;
+  document.getElementById('valIng').textContent  = '$' + ing.toLocaleString('es-MX');
+  document.getElementById('valEgr').textContent  = '$' + egr.toLocaleString('es-MX');
+  document.getElementById('valNeto').textContent = '$' + neto.toLocaleString('es-MX');
+}
+updateStats();
+
+// ── Egresos por categoría ─────────────────────────────────────────
+(function renderEgr() {
+  const list = document.getElementById('egrList');
+  list.innerHTML = '';
+  egrCategories.forEach((c,i) => {
+    const div = document.createElement('div');
+    div.className = 'egr-item';
+    div.style.cssText = 'opacity:0;animation:fadeUp 0.4s cubic-bezier(0.22,1,0.36,1) forwards;animation-delay:'+(i*0.07)+'s';
+    div.innerHTML = `
+      <div class="egr-row">
+        <span class="egr-name">${c.name}</span>
+        <span class="egr-amount">$${c.amount.toLocaleString('es-MX')}</span>
+      </div>
+      <div class="egr-bar-track">
+        <div class="egr-bar-fill" style="width:0%;" data-w="${c.pct}%"></div>
+      </div>`;
+    list.appendChild(div);
+  });
+  setTimeout(() => {
+    list.querySelectorAll('.egr-bar-fill').forEach(b => b.style.width = b.dataset.w);
+  }, 60);
+})();
+
+// ── Bar chart ─────────────────────────────────────────────────────
+const barData = {
+  mes:       { labels:['01/02','05/02','10/02','15/02','20/02','25/02'], ing:[15680,22450,18900,21400,19800,24600], egr:[6750,15000,5000,2800,8200,3500] },
+  semana:    { labels:['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'],       ing:[4200,5100,3800,6200,7400,9100,2300],  egr:[1200,3000,800,2100,1500,4200,600] },
+  trimestre: { labels:['Ene','Feb','Mar'],                               ing:[98000,120000,145000],                 egr:[38000,52000,48000] },
+  año:       { labels:['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'], ing:[98000,120000,145000,132000,158000,170000,163000,178000,195000,182000,210000,235000], egr:[38000,52000,48000,61000,55000,70000,58000,63000,72000,68000,75000,82000] },
+};
+
+const barCtx = document.getElementById('barChart').getContext('2d');
+const barChart = new Chart(barCtx, {
+  type: 'bar',
+  data: {
+    labels: barData.mes.labels,
+    datasets: [
+      { label:'Ingresos', data:barData.mes.ing, backgroundColor:'oklch(0.3408 0.0533 267.6812)', borderRadius:6, borderSkipped:false },
+      { label:'Egresos',  data:barData.mes.egr, backgroundColor:'oklch(0.45 0.18 25 / 0.75)',   borderRadius:6, borderSkipped:false }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode:'index', intersect:false },
+    plugins: {
+      legend: { display:true, position:'top', labels:{ font:{size:11,family:'Inter'}, usePointStyle:true, pointStyleWidth:8, boxHeight:8 } },
+      tooltip: { backgroundColor:'#cfcac9', titleColor:'#1d2549', bodyColor:'#1d2549', borderColor:'#b8b3b2', borderWidth:1, cornerRadius:10, padding:10,
+        callbacks:{ label: ctx => ' '+ctx.dataset.label+': $'+ctx.parsed.y.toLocaleString('es-MX') }
+      }
+    },
+    scales: {
+      x: { grid:{display:false}, border:{display:false}, ticks:{font:{size:11,family:'Inter'},color:'#888'} },
+      y: { grid:{color:'rgba(0,0,0,0.05)',borderDash:[4,4]}, border:{display:false}, ticks:{font:{size:11,family:'Inter'},color:'#888', callback:v=>'$'+(v/1000).toFixed(0)+'k'} }
+    }
+  }
+});
+
+// ── Historial ─────────────────────────────────────────────────────
+let histFilter = 'todos';
+let histSearch = '';
+let histPage   = 1;
+const HIST_PER_PAGE = 5;
+
+function renderHist() {
+  const tbody = document.getElementById('histBody');
+  tbody.innerHTML = '';
+  const q = histSearch.toLowerCase();
+  const filtered = movimientos.filter(m => {
+    const matchTipo = histFilter === 'todos' || m.tipo === histFilter;
+    const matchQ    = !q || m.desc.toLowerCase().includes(q) || m.cat.toLowerCase().includes(q);
+    return matchTipo && matchQ;
+  });
+
+  const total     = filtered.length;
+  const totalPages= Math.max(1, Math.ceil(total / HIST_PER_PAGE));
+  if (histPage > totalPages) histPage = totalPages;
+  const start = (histPage - 1) * HIST_PER_PAGE;
+  const paged = filtered.slice(start, start + HIST_PER_PAGE);
+
+  // Count label
+  document.getElementById('histCount').textContent =
+    'Mostrando ' + Math.min(start + HIST_PER_PAGE, total) + ' de ' + total + ' movimiento' + (total !== 1 ? 's' : '');
+
+  // Rows
+  paged.forEach((m,i) => {
+    const tr = document.createElement('tr');
+    tr.style.cssText = 'opacity:0;animation:fadeUp 0.35s cubic-bezier(0.22,1,0.36,1) forwards;animation-delay:'+(i*0.05)+'s';
+    const dateStr = new Date(m.fecha + 'T00:00:00').toLocaleDateString('es-MX',{day:'2-digit',month:'short'}).replace('.',' ');
+    const sign = m.monto > 0 ? '+' : '';
+    const cls  = m.tipo === 'ingreso' ? 'ing' : 'egr';
+    tr.innerHTML = `
+      <td class="hist-date">${dateStr}</td>
+      <td class="hist-desc">${m.desc}</td>
+      <td><span class="hist-cat">${m.cat}</span></td>
+      <td class="hist-amount ${cls}">${sign}$${Math.abs(m.monto).toLocaleString('es-MX')}</td>`;
+    tbody.appendChild(tr);
+  });
+
+  // Pagination
+  const pg = document.getElementById('histPagination');
+  pg.innerHTML = '';
+
+  // Prev
+  const prev = document.createElement('button');
+  prev.className = 'pg-btn'; prev.title = 'Anterior';
+  prev.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>';
+  prev.disabled = histPage === 1;
+  prev.onclick = () => { if (histPage > 1) { histPage--; renderHist(); } };
+  pg.appendChild(prev);
+
+  // Page numbers
+  for (let p = 1; p <= totalPages; p++) {
+    const btn = document.createElement('button');
+    btn.className = 'pg-btn' + (p === histPage ? ' active' : '');
+    btn.textContent = p;
+    btn.onclick = (function(pp){ return () => { histPage = pp; renderHist(); }; })(p);
+    pg.appendChild(btn);
+  }
+
+  // Next
+  const next = document.createElement('button');
+  next.className = 'pg-btn'; next.title = 'Siguiente';
+  next.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>';
+  next.disabled = histPage === totalPages;
+  next.onclick = () => { if (histPage < totalPages) { histPage++; renderHist(); } };
+  pg.appendChild(next);
+}
+renderHist();
+
+window.filterHist = function(tipo, btn) {
+  histFilter = tipo; histPage = 1;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderHist();
+};
+
+window.searchHist = function() {
+  histSearch = document.getElementById('histSearch').value;
+  histPage = 1;
+  renderHist();
+};
+
+// ── Modal Movimiento ──────────────────────────────────────────────
+function animateModal(id) {
+  const inner = document.getElementById(id); if (!inner) return;
+  const items = [];
+  Array.from(inner.children).forEach(el => {
+    if (el.classList.contains('form-grid')) Array.from(el.children).forEach(c => items.push(c));
+    else items.push(el);
+  });
+  items.forEach((el,i) => { el.style.opacity='0'; el.style.animation='none'; void el.offsetWidth; el.style.animation=`fieldUp 0.35s cubic-bezier(0.22,1,0.36,1) forwards`; el.style.animationDelay=(0.05+i*0.055)+'s'; });
+}
+
+function populateCatSelect() {
+  const dd = document.getElementById('csMovCatDropdown');
+  dd.innerHTML = '';
+  categorias.forEach(c => {
+    const div = document.createElement('div');
+    div.className = 'cs-option' + (csState.csMovCat === c ? ' selected' : '');
+    div.dataset.value = c;
+    div.textContent = c;
+    div.onclick = () => pickCS('csMovCat', c, c);
+    dd.appendChild(div);
+  });
+}
+
+window.openMovModal = function() {
+  csState.csMovTipo = ''; csState.csMovCat = '';
+  document.getElementById('csMovTipoLabel').textContent = '— Seleccionar tipo —';
+  document.getElementById('csMovCatLabel').textContent  = '— Seleccionar categoría —';
+  document.querySelectorAll('#csMovTipoDropdown .cs-option').forEach(o => o.classList.remove('selected'));
+  document.getElementById('movFecha').value = '';
+  document.getElementById('movMonto').value = '';
+  document.getElementById('movDesc').value  = '';
+  populateCatSelect();
+  document.getElementById('overlayMov').classList.add('open');
+  animateModal('modalMovInner');
+};
+
+window.closeMovModal = function() {
+  document.getElementById('overlayMov').classList.remove('open');
+};
+
+document.getElementById('overlayMov').addEventListener('click', e => { if (e.target === e.currentTarget) closeMovModal(); });
+
+window.saveMovimiento = function() {
+  const tipo  = csState.csMovTipo;
+  const cat   = csState.csMovCat;
+  const fecha = document.getElementById('movFecha').value;
+  const monto = parseFloat(document.getElementById('movMonto').value);
+  const desc  = document.getElementById('movDesc').value.trim();
+  if (!tipo || !fecha || !monto || !desc || !cat) { alert('Por favor completa todos los campos.'); return; }
+  const m = { fecha, desc, cat, monto: tipo==='ingreso' ? monto : -monto, tipo };
+  movimientos.unshift(m);
+  histPage = 1;
+  updateStats();
+  renderHist();
+  closeMovModal();
+};
+
+// ── Modal Categorías ──────────────────────────────────────────────
+function renderCatList() {
+  const list = document.getElementById('catManageList');
+  list.innerHTML = '';
+  categorias.forEach((c, idx) => {
+    const item = document.createElement('div');
+    item.className = 'cat-manage-item';
+    item.dataset.idx = idx;
+    item.innerHTML = `
+      <span class="cat-manage-name" id="catName_${idx}">${c}</span>
+      <div style="display:flex;gap:0.3rem;">
+        <button class="cat-action-btn edit" onclick="startEditCat(${idx})" title="Editar">
+          <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </button>
+        <button class="cat-action-btn del" onclick="deleteCat(${idx})" title="Eliminar">
+          <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+        </button>
+      </div>`;
+    list.appendChild(item);
+  });
+}
+
+window.openCatModal = function() {
+  renderCatList();
+  document.getElementById('newCatName').value = '';
+  document.getElementById('overlayCat').classList.add('open');
+  animateModal('modalCatInner');
+};
+
+window.closeCatModal = function() {
+  document.getElementById('overlayCat').classList.remove('open');
+  populateCatSelect();
+};
+
+document.getElementById('overlayCat').addEventListener('click', e => { if (e.target === e.currentTarget) closeCatModal(); });
+
+window.saveNewCat = function() {
+  const name = document.getElementById('newCatName').value.trim();
+  if (!name) { document.getElementById('newCatName').focus(); return; }
+  if (!categorias.includes(name)) categorias.push(name);
+  document.getElementById('newCatName').value = '';
+  renderCatList();
+};
+
+window.deleteCat = function(idx) {
+  categorias.splice(idx, 1);
+  renderCatList();
+};
+
+window.startEditCat = function(idx) {
+  const nameEl = document.getElementById('catName_' + idx);
+  const cur = nameEl.textContent;
+  const item = nameEl.closest('.cat-manage-item');
+  item.innerHTML = `
+    <input class="cat-manage-input" id="catEditInput_${idx}" value="${cur}">
+    <div style="display:flex;gap:0.3rem;">
+      <button class="cat-action-btn save" onclick="confirmEditCat(${idx})" title="Guardar">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </button>
+      <button class="cat-action-btn del" onclick="renderCatList()" title="Cancelar">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>`;
+  document.getElementById('catEditInput_' + idx).  focus();
+};
+
+window.confirmEditCat = function(idx) {
+  const val = document.getElementById('catEditInput_' + idx).value.trim();
+  if (val) categorias[idx] = val;
+  renderCatList();
+};
+
+}); // end load
+</script>
+</body>
+</html>

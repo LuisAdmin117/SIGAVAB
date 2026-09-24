@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inventario — SIGAVAB</title>
+<link href="Fuentes/css2.css" rel="stylesheet">
+<link rel="stylesheet" href="css/inventario.css">
+
+</head>
+<body>
+
+<!-- ── SIDEBAR ─────────────────────────────────────────────────── -->
+<aside class="sidebar animate-item" id="sidebar" style="animation-delay:0s;">
+  <div class="sidebar-logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="nav-label">SIGAVAB</span>
+  </div>
+
+  <div class="sidebar-section-label nav-label">Modulos</div>
+  <nav class="sidebar-nav">
+    <a href="Index.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      <span class="nav-label">Panel Gerencial</span>
+    </a>
+    <a href="Inventario.html" class="nav-item active" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      <span class="nav-label">Inventario</span>
+    </a>
+    <a href="Clientes.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      <span class="nav-label">Clientes y crédito</span>
+    </a>
+    <a href="Proveedores.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 4v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      <span class="nav-label">Proveedores</span>
+    </a>
+    <a href="Estadisticas.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <span class="nav-label">Estadísticas</span>
+    </a>
+    <a href="FlujoCaja.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><path d="M8 10.5c0-1.4 1.8-2.5 4-2.5s4 1.1 4 2.5-1.8 2.5-4 2.5-4 1.1-4 2.5 1.8 2.5 4 2.5 4-1.1 4-2.5"/></svg>
+      <span class="nav-label">Flujo de caja</span>
+    </a>
+    <a href="Promociones.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+      <span class="nav-label">Promociones</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-section-label nav-label">Configuración</div>
+  <nav class="sidebar-nav">
+    <div class="nav-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/></svg>
+      <span class="nav-label">Ajustes</span>
+    </div>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <div class="user-avatar-row">
+      <div class="avatar">JD</div>
+      <div class="user-info">
+        <div class="user-name">John Doe</div>
+        <div class="user-email">john@gmail.com</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ── MAIN ─────────────────────────────────────────────────────── -->
+<div class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar animate-item" style="animation-delay:0.08s;">
+    <div>
+      <div class="topbar-title">Inventario</div>
+      <div class="topbar-subtitle">Gestión de productos y stock</div>
+    </div>
+    <div class="topbar-right">
+    </div>
+  </div>
+
+  <!-- Tarjeta fija esquina superior derecha -->
+  <div class="topbar-pill">
+  <!-- Toggle sidebar -->
+  <button id="sidebarToggle" title="Ocultar/Mostrar menú" style="box-shadow:none;border:none;background:transparent;cursor:pointer;transition:color 0.15s;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;color:var(--foreground);">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <line x1="9" y1="3" x2="9" y2="21"/>
+    </svg>
+  </button>
+  <!-- Campana -->
+  <button id="bellBtn" style="box-shadow:none;border:none;background:transparent;cursor:pointer;transition:color 0.15s;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;color:var(--foreground);">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+      <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+    </svg>
+  </button>
+  <!-- Role selector -->
+  <div style="position:relative;" id="roleWrap">
+    <button id="roleBtn" onclick="toggleRoleMenu()" style="display:flex;align-items:center;gap:0.3rem;padding:0.3rem 0.5rem;border-radius:9999px;border:none;background:transparent;cursor:pointer;color:var(--foreground);transition:color 0.15s;">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+      <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" id="roleArrow" style="transition:transform 0.18s;">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </button>
+    <!-- Dropdown -->
+    <div id="roleDropdown" style="display:none;position:fixed;background:var(--card);border:1px solid var(--border);border-radius:1rem;box-shadow:0 8px 24px rgba(0,0,0,0.14);z-index:9999;padding:0.35rem;min-width:160px;">
+      <div onclick="selectRole('Gerente')" id="roleOpt1" style="display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.75rem;border-radius:0.65rem;font-size:0.82rem;font-family:var(--font-sans);cursor:pointer;background:#2c3754;color:#f8fafc;transition:background 0.12s;">
+        <svg width="13" height="13" fill="none" stroke="#f8fafc" stroke-width="2.5" viewBox="0 0 24 24" id="checkGerente">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        Gerente
+      </div>
+      <div onclick="selectRole('Cajero')" id="roleOpt2" style="display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.75rem;border-radius:0.65rem;font-size:0.82rem;font-family:var(--font-sans);cursor:pointer;color:var(--foreground);transition:background 0.12s;">
+        <svg width="13" height="13" fill="none" stroke="transparent" stroke-width="2.5" viewBox="0 0 24 24" id="checkCajero">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        Cajero
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- PAGE HEADER -->
+    <div class="page-header animate-item" style="animation-delay: 0.05s;">
+      <div class="page-header-left">
+        <h1>Gestión de Inventario</h1>
+        <p>Administra productos y stock</p>
+      </div>
+      <button class="btn-primary" onclick="alert('Abrir formulario de nuevo producto')">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Nuevo Producto
+      </button>
+    </div>
+
+    <!-- SEARCH WRAPPER CARD -->
+    <div class="animate-item" style="animation-delay: 0.18s; background:var(--card);border-radius:1.5rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);padding:1rem 1.1rem;">
+      <div class="search-card" style="box-shadow:none;border-radius:0.85rem;background:oklch(0.93 0.004 80);border:1px solid oklch(0.88 0.003 80);">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" placeholder="Buscar por código, nombre o categoría..." oninput="filterTable()">
+      </div>
+    </div>
+
+    <!-- TABLE CARD -->
+    <div class="table-card animate-item" style="animation-delay: 0.32s;">
+
+      <table class="inv-table" id="invTable">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Producto</th>
+            <th>Categoría</th>
+            <th>Precio</th>
+            <th>Costo</th>
+            <th>Stock</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+
+          <!-- P001 -->
+          <tr>
+            <td class="td-code">P001</td>
+            <td>
+              <div class="td-product">
+                <div style="width:44px;height:44px;border-radius:0.75rem;overflow:hidden;flex-shrink:0;background:oklch(0.88 0.003 80);border:1px solid oklch(0.9 0 0);">
+                  <img src="" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+                </div>
+                <span class="td-product-name">Smartphone Samsung Galaxy A54</span>
+              </div>
+            </td>
+            <td class="td-cat">Electrónica</td>
+            <td class="td-price">$499.99</td>
+            <td class="td-cost">$310.00</td>
+            <td>
+              <div class="td-stock-wrap">
+                <span class="td-stock-value ok">100</span>
+              </div>
+            </td>
+            <td><span class="badge-stock-ok"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Normal</span></td>
+            <td>
+              <div class="actions-cell">
+                <button class="action-btn" title="Editar" onclick="openEditModal(this)">
+                  <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </button>
+                <button class="action-btn delete" title="Eliminar">
+                  <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+
+          <!-- P002 -->
+          <tr>
+            <td class="td-code">P002</td>
+            <td>
+              <div class="td-product">
+                <div style="width:44px;height:44px;border-radius:0.75rem;overflow:hidden;flex-shrink:0;background:oklch(0.88 0.003 80);border:1px solid oklch(0.9 0 0);">
+                  <img src="" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+                </div>
+                <span class="td-product-name">Auriculares Sony WH-1000XM5</span>
+              </div>
+            </td>
+            <td class="td-cat">Audio</td>
+            <td class="td-price">$399.00</td>
+            <td class="td-cost">$210.00</td>
+            <td>
+              <div class="td-stock-wrap"><span class="td-stock-value low">15</span></div>
+            </td>
+            <td><span class="badge-stock-low"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Bajo</span></td>
+            <td>
+              <div class="actions-cell">
+                <button class="action-btn" title="Editar" onclick="openEditModal(this)">
+                  <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </button>
+                <button class="action-btn delete" title="Eliminar">
+                  <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+
+          <!-- P003 -->
+          <tr>
+            <td class="td-code">P003</td>
+            <td>
+              <div class="td-product">
+                <div style="width:44px;height:44px;border-radius:0.75rem;overflow:hidden;flex-shrink:0;background:oklch(0.88 0.003 80);border:1px solid oklch(0.9 0 0);">
+                  <img src="" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+                </div>
+                <span class="td-product-name">Laptop Lenovo IdeaPad 3</span>
+              </div>
+            </td>
+            <td class="td-cat">Computadoras</td>
+            <td class="td-price">$990.00</td>
+            <td class="td-cost">$640.00</td>
+            <td>
+              <div class="td-stock-wrap"><span class="td-stock-value low">5</span></div>
+            </td>
+            <td><span class="badge-stock-low"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Bajo</span></td>
+            <td>
+              <div class="actions-cell">
+                <button class="action-btn" title="Editar" onclick="openEditModal(this)">
+                  <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </button>
+                <button class="action-btn delete" title="Eliminar">
+                  <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+
+          <!-- P004 -->
+          <tr>
+            <td class="td-code">P004</td>
+            <td>
+              <div class="td-product">
+                <div style="width:44px;height:44px;border-radius:0.75rem;overflow:hidden;flex-shrink:0;background:oklch(0.88 0.003 80);border:1px solid oklch(0.9 0 0);">
+                  <img src="" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+                </div>
+                <span class="td-product-name">Teclado Mecánico Logitech G Pro</span>
+              </div>
+            </td>
+            <td class="td-cat">Periféricos</td>
+            <td class="td-price">$149.00</td>
+            <td class="td-cost">$82.00</td>
+            <td>
+              <div class="td-stock-wrap">
+                <span class="td-stock-value ok">200</span>
+              </div>
+            </td>
+            <td><span class="badge-stock-ok"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Normal</span></td>
+            <td>
+              <div class="actions-cell">
+                <button class="action-btn" title="Editar" onclick="openEditModal(this)">
+                  <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </button>
+                <button class="action-btn delete" title="Eliminar">
+                  <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+
+          <!-- P005 -->
+          <tr>
+            <td class="td-code">P005</td>
+            <td>
+              <div class="td-product">
+                <div style="width:44px;height:44px;border-radius:0.75rem;overflow:hidden;flex-shrink:0;background:oklch(0.88 0.003 80);border:1px solid oklch(0.9 0 0);">
+                  <img src="" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+                </div>
+                <span class="td-product-name">Monitor LG 27" 4K UHD</span>
+              </div>
+            </td>
+            <td class="td-cat">Periféricos</td>
+            <td class="td-price">$399.00</td>
+            <td class="td-cost">$240.00</td>
+            <td>
+              <div class="td-stock-wrap">
+                <span class="td-stock-value ok">42</span>
+              </div>
+            </td>
+            <td><span class="badge-stock-ok"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Normal</span></td>
+            <td>
+              <div class="actions-cell">
+                <button class="action-btn" title="Editar" onclick="openEditModal(this)">
+                  <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </button>
+                <button class="action-btn delete" title="Eliminar">
+                  <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+
+          <!-- P006 -->
+          <tr>
+            <td class="td-code">P006</td>
+            <td>
+              <div class="td-product">
+                <div style="width:44px;height:44px;border-radius:0.75rem;overflow:hidden;flex-shrink:0;background:oklch(0.88 0.003 80);border:1px solid oklch(0.9 0 0);">
+                  <img src="" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+                </div>
+                <span class="td-product-name">Mouse Inalámbrico MX Master 3</span>
+              </div>
+            </td>
+            <td class="td-cat">Periféricos</td>
+            <td class="td-price">$123.00</td>
+            <td class="td-cost">$68.00</td>
+            <td>
+              <div class="td-stock-wrap"><span class="td-stock-value low">9</span></div>
+            </td>
+            <td><span class="badge-stock-low"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Bajo</span></td>
+            <td>
+              <div class="actions-cell">
+                <button class="action-btn" title="Editar" onclick="openEditModal(this)">
+                  <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </button>
+                <button class="action-btn delete" title="Eliminar">
+                  <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+
+          <!-- P007 -->
+          <tr>
+            <td class="td-code">P007</td>
+            <td>
+              <div class="td-product">
+                <div style="width:44px;height:44px;border-radius:0.75rem;overflow:hidden;flex-shrink:0;background:oklch(0.88 0.003 80);border:1px solid oklch(0.9 0 0);">
+                  <img src="" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+                </div>
+                <span class="td-product-name">Tablet Samsung Galaxy Tab A8</span>
+              </div>
+            </td>
+            <td class="td-cat">Electrónica</td>
+            <td class="td-price">$279.00</td>
+            <td class="td-cost">$165.00</td>
+            <td>
+              <div class="td-stock-wrap">
+                <span class="td-stock-value ok">67</span>
+              </div>
+            </td>
+            <td><span class="badge-stock-ok"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Normal</span></td>
+            <td>
+              <div class="actions-cell">
+                <button class="action-btn" title="Editar" onclick="openEditModal(this)">
+                  <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </button>
+                <button class="action-btn delete" title="Eliminar">
+                  <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+
+          <!-- P008 -->
+          <tr>
+            <td class="td-code">P008</td>
+            <td>
+              <div class="td-product">
+                <div style="width:44px;height:44px;border-radius:0.75rem;overflow:hidden;flex-shrink:0;background:oklch(0.88 0.003 80);border:1px solid oklch(0.9 0 0);">
+                  <img src="" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+                </div>
+                <span class="td-product-name">Cámara Web Logitech C920 HD</span>
+              </div>
+            </td>
+            <td class="td-cat">Periféricos</td>
+            <td class="td-price">$89.00</td>
+            <td class="td-cost">$48.00</td>
+            <td>
+              <div class="td-stock-wrap">
+                <span class="td-stock-value ok">130</span>
+              </div>
+            </td>
+            <td><span class="badge-inactive">Inactivo</span></td>
+            <td>
+              <div class="actions-cell">
+                <button class="action-btn" title="Editar" onclick="openEditModal(this)">
+                  <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </button>
+                <button class="action-btn delete" title="Eliminar">
+                  <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <!-- TABLE FOOTER -->
+      <div class="table-footer">
+        <span id="rowCount">Mostrando 8 de 8 productos</span>
+        <div class="pagination">
+          <button class="pg-btn">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="pg-btn active">1</button>
+          <button class="pg-btn">2</button>
+          <button class="pg-btn">3</button>
+          <button class="pg-btn">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /table-card -->
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+document.addEventListener('DOMContentLoaded', function() {
+
+// Sidebar toggle — manejado abajo junto con el toggle de color
+
+// Animación escalonada de filas de la tabla
+document.querySelectorAll('#tableBody tr').forEach((row, i) => {
+  row.style.opacity = '0';
+  row.style.animation = `fadeUp 0.4s cubic-bezier(0.22,1,0.36,1) forwards`;
+  row.style.animationDelay = (0.42 + i * 0.07) + 's';
+});
+
+}); // end DOMContentLoaded
+
+// Live search filter — global scope para el oninput del HTML
+function filterTable() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  const rows = document.querySelectorAll('#tableBody tr');
+  let visible = 0;
+  rows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    const show = text.includes(q);
+    row.style.display = show ? '' : 'none';
+    if (show) {
+      // Reiniciar animación fadeUp escalonada
+      row.style.opacity = '0';
+      row.style.animation = 'none';
+      void row.offsetWidth; // forzar reflow
+      row.style.animation = 'fadeUp 0.35s cubic-bezier(0.22,1,0.36,1) forwards';
+      row.style.animationDelay = (visible * 0.06) + 's';
+      visible++;
+    }
+  });
+  document.getElementById('rowCount').textContent =
+    'Mostrando ' + visible + ' de ' + rows.length + ' productos';
+}
+</script>
+
+<!-- ══════════════════════════════════════════════════════════════
+     OVERLAY + MODAL: NUEVO PRODUCTO
+═══════════════════════════════════════════════════════════════ -->
+
+<!-- MODAL: NUEVO PRODUCTO -->
+<div class="modal-overlay" id="overlayProduct">
+  <div class="modal modal-product" id="modalProductInner">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">Nuevo Producto</div>
+        <div class="modal-subtitle">Completa los datos del producto a registrar</div>
+      </div>
+      <button class="modal-close" onclick="closeProductModal()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="form-grid">
+
+      <!-- Imagen del producto -->
+      <div class="form-field full">
+        <label class="form-label">Imagen del producto</label>
+        <div id="imgUploadArea" onclick="document.getElementById('fImagen').click()"
+          style="display:flex;align-items:center;gap:1rem;padding:0.85rem 1rem;border-radius:0.75rem;border:1.5px dashed oklch(0.80 0.005 80);background:oklch(0.93 0.004 80);cursor:pointer;transition:border-color 0.15s,background 0.15s;"
+          onmouseover="this.style.borderColor='oklch(0.3408 0.0533 267.6812)';this.style.background='oklch(0.3408 0.0533 267.6812 / 0.05)'"
+          onmouseout="if(!document.getElementById('fImagen').files.length){this.style.borderColor='oklch(0.80 0.005 80)';this.style.background='oklch(0.93 0.004 80)'}">
+          <!-- Preview / placeholder -->
+          <div id="imgPreviewWrap" style="width:56px;height:56px;border-radius:0.6rem;overflow:hidden;flex-shrink:0;background:oklch(0.88 0.003 80);border:1px solid oklch(0.9 0 0);display:flex;align-items:center;justify-content:center;">
+            <svg id="imgPlaceholderIcon" width="24" height="24" fill="none" stroke="var(--muted-foreground)" stroke-width="1.5" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <img id="imgPreview" src="" alt="Vista previa" style="display:none;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <!-- Text -->
+          <div style="flex:1;min-width:0;">
+            <div id="imgUploadLabel" style="font-size:0.82rem;font-weight:600;color:var(--card-foreground);">Subir imagen del producto</div>
+            <div style="font-size:0.7rem;color:var(--muted-foreground);margin-top:0.15rem;">PNG, JPG o WebP — máx. 5 MB</div>
+          </div>
+          <!-- Button -->
+          <div style="padding:0.4rem 0.85rem;border-radius:0.65rem;border:1px solid var(--border);background:var(--card);font-size:0.75rem;font-weight:500;color:var(--card-foreground);flex-shrink:0;pointer-events:none;">
+            Seleccionar archivo
+          </div>
+        </div>
+        <input type="file" id="fImagen" accept="image/png,image/jpeg,image/webp" style="display:none;" onchange="previewProductImage(this)">
+      </div>
+
+      <!-- Código de barras -->
+      <div class="form-field full">
+        <label class="form-label">Código de barras</label>
+        <input class="form-input" type="text" id="fBarcode" placeholder="Ej. 7501234567890">
+      </div>
+
+      <!-- Nombre -->
+      <div class="form-field full">
+        <label class="form-label">Nombre del producto</label>
+        <input class="form-input" type="text" id="fName" placeholder="Ej. Smartphone Samsung Galaxy A54">
+      </div>
+
+      <!-- Categoría -->
+      <div class="form-field full">
+        <label class="form-label">Categoría</label>
+        <!-- Custom select — reemplaza el <select> nativo para control total del estilo -->
+        <div class="custom-select-wrap" id="customCatSelect">
+          <div class="custom-select-trigger placeholder-shown" tabindex="0" id="customCatTrigger">
+            <span id="customCatLabel">— Seleccionar categoría —</span>
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="custom-select-dropdown" id="customCatDropdown">
+            <!-- opciones generadas por JS -->
+          </div>
+        </div>
+        <!-- hidden input para llevar el valor seleccionado -->
+        <input type="hidden" id="fCategory" value="">
+      </div>
+
+      <!-- Precio / Costo -->
+      <div class="form-field">
+        <label class="form-label">Precio de venta ($)</label>
+        <input class="form-input" type="number" id="fPrice" placeholder="0.00" min="0" step="0.01">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Costo ($)</label>
+        <input class="form-input" type="number" id="fCost" placeholder="0.00" min="0" step="0.01">
+      </div>
+
+      <hr class="form-divider full">
+      <div class="form-section-label full">Control de Stock</div>
+
+      <!-- Stock actual / mín / máx -->
+      <div class="form-field">
+        <label class="form-label">Stock actual</label>
+        <input class="form-input" type="number" id="fStock" placeholder="0" min="0">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Stock mínimo</label>
+        <input class="form-input" type="number" id="fStockMin" placeholder="0" min="0">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Stock máximo</label>
+        <input class="form-input" type="number" id="fStockMax" placeholder="0" min="0">
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-new-cat" onclick="openCatModal()">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Nueva Categoría
+      </button>
+      <div style="display:flex;gap:0.55rem;">
+        <button class="btn-ghost" onclick="closeProductModal()">Cancelar</button>
+        <button class="btn-primary-sm" onclick="registerProduct()">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Registrar Producto
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: GESTIÓN DE CATEGORÍAS -->
+<div class="modal-overlay" id="overlayCat" style="z-index:1100;">
+  <div class="modal modal-cat" id="modalCatInner">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">Gestión de Categorías</div>
+        <div class="modal-subtitle">Crea, edita o elimina las categorías</div>
+      </div>
+      <button class="modal-close" onclick="closeCatModal()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- Nueva categoría -->
+    <div class="form-field">
+      <label class="form-label">Nombre de categoría</label>
+      <input class="form-input" type="text" id="catNameInput" placeholder="Ej. Electrónica, Audio, Hogar...">
+    </div>
+
+    <div style="display:flex;justify-content:flex-end;gap:0.5rem;margin-top:0.75rem;">
+      <button class="btn-ghost" onclick="closeCatModal()">Cancelar</button>
+      <button class="btn-primary-sm" onclick="saveCategory()">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Guardar Categoría
+      </button>
+    </div>
+
+    <hr class="form-divider" style="margin-top:1rem;">
+    <div class="form-section-label">Categorías registradas</div>
+    <div class="cat-list" id="catList">
+      <div class="cat-empty" id="catEmpty">No hay categorías registradas aún.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Estado ──────────────────────────────────────────────────────
+let categories  = ['Electrónica','Audio','Computadoras','Periféricos'];
+let editingCatIdx = null;
+
+// ── Custom Select: Categoría ────────────────────────────────────
+let selectedCategory = '';
+
+function populateCategorySelect() {
+  const dropdown = document.getElementById('customCatDropdown');
+  const currentVal = document.getElementById('fCategory').value;
+  dropdown.innerHTML = '';
+
+  // Placeholder
+  const ph = document.createElement('div');
+  ph.className = 'custom-select-option placeholder';
+  ph.textContent = '— Seleccionar categoría —';
+  ph.addEventListener('click', () => selectCategory('', '— Seleccionar categoría —', true));
+  dropdown.appendChild(ph);
+
+  categories.forEach(c => {
+    const opt = document.createElement('div');
+    opt.className = 'custom-select-option' + (c === currentVal ? ' selected' : '');
+    opt.textContent = c;
+    opt.addEventListener('click', () => selectCategory(c, c, false));
+    dropdown.appendChild(opt);
+  });
+}
+
+function selectCategory(value, label, isPlaceholder) {
+  document.getElementById('fCategory').value = value;
+  selectedCategory = value;
+  const trigger = document.getElementById('customCatTrigger');
+  const lbl     = document.getElementById('customCatLabel');
+  lbl.textContent = label;
+  if (isPlaceholder) {
+    trigger.classList.add('placeholder-shown');
+  } else {
+    trigger.classList.remove('placeholder-shown');
+  }
+  closeCustomSelect();
+  // update selected highlight
+  document.querySelectorAll('#customCatDropdown .custom-select-option').forEach(opt => {
+    opt.classList.toggle('selected', opt.textContent === label && !isPlaceholder);
+  });
+}
+
+function closeCustomSelect() {
+  document.getElementById('customCatSelect').classList.remove('open');
+}
+
+// Toggle dropdown on trigger click
+document.addEventListener('DOMContentLoaded', () => {
+  const trigger = document.getElementById('customCatTrigger');
+  const wrap    = document.getElementById('customCatSelect');
+
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = wrap.classList.contains('open');
+    // close all other custom selects first
+    document.querySelectorAll('.custom-select-wrap.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) {
+      populateCategorySelect();
+      wrap.classList.add('open');
+    }
+  });
+
+  trigger.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); trigger.click(); }
+    if (e.key === 'Escape') closeCustomSelect();
+  });
+});
+
+// Close on outside click
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('#customCatSelect')) closeCustomSelect();
+});
+
+// SVGs reutilizables
+const SVG_EDIT   = `<svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`;
+const SVG_DELETE = `<svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>`;
+const SVG_CHECK  = `<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>`;
+const SVG_CLOSE  = `<svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+
+// ── Renderizar lista de categorías ───────────────────────────────
+function renderCatList() {
+  const list  = document.getElementById('catList');
+  const empty = document.getElementById('catEmpty');
+  Array.from(list.querySelectorAll('.cat-row')).forEach(el => el.remove());
+
+  if (categories.length === 0) { empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+
+  categories.forEach((cat, idx) => {
+    const row = document.createElement('div');
+    row.className = 'cat-row';
+    row.id = 'cat-row-' + idx;
+
+    if (editingCatIdx === idx) {
+      row.innerHTML = `
+        <input class="cat-row-name" type="text" id="cat-edit-input-${idx}" value="${cat}">
+        <div class="cat-actions">
+          <button class="cat-icon-btn save" title="Guardar" onclick="confirmEditCat(${idx})">${SVG_CHECK}</button>
+          <button class="cat-icon-btn cancel" title="Cancelar" onclick="cancelEditCat()">${SVG_CLOSE}</button>
+        </div>`;
+    } else {
+      row.innerHTML = `
+        <span class="cat-row-name">${cat}</span>
+        <div class="cat-actions">
+          <button class="cat-icon-btn" title="Editar" onclick="startEditCat(${idx})">${SVG_EDIT}</button>
+          <button class="cat-icon-btn del" title="Eliminar" onclick="deleteCat(${idx})">${SVG_DELETE}</button>
+        </div>`;
+    }
+    list.appendChild(row);
+  });
+}
+
+// ── CRUD categorías ─────────────────────────────────────────────
+function saveCategory() {
+  const input = document.getElementById('catNameInput');
+  const name  = input.value.trim();
+  if (!name) { input.focus(); return; }
+  if (categories.map(c=>c.toLowerCase()).includes(name.toLowerCase())) {
+    alert('Ya existe una categoría con ese nombre.'); return;
+  }
+  categories.push(name);
+  input.value = '';
+  editingCatIdx = null;
+  renderCatList();
+  populateCategorySelect();
+}
+
+function startEditCat(idx) {
+  editingCatIdx = idx;
+  renderCatList();
+  const inp = document.getElementById('cat-edit-input-' + idx);
+  if (inp) { inp.focus(); inp.select(); }
+}
+
+function cancelEditCat() {
+  editingCatIdx = null;
+  renderCatList();
+}
+
+function confirmEditCat(idx) {
+  const inp = document.getElementById('cat-edit-input-' + idx);
+  const name = inp ? inp.value.trim() : '';
+  if (!name) { if(inp) inp.focus(); return; }
+  categories[idx] = name;
+  editingCatIdx = null;
+  renderCatList();
+  populateCategorySelect();
+}
+
+function deleteCat(idx) {
+  if (!confirm('¿Eliminar la categoría "' + categories[idx] + '"?')) return;
+  categories.splice(idx, 1);
+  if (editingCatIdx === idx) editingCatIdx = null;
+  renderCatList();
+  populateCategorySelect();
+}
+
+// ── Abrir / cerrar modales ───────────────────────────────────────
+// ── Helper: animar hijos del modal de abajo hacia arriba ─────────
+function animateModal(innerId) {
+  const inner = document.getElementById(innerId);
+  if (!inner) return;
+
+  // Recolectar todos los elementos animables en orden visual:
+  // hijos directos del modal + hijos del form-grid (campos individuales)
+  const items = [];
+
+  Array.from(inner.children).forEach(el => {
+    if (el.classList.contains('form-grid')) {
+      // Dentro del grid, animar cada celda individualmente
+      Array.from(el.children).forEach(child => items.push(child));
+    } else {
+      items.push(el);
+    }
+  });
+
+  items.forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.animation = 'none';
+    void el.offsetWidth; // reflow para reiniciar
+    el.style.animation = `fieldUp 0.38s cubic-bezier(0.22,1,0.36,1) forwards`;
+    el.style.animationDelay = (0.06 + i * 0.07) + 's';
+  });
+}
+
+function openProductModal() {
+  populateCategorySelect();
+  document.getElementById('overlayProduct').classList.add('open');
+  animateModal('modalProductInner');
+}
+
+function previewProductImage(input) {
+  const file = input.files[0];
+  const preview  = document.getElementById('imgPreview');
+  const icon     = document.getElementById('imgPlaceholderIcon');
+  const label    = document.getElementById('imgUploadLabel');
+  const area     = document.getElementById('imgUploadArea');
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      preview.src = e.target.result;
+      preview.style.display = 'block';
+      icon.style.display = 'none';
+      label.textContent = file.name;
+      area.style.borderColor = 'oklch(0.3408 0.0533 267.6812)';
+      area.style.background  = 'oklch(0.3408 0.0533 267.6812 / 0.05)';
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function resetProductImage() {
+  document.getElementById('fImagen').value = '';
+  document.getElementById('imgPreview').style.display = 'none';
+  document.getElementById('imgPreview').src = '';
+  document.getElementById('imgPlaceholderIcon').style.display = 'block';
+  document.getElementById('imgUploadLabel').textContent = 'Subir imagen del producto';
+  const area = document.getElementById('imgUploadArea');
+  area.style.borderColor = 'oklch(0.80 0.005 80)';
+  area.style.background  = 'oklch(0.93 0.004 80)';
+}
+
+function closeProductModal() {
+  document.getElementById('overlayProduct').classList.remove('open');
+  closeCustomSelect();
+  // reset custom select display
+  document.getElementById('fCategory').value = '';
+  document.getElementById('customCatLabel').textContent = '— Seleccionar categoría —';
+  document.getElementById('customCatTrigger').classList.add('placeholder-shown');
+  // reset image upload
+  resetProductImage();
+}
+
+function openCatModal() {
+  editingCatIdx = null;
+  renderCatList();
+  document.getElementById('overlayCat').classList.add('open');
+  animateModal('modalCatInner');
+}
+
+function closeCatModal() {
+  editingCatIdx = null;
+  document.getElementById('overlayCat').classList.remove('open');
+  populateCategorySelect();
+}
+
+// Cerrar overlay al hacer clic fuera del modal
+window.addEventListener('load', function() {
+  var op = document.getElementById('overlayProduct');
+  if (op) op.addEventListener('click', function(e) { if (e.target === this) closeProductModal(); });
+  var oc = document.getElementById('overlayCat');
+  if (oc) oc.addEventListener('click', function(e) { if (e.target === this) closeCatModal(); });
+});
+
+// ── Registrar producto (demo) ────────────────────────────────────
+function registerProduct() {
+  const name  = document.getElementById('fName').value.trim();
+  const price = document.getElementById('fPrice').value;
+  const stock = document.getElementById('fStock').value;
+  if (!name || !price || !stock) {
+    alert('Por favor completa al menos Nombre, Precio y Stock actual.');
+    return;
+  }
+  alert('✅ Producto "' + name + '" registrado correctamente.\n(Integra con tu backend para persistir los datos.)');
+  ['fBarcode','fName','fPrice','fCost','fStock','fStockMin','fStockMax'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('fCategory').value = '';
+  closeProductModal();
+}
+
+// ── Conectar botón principal ─────────────────────────────────────
+window.addEventListener('load', function() {
+  var bp = document.querySelector('.btn-primary');
+  if (bp) bp.addEventListener('click', openProductModal);
+});
+
+// ══════════════════════════════════════════════════════════════════
+// MODAL EDITAR PRODUCTO
+// ══════════════════════════════════════════════════════════════════
+function openEditModal(btn) {
+  const row = btn.closest('tr');
+  const cells = row.querySelectorAll('td');
+
+  // Extraer datos de la fila
+  const productName = row.querySelector('.td-product-name').textContent.trim();
+  const price       = cells[3].textContent.replace('$','').trim();
+  const cost        = cells[4].textContent.trim();
+  const stockVal    = row.querySelector('.td-stock-value').textContent.trim();
+
+  document.getElementById('editProductLabel').textContent = productName;
+  document.getElementById('ePrice').value    = price;
+  document.getElementById('eCost').value     = cost;
+  document.getElementById('eStock').value    = stockVal;
+  document.getElementById('eStockMin').value = '';
+  document.getElementById('eStockMax').value = '';
+
+  // Guardar referencia a la fila para actualizarla
+  document.getElementById('overlayEdit')._row = row;
+
+  document.getElementById('overlayEdit').classList.add('open');
+  animateModal('modalEditInner');
+}
+
+function closeEditModal() {
+  document.getElementById('overlayEdit').classList.remove('open');
+}
+
+function saveEditProduct() {
+  const price    = document.getElementById('ePrice').value;
+  const cost     = document.getElementById('eCost').value;
+  const stock    = document.getElementById('eStock').value;
+  const stockMin = document.getElementById('eStockMin').value;
+  const stockMax = document.getElementById('eStockMax').value;
+
+  if (!price || !stock) {
+    alert('Por favor completa al menos Precio y Stock actual.');
+    return;
+  }
+
+  const row   = document.getElementById('overlayEdit')._row;
+  const cells = row.querySelectorAll('td');
+
+  // Actualizar precio en la fila
+  cells[3].textContent = '$' + parseFloat(price).toFixed(2);
+  // Actualizar costo
+  cells[4].textContent = '$' + parseFloat(cost).toFixed(2);
+
+  // Actualizar stock
+  const MIN_STOCK = stockMin !== '' ? parseInt(stockMin) : 20;
+  const stockNum  = parseInt(stock);
+  const stockWrap = row.querySelector('.td-stock-wrap');
+  const isLow     = stockNum < MIN_STOCK;
+  stockWrap.innerHTML = `
+    <span class="td-stock-value ${isLow ? 'low' : 'ok'}">${stockNum}</span>
+    ${isLow ? `<span class="stock-badge-low">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      Bajo</span>` : ''}`;
+
+  closeEditModal();
+}
+
+window.addEventListener('load', function() {
+  var oe = document.getElementById('overlayEdit');
+  if (oe) oe.addEventListener('click', function(e) { if (e.target === this) closeEditModal(); });
+});
+
+// Toggle sidebar + color activo — listener único
+var sidebarActive = false;
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+  // Ocultar/mostrar sidebar
+  document.getElementById('sidebar').classList.toggle('collapsed');
+  // Toggle color
+  sidebarActive = !sidebarActive;
+  this.style.background   = sidebarActive ? '#2c3754' : 'transparent';
+  this.style.color        = sidebarActive ? '#f8fafc' : '';
+  this.style.borderRadius = sidebarActive ? '50%' : '';
+});
+
+// Toggle activo para campana y rol (sin sidebar que ya tiene su propio listener)
+['bellBtn', 'roleBtn'].forEach(function(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var active = false;
+  el.addEventListener('click', function() {
+    active = !active;
+    el.style.background   = active ? '#2c3754' : 'transparent';
+    el.style.color        = active ? '#f8fafc' : '';
+    el.style.borderRadius = active ? '50%' : '';
+  });
+});
+
+// Toggle dropdown roles
+function toggleRoleMenu() {
+  var dd    = document.getElementById('roleDropdown');
+  var arrow = document.getElementById('roleArrow');
+  var isOpen = dd.style.display === 'block';
+  if (isOpen) {
+    dd.style.display = 'none';
+    arrow.style.transform = 'rotate(0deg)';
+  } else {
+    var wrap = document.getElementById('roleWrap');
+    var rect = wrap.getBoundingClientRect();
+    dd.style.top   = (rect.bottom + 6) + 'px';
+    dd.style.right = (window.innerWidth - rect.right) + 'px';
+    dd.style.left  = 'auto';
+    dd.style.display = 'block';
+    arrow.style.transform = 'rotate(180deg)';
+  }
+}
+
+// Seleccionar rol
+function selectRole(role) {
+  var opt1 = document.getElementById('roleOpt1');
+  var opt2 = document.getElementById('roleOpt2');
+  if (role === 'Gerente') {
+    opt1.style.background = '#2c3754'; opt1.style.color = '#f8fafc';
+    document.getElementById('checkGerente').style.stroke = '#f8fafc';
+    opt2.style.background = 'transparent'; opt2.style.color = 'var(--foreground)';
+    document.getElementById('checkCajero').style.stroke = 'transparent';
+  } else {
+    opt2.style.background = '#2c3754'; opt2.style.color = '#f8fafc';
+    document.getElementById('checkCajero').style.stroke = '#f8fafc';
+    opt1.style.background = 'transparent'; opt1.style.color = 'var(--foreground)';
+    document.getElementById('checkGerente').style.stroke = 'transparent';
+  }
+  document.getElementById('roleDropdown').style.display = 'none';
+  document.getElementById('roleArrow').style.transform = 'rotate(0deg)';
+}
+
+// Cerrar dropdown al hacer clic fuera
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#roleWrap')) {
+    var dd = document.getElementById('roleDropdown');
+    var arrow = document.getElementById('roleArrow');
+    if (dd && dd.style.display === 'block') {
+      dd.style.display = 'none';
+      arrow.style.transform = 'rotate(0deg)';
+    }
+  }
+});
+
+// Hover opciones role
+['roleOpt1', 'roleOpt2'].forEach(function(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('mouseover', function() {
+    if (el.style.background !== 'rgb(44, 55, 84)') el.style.background = 'oklch(0.65 0.01 39 / 0.5)';
+  });
+  el.addEventListener('mouseout', function() {
+    if (el.style.background !== 'rgb(44, 55, 84)') el.style.background = 'transparent';
+  });
+});
+
+</script>
+<!-- MODAL: EDITAR PRODUCTO -->
+<div class="modal-overlay" id="overlayEdit" style="z-index:1050;">
+  <div class="modal modal-product" id="modalEditInner">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">Editar Producto</div>
+        <div class="modal-subtitle" id="editProductLabel" style="font-weight:600;color:var(--card-foreground);font-size:0.82rem;margin-top:0.2rem;"></div>
+      </div>
+      <button class="modal-close" onclick="closeEditModal()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="form-grid">
+      <!-- Precio / Costo -->
+      <div class="form-field">
+        <label class="form-label">Precio de venta ($)</label>
+        <input class="form-input" type="number" id="ePrice" placeholder="0.00" min="0" step="0.01">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Costo ($)</label>
+        <input class="form-input" type="number" id="eCost" placeholder="0.00" min="0" step="0.01">
+      </div>
+
+      <hr class="form-divider full">
+      <div class="form-section-label full">Control de Stock</div>
+
+      <!-- Stock actual / mín / máx -->
+      <div class="form-field">
+        <label class="form-label">Stock actual</label>
+        <input class="form-input" type="number" id="eStock" placeholder="0" min="0">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Stock mínimo</label>
+        <input class="form-input" type="number" id="eStockMin" placeholder="0" min="0">
+      </div>
+      <div class="form-field full">
+        <label class="form-label">Stock máximo</label>
+        <input class="form-input" type="number" id="eStockMax" placeholder="0" min="0">
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeEditModal()">Cancelar</b

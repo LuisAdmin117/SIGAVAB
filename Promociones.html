@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promociones — SIGAVAB</title>
+<link href="Fuentes/css2.css" rel="stylesheet">
+<link rel="stylesheet" href="css/promociones.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar animate-item" id="sidebar" style="animation-delay:0s;">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+    <span class="nav-label">SIGAVAB</span>
+  </div>
+  <div class="sidebar-section-label nav-label">Módulos</div>
+  <nav class="sidebar-nav">
+    <a href="Index.html" class="nav-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span class="nav-label">Panel Gerencial</span></a>
+    <a href="Inventario.html" class="nav-item"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg><span class="nav-label">Inventario</span></a>
+    <a href="Clientes.html" class="nav-item"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span class="nav-label">Clientes y crédito</span></a>
+    <a href="Proveedores.html" class="nav-item"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 4v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span class="nav-label">Proveedores</span></a>
+    <a href="Estadisticas.html" class="nav-item"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span class="nav-label">Estadísticas</span></a>
+    <a href="FlujoCaja.html" class="nav-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><path d="M8 10.5c0-1.4 1.8-2.5 4-2.5s4 1.1 4 2.5-1.8 2.5-4 2.5-4 1.1-4 2.5 1.8 2.5 4 2.5 4-1.1 4-2.5"/></svg><span class="nav-label">Flujo de caja</span></a>
+    <a href="Promociones.html" class="nav-item active"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg><span class="nav-label">Promociones</span></a>
+  </nav>
+  <div class="sidebar-section-label nav-label">Configuración</div>
+  <nav class="sidebar-nav">
+    <a href="Ajustes.html" class="nav-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/></svg><span class="nav-label">Ajustes</span></a>
+  </nav>
+  <div class="sidebar-bottom">
+    <div class="user-avatar-row">
+      <div class="avatar">JD</div>
+      <div class="user-info">
+        <div class="user-name">John Doe</div>
+        <div class="user-email">john@gmail.com</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar animate-item" style="animation-delay:0.07s;">
+    <div>
+      <div class="topbar-title">Promociones</div>
+      <div class="topbar-subtitle">Administra promociones y descuentos</div>
+    </div>
+    <div class="topbar-right">
+      <div class="icon-btn" id="sidebarToggle"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
+      <div class="icon-btn"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+      <div class="icon-btn" style="background:oklch(0.3408 0.0533 267.6812);border:none;color:white;font-size:0.7rem;font-weight:600;">JD</div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- PAGE HEADER -->
+    <div class="page-header animate-item" style="animation-delay:0.12s;">
+      <div>
+        <h1>Gestión de Promociones</h1>
+        <p>Administra promociones y descuentos por temporada</p>
+      </div>
+      <button class="btn-primary" onclick="openPromoModal(null)">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Nueva Promoción
+      </button>
+    </div>
+
+    <!-- STAT CARDS -->
+    <div class="stats-row animate-item" style="animation-delay:0.17s;">
+      <div class="stat-card">
+        <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+        <div class="stat-value" id="statTotal">0</div>
+        <div class="stat-label">Total</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="stat-value" id="statActivas">0</div>
+        <div class="stat-label">Activas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon orange"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="stat-value" id="statProgramadas">0</div>
+        <div class="stat-label">Programadas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon red"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+        <div class="stat-value" id="statExpiradas">0</div>
+        <div class="stat-label">Expiradas</div>
+      </div>
+    </div>
+
+    <!-- TOOLBAR: búsqueda + filtros -->
+    <div class="toolbar-card animate-item" style="animation-delay:0.22s;">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="promoSearch" placeholder="Buscar promoción..." oninput="renderPromos()">
+      </div>
+      <div class="filter-tabs">
+        <button class="tab-btn active" data-filter="todas"      onclick="setFilter('todas',this)">Todas</button>
+        <button class="tab-btn"        data-filter="activa"     onclick="setFilter('activa',this)">Activas</button>
+        <button class="tab-btn"        data-filter="programada" onclick="setFilter('programada',this)">Programadas</button>
+        <button class="tab-btn"        data-filter="expirada"   onclick="setFilter('expirada',this)">Expiradas</button>
+      </div>
+    </div>
+
+    <!-- PROMO GRID -->
+    <div class="promo-grid animate-item" id="promoGrid" style="animation-delay:0.28s;"></div>
+
+  </div>
+</div>
+
+<!-- MODAL: NUEVA / EDITAR PROMOCIÓN -->
+<div class="modal-overlay" id="overlayPromo">
+  <div class="modal-box" id="modalPromoInner">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="promoModalTitle">Nueva Promoción</div>
+        <div class="modal-subtitle">Completa los datos de la promoción</div>
+      </div>
+      <button class="modal-close" onclick="closePromoModal()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="form-grid">
+      <div class="form-field full">
+        <label class="form-label">Nombre de la promoción</label>
+        <input class="form-input" type="text" id="pNombre" placeholder="Ej. Descuento Navidad">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Tipo</label>
+        <div class="cs-wrap" id="csTipo">
+          <div class="cs-trigger" onclick="toggleCS('csTipo')">
+            <span id="csTipoLabel">— Seleccionar —</span>
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="cs-dropdown" id="csTipoDropdown">
+            <div class="cs-option" data-value="Porcentaje" onclick="pickCS('csTipo','Porcentaje','Porcentaje')">Porcentaje</div>
+            <div class="cs-option" data-value="Monto Fijo" onclick="pickCS('csTipo','Monto Fijo','Monto Fijo')">Monto Fijo</div>
+            <div class="cs-option" data-value="2x1"        onclick="pickCS('csTipo','2x1','2x1')">2x1</div>
+            <div class="cs-option" data-value="Combo"      onclick="pickCS('csTipo','Combo','Combo')">Combo</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Valor</label>
+        <input class="form-input" type="text" id="pValor" placeholder="Ej. 20 (%) o $5">
+      </div>
+      <div class="form-field full">
+        <label class="form-label">Producto aplicable</label>
+        <div class="cs-wrap" id="csProducto">
+          <div class="cs-trigger" onclick="toggleCS('csProducto')">
+            <span id="csProductoLabel">— Seleccionar producto —</span>
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="cs-dropdown" id="csProductoDropdown">
+            <!-- Poblado por JS -->
+          </div>
+        </div>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Fecha de inicio</label>
+        <div class="cal-wrap-field" id="calWrapInicio">
+          <div class="cal-trigger" id="calTriggerInicio" onclick="togglePromoCalendar('inicio')">
+            <div style="display:flex;align-items:center;gap:0.4rem;">
+              <svg class="cal-ico" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span id="calLabelInicio">Seleccionar fecha</span>
+            </div>
+            <svg class="cal-arr" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <input type="hidden" id="pFechaInicio">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Fecha de finalización</label>
+        <div class="cal-wrap-field" id="calWrapFin">
+          <div class="cal-trigger" id="calTriggerFin" onclick="togglePromoCalendar('fin')">
+            <div style="display:flex;align-items:center;gap:0.4rem;">
+              <svg class="cal-ico" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span id="calLabelFin">Seleccionar fecha</span>
+            </div>
+            <svg class="cal-arr" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <input type="hidden" id="pFechaFin">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closePromoModal()">Cancelar</button>
+      <button class="btn-save" onclick="savePromo()">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Registrar Promoción
+      </button>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── Custom Select (global) ────────────────────────────────────────
+const csState = {};
+
+window.toggleCS = function(id) {
+  const wrap = document.getElementById(id);
+  const isOpen = wrap.classList.contains('open');
+  document.querySelectorAll('.cs-wrap.open').forEach(w => w.classList.remove('open'));
+  if (!isOpen) wrap.classList.add('open');
+};
+
+window.pickCS = function(id, value, label) {
+  csState[id] = value;
+  document.getElementById(id + 'Label').textContent = label;
+  document.querySelectorAll('#' + id + 'Dropdown .cs-option').forEach(o =>
+    o.classList.toggle('selected', o.dataset.value === value));
+  document.getElementById(id).classList.remove('open');
+};
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.cs-wrap')) document.querySelectorAll('.cs-wrap.open').forEach(w => w.classList.remove('open'));
+});
+
+window.addEventListener('load', function () {
+
+  // Sidebar
+  document.getElementById('sidebarToggle').addEventListener('click', () =>
+    document.getElementById('sidebar').classList.toggle('collapsed'));
+
+  // ── Productos de inventario (simulados) ───────────────────────────
+  const productos = [
+    'Samsung Galaxy A54','Auriculares Sony XM5','Laptop Lenovo IdeaPad',
+    'Teclado Logitech G Pro','Monitor LG 27"','Mouse MX Master 3',
+    'Tablet Samsung Tab A8','Cámara Logitech C920'
+  ];
+
+  // Poblar dropdown de productos
+  const dd = document.getElementById('csProductoDropdown');
+  productos.forEach(p => {
+    const opt = document.createElement('div');
+    opt.className = 'cs-option';
+    opt.dataset.value = p;
+    opt.textContent = p;
+    opt.onclick = () => pickCS('csProducto', p, p);
+    dd.appendChild(opt);
+  });
+
+  // ── Datos de promociones ──────────────────────────────────────────
+  let promos = [
+    { id:1, nombre:'Descuento Navidad',   tipo:'Porcentaje', valor:'20%',  producto:'Samsung Galaxy A54',    prods:['Samsung Galaxy A54','Auriculares Sony XM5'],            inicio:'2024-11-30', fin:'2024-12-30', usos:15 },
+    { id:2, nombre:'Promo 2x1 Bebidas',   tipo:'2x1',        valor:'2X1',  producto:'Auriculares Sony XM5',   prods:['Auriculares Sony XM5'],                                  inicio:'2024-11-14', fin:'2024-11-29', usos:8  },
+    { id:3, nombre:'Descuento Fijo $5',   tipo:'Monto Fijo', valor:'$5',   producto:'Teclado Logitech G Pro', prods:['Teclado Logitech G Pro','Monitor LG 27"'],               inicio:'2024-10-01', fin:'2024-10-31', usos:22 },
+    { id:4, nombre:'Black Friday',        tipo:'Porcentaje', valor:'30%',  producto:'Laptop Lenovo IdeaPad',  prods:['Laptop Lenovo IdeaPad','Mouse MX Master 3','Tablet Samsung Tab A8'], inicio:'2024-11-29', fin:'2024-11-29', usos:40 },
+    { id:5, nombre:'Descuento Enero',     tipo:'Porcentaje', valor:'15%',  producto:'Monitor LG 27"',         prods:['Monitor LG 27"','Cámara Logitech C920'],                 inicio:'2025-01-01', fin:'2025-01-31', usos:10 },
+    { id:6, nombre:'Combo Verano',        tipo:'Combo',      valor:'Combo',producto:'Mouse MX Master 3',      prods:['Mouse MX Master 3','Samsung Galaxy A54'],                inicio:'2025-06-01', fin:'2025-08-31', usos:5  },
+  ];
+
+  let filterEstado = 'todas';
+
+  // ── Compute estado dinámico ───────────────────────────────────────
+  function getEstado(p) {
+    const hoy   = new Date().toISOString().slice(0,10);
+    if (p.fin < hoy)    return 'expirada';
+    if (p.inicio > hoy) return 'programada';
+    return 'activa';
+  }
+
+  // ── Stats ─────────────────────────────────────────────────────────
+  function updateStats() {
+    const total  = promos.length;
+    const act    = promos.filter(p => getEstado(p) === 'activa').length;
+    const prog   = promos.filter(p => getEstado(p) === 'programada').length;
+    const exp    = promos.filter(p => getEstado(p) === 'expirada').length;
+    document.getElementById('statTotal').textContent      = total;
+    document.getElementById('statActivas').textContent    = act;
+    document.getElementById('statProgramadas').textContent= prog;
+    document.getElementById('statExpiradas').textContent  = exp;
+  }
+
+  // ── Render promo cards ────────────────────────────────────────────
+  window.renderPromos = function() {
+    const q   = document.getElementById('promoSearch').value.toLowerCase();
+    const grid = document.getElementById('promoGrid');
+    grid.innerHTML = '';
+
+    const filtered = promos.filter(p => {
+      const estado = getEstado(p);
+      const matchFilter = filterEstado === 'todas' || estado === filterEstado;
+      const matchQ = !q || p.nombre.toLowerCase().includes(q) || p.tipo.toLowerCase().includes(q) || p.producto.toLowerCase().includes(q);
+      return matchFilter && matchQ;
+    });
+
+    if (filtered.length === 0) {
+      grid.innerHTML = `<div class="empty-state">
+        <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        <p>No se encontraron promociones</p></div>`;
+      return;
+    }
+
+    filtered.forEach((p, i) => {
+      const estado = getEstado(p);
+      const card   = document.createElement('div');
+      card.className = 'promo-card';
+      card.style.cssText = 'opacity:0;animation:fadeUp 0.42s cubic-bezier(0.22,1,0.36,1) forwards;animation-delay:'+(i*0.07)+'s';
+
+      // Banner
+      let bannerClass = 'pct', bannerContent = '';
+      if (p.tipo === 'Porcentaje')   { bannerContent = '% ' + p.valor + ' OFF'; bannerClass = 'pct'; }
+      else if (p.tipo === 'Monto Fijo') { bannerContent = p.valor + ' OFF';    bannerClass = 'fixed'; }
+      else if (p.tipo === '2x1')     { bannerContent = '2X1';                  bannerClass = 'x2x'; }
+      else                           { bannerContent = p.valor;                bannerClass = 'pct'; }
+
+      // Badge estado
+      let badgeEstado = '';
+      if (estado === 'activa')      badgeEstado = '<span class="badge badge-activa">Activa</span>';
+      else if (estado === 'programada') badgeEstado = '<span class="badge badge-progr">Programada</span>';
+      else                          badgeEstado = '<span class="badge badge-expirada">Expirada</span>';
+
+      // Fecha compacta
+      const MESES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+      function fmtShort(d) {
+        const parts = d.split('-');
+        return parseInt(parts[2]) + ' ' + MESES[parseInt(parts[1]) - 1];
+      }
+
+      // Product chips
+      const prodsArr = p.prods || [p.producto];
+      const MAX_CHIPS = 2;
+      let prodChips = '';
+      prodsArr.slice(0, MAX_CHIPS).forEach(function(pr) {
+        prodChips += '<span style="display:inline-flex;padding:0.18rem 0.6rem;border-radius:99px;font-size:0.7rem;font-weight:500;background:oklch(0.88 0.003 80);color:var(--muted-foreground);">' + pr + '</span>';
+      });
+      const extra = prodsArr.length - MAX_CHIPS;
+      if (extra > 0) {
+        prodChips += '<span style="display:inline-flex;padding:0.18rem 0.6rem;border-radius:99px;font-size:0.7rem;font-weight:600;background:oklch(0.3408 0.0533 267.6812 / 0.12);color:oklch(0.3408 0.0533 267.6812);">+' + extra + ' más</span>';
+      }
+
+      // Build card HTML
+      card.innerHTML =
+        '<div class="pc-header">' +
+          '<div class="pc-header-left">' +
+            '<div class="pc-icon"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>' +
+            '<div>' +
+              '<div class="pc-name">' + p.nombre + '</div>' +
+              '<div class="pc-badges"><span class="badge badge-tipo">' + p.tipo + '</span>' + badgeEstado + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="pc-actions">' +
+            '<button class="pc-action-btn" onclick="openPromoModal(' + p.id + ')" title="Editar"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>' +
+            '<button class="pc-action-btn del" onclick="deletePromo(' + p.id + ')" title="Eliminar"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="pc-banner ' + bannerClass + '">' + bannerContent + '</div>' +
+        '<div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.25rem;">' + prodChips + '</div>' +
+        '<div class="pc-footer">' +
+          '<div style="display:flex;align-items:center;gap:0.35rem;font-size:0.75rem;color:var(--muted-foreground);">' +
+            '<svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--muted-foreground);flex-shrink:0;"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>' +
+            fmtShort(p.inicio) + ' – ' + fmtShort(p.fin) +
+          '</div>' +
+          '<div style="font-size:0.8rem;color:var(--muted-foreground);">Usos: <span style="font-weight:700;color:var(--card-foreground);">' + p.usos + '</span></div>' +
+        '</div>';
+
+      grid.appendChild(card);
+    });
+
+    updateStats();
+  };
+
+  // ── Filter tabs ───────────────────────────────────────────────────
+  window.setFilter = function(f, btn) {
+    filterEstado = f;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderPromos();
+  };
+
+  // ── Modal ─────────────────────────────────────────────────────────
+  let editingId = null;
+
+  function animateModal(id) {
+    const inner = document.getElementById(id); if (!inner) return;
+    const items = [];
+    Array.from(inner.children).forEach(el => {
+      if (el.classList.contains('form-grid')) Array.from(el.children).forEach(c => items.push(c));
+      else items.push(el);
+    });
+    items.forEach((el,i) => { el.style.opacity='0'; el.style.animation='none'; void el.offsetWidth; el.style.animation=`fieldUp 0.35s cubic-bezier(0.22,1,0.36,1) forwards`; el.style.animationDelay=(0.05+i*0.055)+'s'; });
+  }
+
+  window.openPromoModal = function(id) {
+    editingId = id;
+    document.getElementById('promoModalTitle').textContent = id ? 'Editar Promoción' : 'Nueva Promoción';
+
+    // Reset
+    csState.csTipo = ''; csState.csProducto = '';
+    document.getElementById('csTipoLabel').textContent = '— Seleccionar —';
+    document.getElementById('csProductoLabel').textContent = '— Seleccionar producto —';
+    document.querySelectorAll('#csTipoDropdown .cs-option, #csProductoDropdown .cs-option').forEach(o => o.classList.remove('selected'));
+    ['pNombre','pValor'].forEach(function(i){ document.getElementById(i).value = ''; });
+    ['pFechaInicio','pFechaFin'].forEach(function(i){ document.getElementById(i).value=''; });
+    resetPromoCalendars();
+
+    if (id) {
+      const p = promos.find(x => x.id === id);
+      if (p) {
+        document.getElementById('pNombre').value = p.nombre;
+        document.getElementById('pValor').value  = p.valor;
+        pickCS('csTipo', p.tipo, p.tipo);
+        pickCS('csProducto', p.producto, p.producto);
+        // Pre-fill calendars
+        if(p.inicio){ const pts=p.inicio.split('-'); selectPromoCalDay('inicio',parseInt(pts[0]),parseInt(pts[1])-1,parseInt(pts[2])); }
+        if(p.fin){    const pts=p.fin.split('-');    selectPromoCalDay('fin',   parseInt(pts[0]),parseInt(pts[1])-1,parseInt(pts[2])); }
+      }
+    }
+
+    document.getElementById('overlayPromo').classList.add('open');
+    animateModal('modalPromoInner');
+  };
+
+  window.closePromoModal = function() {
+    document.getElementById('overlayPromo').classList.remove('open');
+  };
+
+  document.getElementById('overlayPromo').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closePromoModal();
+  });
+
+  window.savePromo = function() {
+    const nombre = document.getElementById('pNombre').value.trim();
+    const tipo   = csState.csTipo;
+    const valor  = document.getElementById('pValor').value.trim();
+    const prod   = csState.csProducto;
+    const ini    = document.getElementById('pFechaInicio').value;
+    const fin    = document.getElementById('pFechaFin').value;
+    if (!nombre || !tipo || !valor || !prod || !ini || !fin) {
+      alert('Por favor completa todos los campos.'); return;
+    }
+    if (editingId) {
+      const p = promos.find(x => x.id === editingId);
+      if (p) Object.assign(p, { nombre, tipo, valor, producto:prod, prods:[prod], inicio:ini, fin });
+    } else {
+      promos.unshift({ id: Date.now(), nombre, tipo, valor, producto:prod, prods:[prod], inicio:ini, fin, usos:0 });
+    }
+    closePromoModal();
+    renderPromos();
+  };
+
+  window.deletePromo = function(id) {
+    if (!confirm('¿Eliminar esta promoción?')) return;
+    promos = promos.filter(function(p) { return p.id !== id; });
+    renderPromos();
+  };
+
+  // ── Calendarios de promoción ─────────────────────────────────────
+  const MONTHS_EN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const MONTHS_ES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const DAYS_HDR  = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+
+  const calState = {
+    inicio: { sel:null, year:new Date().getFullYear(), month:new Date().getMonth() },
+    fin:    { sel:null, year:new Date().getFullYear(), month:new Date().getMonth() }
+  };
+
+  function renderPromoCal(which) {
+    const s = calState[which];
+    const lbl = document.getElementById('calMonth' + (which==='inicio'?'Inicio':'Fin'));
+    if (!lbl) return;
+    lbl.textContent = MONTHS_EN[s.month] + ' ' + s.year;
+    const grid = document.getElementById('calGrid' + (which==='inicio'?'Inicio':'Fin'));
+    grid.innerHTML = '';
+    DAYS_HDR.forEach(function(d){ const h=document.createElement('div'); h.className='cal-dow'; h.textContent=d; grid.appendChild(h); });
+    const today=new Date(), firstDay=new Date(s.year,s.month,1).getDay();
+    const daysInMonth=new Date(s.year,s.month+1,0).getDate();
+    const prevDays=new Date(s.year,s.month,0).getDate();
+    for(let i=firstDay-1;i>=0;i--){ const d=document.createElement('div'); d.className='cal-day cal-day--other-month'; d.textContent=prevDays-i; grid.appendChild(d); }
+    for(let day=1;day<=daysInMonth;day++){
+      const d=document.createElement('div'); d.className='cal-day'; d.textContent=day;
+      const isTod=today.getFullYear()===s.year&&today.getMonth()===s.month&&today.getDate()===day;
+      const isSel=s.sel&&s.sel.getFullYear()===s.year&&s.sel.getMonth()===s.month&&s.sel.getDate()===day;
+      if(isSel) d.classList.add('cal-day--selected'); else if(isTod) d.classList.add('cal-day--today');
+      (function(y,m,dy){ d.addEventListener('click',function(){ selectPromoCalDay(which,y,m,dy); }); })(s.year,s.month,day);
+      grid.appendChild(d);
+    }
+    const rem=(firstDay+daysInMonth)%7===0?0:7-(firstDay+daysInMonth)%7;
+    for(let i=1;i<=rem;i++){ const d=document.createElement('div'); d.className='cal-day cal-day--other-month'; d.textContent=i; grid.appendChild(d); }
+  }
+
+  function selectPromoCalDay(which, year, month, day) {
+    calState[which].sel = new Date(year, month, day);
+    const label = day + ' de ' + MONTHS_ES[month] + ' de ' + year;
+    const iso = year + '-' + String(month+1).padStart(2,'0') + '-' + String(day).padStart(2,'0');
+    const suffix = which === 'inicio' ? 'Inicio' : 'Fin';
+    document.getElementById('calLabel' + suffix).textContent = label;
+    document.getElementById('calTrigger' + suffix).classList.add('has-date');
+    document.getElementById('pFecha' + suffix).value = iso;
+    renderPromoCal(which);
+    closePromoCalendar(which);
+  }
+
+  window.promoCalNav = function(which, dir) {
+    calState[which].month += dir;
+    if(calState[which].month>11){calState[which].month=0;calState[which].year++;}
+    if(calState[which].month<0){calState[which].month=11;calState[which].year--;}
+    renderPromoCal(which);
+  };
+
+  window.promoCalClear = function(which) {
+    calState[which].sel=null;
+    calState[which].year=new Date().getFullYear(); calState[which].month=new Date().getMonth();
+    const suffix = which==='inicio'?'Inicio':'Fin';
+    document.getElementById('calLabel'+suffix).textContent='Seleccionar fecha';
+    document.getElementById('calTrigger'+suffix).classList.remove('has-date');
+    document.getElementById('pFecha'+suffix).value='';
+    renderPromoCal(which); closePromoCalendar(which);
+  };
+
+  window.promoCalToday = function(which) {
+    const n=new Date(); calState[which].year=n.getFullYear(); calState[which].month=n.getMonth();
+    renderPromoCal(which); selectPromoCalDay(which,n.getFullYear(),n.getMonth(),n.getDate());
+  };
+
+  window.togglePromoCalendar = function(which) {
+    const suffix = which==='inicio'?'Inicio':'Fin';
+    const popup   = document.getElementById('calPopup'+suffix);
+    const trigger = document.getElementById('calTrigger'+suffix);
+    const isOpen  = popup.classList.contains('open');
+    // close all promo cals
+    document.getElementById('calPopupInicio').classList.remove('open');
+    document.getElementById('calPopupFin').classList.remove('open');
+    if(!isOpen){
+      renderPromoCal(which);
+      const r = trigger.getBoundingClientRect();
+      popup.style.top = (r.top - 320 - 6) + 'px';
+      let left = r.left; if(left+300>window.innerWidth-8) left=window.innerWidth-308; if(left<8) left=8;
+      popup.style.left = left+'px';
+      popup.classList.add('open');
+    }
+  };
+
+  function closePromoCalendar(which){
+    const suffix=which==='inicio'?'Inicio':'Fin';
+    document.getElementById('calPopup'+suffix).classList.remove('open');
+  }
+
+  function resetPromoCalendars(){
+    ['inicio','fin'].forEach(function(w){
+      calState[w].sel=null; calState[w].year=new Date().getFullYear(); calState[w].month=new Date().getMonth();
+      const suffix=w==='inicio'?'Inicio':'Fin';
+      document.getElementById('calLabel'+suffix).textContent='Seleccionar fecha';
+      document.getElementById('calTrigger'+suffix).classList.remove('has-date');
+      document.getElementById('pFecha'+suffix).value='';
+    });
+  }
+
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('#calWrapInicio')&&!e.target.closest('#calPopupInicio')) document.getElementById('calPopupInicio').classList.remove('open');
+    if(!e.target.closest('#calWrapFin')&&!e.target.closest('#calPopupFin'))       document.getElementById('calPopupFin').classList.remove('open');
+  });
+
+  // Init calendars
+  renderPromoCal('inicio');
+  renderPromoCal('fin');
+
+  // ── Init ─────────────────────────────────────────────────────────
+  renderPromos();
+
+}); // end load
+</script>
+<!-- CALENDAR POPUP — INICIO -->
+<div class="cal-popup" id="calPopupInicio">
+  <div class="cal-header">
+    <button class="cal-nav-btn" onclick="promoCalNav('inicio',-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <div class="cal-month-label" id="calMonthInicio">—</div>
+    <button class="cal-nav-btn" onclick="promoCalNav('inicio',1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+  <div class="cal-grid" id="calGridInicio"></div>
+  <div class="cal-footer">
+    <button class="cal-footer-btn" onclick="promoCalClear('inicio')">Borrar</button>
+    <button class="cal-footer-btn" onclick="promoCalToday('inicio')">Hoy</button>
+  </div>
+</div>
+
+<!-- CALENDAR POPUP — FIN -->
+<div class="cal-popup" id="calPopupFin">
+  <div class="cal-header">
+    <button class="cal-nav-btn" onclick="promoCalNav('fin',-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <div class="cal-month-label" id="calMonthFin">—</div>
+    <button class="cal-nav-btn" onclick="promoCalNav('fin',1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+  <div class="cal-grid" id="calGridFin"></div>
+  <div class="cal-footer">
+    <button class="cal-footer-btn" onclick="promoCalClear('fin')">Borrar</button>
+    <button class="cal-footer-btn" onclick="promoCalToday('fin')">Hoy</button>
+  </div>
+</div>
+
+</body>
+</html>

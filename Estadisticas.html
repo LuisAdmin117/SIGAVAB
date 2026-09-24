@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estadísticas — SIGAVAB</title>
+<link href="Fuentes/css2.css" rel="stylesheet">
+<script src="Fuentes/chart.umd.min.js"></script>
+<link rel="stylesheet" href="css/estadisticas.css">
+</head>
+<body>
+
+<!-- ── SIDEBAR ─────────────────────────────────────────────────── -->
+<aside class="sidebar animate-item" id="sidebar" style="animation-delay:0s;">
+  <div class="sidebar-logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="nav-label">SIGAVAB</span>
+  </div>
+
+  <div class="sidebar-section-label nav-label">Módulos</div>
+  <nav class="sidebar-nav">
+    <a href="Index.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      <span class="nav-label">Panel Gerencial</span>
+    </a>
+    <a href="Inventario.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      <span class="nav-label">Inventario</span>
+    </a>
+    <a href="Clientes.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      <span class="nav-label">Clientes y crédito</span>
+    </a>
+    <a href="Proveedores.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 4v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      <span class="nav-label">Proveedores</span>
+    </a>
+    <a href="Estadisticas.html" class="nav-item active" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <span class="nav-label">Estadísticas</span>
+    </a>
+    <a href="FlujoCaja.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><path d="M8 10.5c0-1.4 1.8-2.5 4-2.5s4 1.1 4 2.5-1.8 2.5-4 2.5-4 1.1-4 2.5 1.8 2.5 4 2.5 4-1.1 4-2.5"/></svg>
+      <span class="nav-label">Flujo de caja</span>
+    </a>
+    <a href="Promociones.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+      <span class="nav-label">Promociones</span>
+    </a>
+  </nav>
+  <div class="sidebar-section-label nav-label">Configuración</div>
+  <nav class="sidebar-nav">
+    <a href="Ajustes.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/></svg>
+      <span class="nav-label">Ajustes</span>
+    </a>
+    <a href="Promociones.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+      <span class="nav-label">Promociones</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <div class="user-avatar-row">
+      <div class="avatar">JD</div>
+      <div class="user-info">
+        <div class="user-name">John Doe</div>
+        <div class="user-email">john@gmail.com</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ── MAIN ─────────────────────────────────────────────────────── -->
+<div class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar animate-item" style="animation-delay:0.07s;">
+    <div>
+      <div class="topbar-title">Estadísticas</div>
+      <div class="topbar-subtitle">Análisis y métricas del negocio</div>
+    </div>
+    <div class="topbar-right">
+      <div class="icon-btn" id="sidebarToggle" title="Ocultar menú">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </div>
+      <div class="icon-btn">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
+      </div>
+      <div class="icon-btn" style="background:oklch(0.3408 0.0533 267.6812);border:none;color:white;font-size:0.7rem;font-weight:600;">JD</div>
+    </div>
+  </div>
+
+    <div class="content">
+
+    <!-- PAGE HEADER — sin selector -->
+    <div class="page-header animate-item" style="animation-delay:0.13s;">
+      <div class="page-header-left">
+        <h1>Estadísticas y Análisis</h1>
+        <p>Ventas, rotación de inventario y tendencias de consumo</p>
+      </div>
+    </div>
+
+    <!-- TENDENCIA DE VENTAS — con selector propio -->
+    <div class="section-card animate-item" style="animation-delay:0.20s;">
+      <div class="card-title" style="justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:0.5rem;">
+          <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          Tendencia de Ventas
+        </div>
+        <div class="cs-wrap" id="csLine">
+          <div class="cs-trigger" onclick="toggleCS('csLine')">
+            <span id="csLineLabel">Este Mes</span>
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="cs-dropdown" id="csLineDropdown">
+            <div class="cs-option selected" data-value="mes" onclick="pickCS('csLine','mes','Este Mes')">Este Mes</div>
+            <div class="cs-option" data-value="semana" onclick="pickCS('csLine','semana','Esta Semana')">Esta Semana</div>
+            <div class="cs-option" data-value="trimestre" onclick="pickCS('csLine','trimestre','Este Trimestre')">Este Trimestre</div>
+            <div class="cs-option" data-value="año" onclick="pickCS('csLine','año','Este Año')">Este Año</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-container">
+        <canvas id="lineChart"></canvas>
+      </div>
+    </div>
+
+    <!-- BOTTOM ROW: Rotación + Tendencias consumo -->
+    <div class="bottom-row animate-item" style="animation-delay:0.30s;">
+
+      <!-- Rotación de Inventario — con búsqueda y filtro -->
+      <div class="section-card">
+        <div class="card-title">
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          Rotación de Inventario
+        </div>
+        <!-- Barra búsqueda + filtro -->
+        <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1rem;">
+          <div style="flex:1;display:flex;align-items:center;gap:0.5rem;background:oklch(0.93 0.004 80);border:1px solid oklch(0.88 0.003 80);border-radius:9999px;padding:0.45rem 0.85rem;">
+            <svg width="14" height="14" fill="none" stroke="var(--muted-foreground)" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input id="invSearch" type="text" placeholder="Buscar producto..." oninput="filterInventory()"
+              style="border:none;background:transparent;font-family:var(--font-sans);font-size:0.8rem;color:var(--foreground);outline:none;width:100%;">
+          </div>
+          <div class="cs-wrap" id="csRot">
+            <div class="cs-trigger" onclick="toggleCS('csRot')">
+              <span id="csRotLabel">Todas</span>
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="cs-dropdown" id="csRotDropdown">
+              <div class="cs-option selected" data-value="todas" onclick="pickCS('csRot','todas','Todas')">Todas</div>
+              <div class="cs-option" data-value="alta" onclick="pickCS('csRot','alta','Alta rotación')">Alta rotación</div>
+              <div class="cs-option" data-value="media" onclick="pickCS('csRot','media','Media rotación')">Media rotación</div>
+              <div class="cs-option" data-value="baja" onclick="pickCS('csRot','baja','Baja rotación')">Baja rotación</div>
+              <div class="cs-option" data-value="critica" onclick="pickCS('csRot','critica','Crítica')">Crítica</div>
+            </div>
+          </div>
+        </div>
+        <div class="inv-list" id="invList"><!-- generado por JS --></div>
+      </div>
+
+      <!-- Tendencias de Consumo — con selector propio -->
+      <div class="section-card">
+        <div class="card-title" style="justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:0.5rem;">
+            <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            Tendencias de Consumo
+          </div>
+          <div class="cs-wrap" id="csPie">
+            <div class="cs-trigger" onclick="toggleCS('csPie')">
+              <span id="csPieLabel">Este Mes</span>
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="cs-dropdown" id="csPieDropdown">
+              <div class="cs-option selected" data-value="mes" onclick="pickCS('csPie','mes','Este Mes')">Este Mes</div>
+              <div class="cs-option" data-value="semana" onclick="pickCS('csPie','semana','Esta Semana')">Esta Semana</div>
+              <div class="cs-option" data-value="trimestre" onclick="pickCS('csPie','trimestre','Este Trimestre')">Este Trimestre</div>
+              <div class="cs-option" data-value="año" onclick="pickCS('csPie','año','Este Año')">Este Año</div>
+            </div>
+          </div>
+        </div>
+        <div class="pie-layout">
+          <div class="pie-chart-wrap">
+            <canvas id="pieChart"></canvas>
+          </div>
+          <div class="cat-list" id="catList"><!-- generado por JS --></div>
+        </div>
+      </div>
+
+    </div><!-- /bottom-row -->
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<script>
+window.addEventListener('load', function () {
+
+  // ── Sidebar ──────────────────────────────────────────────────────
+  document.getElementById('sidebarToggle').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('collapsed');
+  });
+
+  // ── Colores ──────────────────────────────────────────────────────
+  const BAR_COLORS    = ['#72717b','#3a557e','#1d2549','#6b7081','#a09fa9'];
+  const DONUT_COLORS  = ['#1d2549','#3a557e','#72717b','#6b7081','#a09fa9'];
+
+  // ── Datos ────────────────────────────────────────────────────────
+  const datos = {
+    mes: {
+      labels: ['Ene','Feb','Mar','Abr','May','Jun'],
+      ventas: [45000,52000,48000,61000,57000,68000],
+      productos: [
+        { name:'Samsung Galaxy A54',    ventas:340, mult:8.5, pct:85 },
+        { name:'Auriculares Sony XM5',  ventas:248, mult:6.2, pct:65 },
+        { name:'Laptop Lenovo IdeaPad', ventas:192, mult:4.8, pct:50 },
+        { name:'Teclado Logitech G Pro',ventas:140, mult:3.5, pct:37 },
+        { name:'Mouse MX Master 3',     ventas:84,  mult:2.1, pct:22 },
+      ],
+      categorias: [
+        { name:'Electrónica', pct:35, amount:'$28,000' },
+        { name:'Alimentos',   pct:25, amount:'$20,000' },
+        { name:'Hogar',       pct:20, amount:'$16,000' },
+        { name:'Bebidas',     pct:15, amount:'$12,000' },
+        { name:'Otros',       pct:5,  amount:'$4,000'  },
+      ],
+    },
+    semana: {
+      labels: ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'],
+      ventas: [8200,7400,9100,8800,11200,13500,6400],
+      productos: [
+        { name:'Samsung Galaxy A54',    ventas:82,  mult:7.1, pct:82 },
+        { name:'Auriculares Sony XM5',  ventas:61,  mult:5.3, pct:61 },
+        { name:'Laptop Lenovo IdeaPad', ventas:44,  mult:3.8, pct:44 },
+        { name:'Teclado Logitech G Pro',ventas:31,  mult:2.7, pct:31 },
+        { name:'Mouse MX Master 3',     ventas:19,  mult:1.6, pct:19 },
+      ],
+      categorias: [
+        { name:'Electrónica', pct:38, amount:'$6,840'  },
+        { name:'Alimentos',   pct:22, amount:'$3,960'  },
+        { name:'Hogar',       pct:18, amount:'$3,240'  },
+        { name:'Bebidas',     pct:14, amount:'$2,520'  },
+        { name:'Otros',       pct:8,  amount:'$1,440'  },
+      ],
+    },
+    trimestre: {
+      labels: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep'],
+      ventas: [45000,52000,48000,61000,57000,68000,72000,65000,78000],
+      productos: [
+        { name:'Samsung Galaxy A54',    ventas:960,  mult:9.2, pct:96 },
+        { name:'Auriculares Sony XM5',  ventas:720,  mult:6.9, pct:72 },
+        { name:'Laptop Lenovo IdeaPad', ventas:540,  mult:5.2, pct:54 },
+        { name:'Teclado Logitech G Pro',ventas:390,  mult:3.7, pct:39 },
+        { name:'Mouse MX Master 3',     ventas:240,  mult:2.3, pct:24 },
+      ],
+      categorias: [
+        { name:'Electrónica', pct:36, amount:'$81,000' },
+        { name:'Alimentos',   pct:24, amount:'$54,000' },
+        { name:'Hogar',       pct:19, amount:'$42,750' },
+        { name:'Bebidas',     pct:14, amount:'$31,500' },
+        { name:'Otros',       pct:7,  amount:'$15,750' },
+      ],
+    },
+    anio: {
+      labels: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+      ventas: [45000,52000,48000,61000,57000,68000,72000,65000,78000,83000,91000,105000],
+      productos: [
+        { name:'Samsung Galaxy A54',    ventas:1420, mult:10.2, pct:100 },
+        { name:'Auriculares Sony XM5',  ventas:1105, mult:7.9,  pct:78  },
+        { name:'Laptop Lenovo IdeaPad', ventas:960,  mult:6.9,  pct:68  },
+        { name:'Teclado Logitech G Pro',ventas:840,  mult:6.0,  pct:59  },
+        { name:'Mouse MX Master 3',     ventas:590,  mult:4.2,  pct:42  },
+      ],
+      categorias: [
+        { name:'Electrónica', pct:35, amount:'$289,800' },
+        { name:'Alimentos',   pct:25, amount:'$207,000' },
+        { name:'Hogar',       pct:20, amount:'$165,600' },
+        { name:'Bebidas',     pct:15, amount:'$124,200' },
+        { name:'Otros',       pct:5,  amount:'$41,400'  },
+      ],
+    },
+  };
+
+  function getPeriodKey() {
+    const v = document.getElementById('periodSelect').value;
+    return v === 'año' ? 'anio' : v;
+  }
+
+  // ── Gráfica lineal — dos áreas como en la imagen ─────────────────
+  const lineCtx = document.getElementById('lineChart').getContext('2d');
+  const gradA = lineCtx.createLinearGradient(0,0,0,280);
+  gradA.addColorStop(0,'rgba(58,85,126,0.45)');
+  gradA.addColorStop(1,'rgba(58,85,126,0.04)');
+
+  const d0 = datos.mes;
+  const lineChart = new Chart(lineCtx, {
+    type: 'line',
+    data: {
+      labels: d0.labels,
+      datasets: [
+        {
+          label: 'Ventas',
+          data: d0.ventas,
+          borderColor: '#3a557e',
+          borderWidth: 2,
+          backgroundColor: gradA,
+          fill: true,
+          tension: 0.55,
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: '#3a557e',
+          pointHoverBorderColor: '#fff',
+          pointHoverBorderWidth: 2,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode:'index', intersect:false },
+      plugins: {
+        legend: { display:false },
+        tooltip: {
+          backgroundColor: '#cfcac9',
+          titleColor: '#1d2549',
+          bodyColor: '#1d2549',
+          borderColor: '#b8b3b2',
+          borderWidth: 1,
+          cornerRadius: 10,
+          padding: 10,
+          filter: (item) => item.datasetIndex === 0,
+          callbacks: {
+            label: function(ctx) {
+              const period = getLineKey();
+              const productos = datos[period].productos;
+              const idx = ctx.dataIndex;
+              const prod = productos[idx] ? productos[idx].name : '';
+              return [
+                ' Ventas: $' + ctx.parsed.y.toLocaleString('es-MX'),
+                prod ? ' Producto: ' + prod : ''
+              ].filter(Boolean);
+            }
+          }
+        }
+      },
+      scales: {
+        x: { grid:{color:'rgba(0,0,0,0.05)',borderDash:[4,4]}, border:{display:false}, ticks:{font:{size:11,family:'Inter'},color:'#888'} },
+        y: { grid:{color:'rgba(0,0,0,0.05)',borderDash:[4,4]}, border:{display:false}, ticks:{font:{size:11,family:'Inter'},color:'#888', callback: v=>'$'+(v/1000).toFixed(0)+'k'} }
+      }
+    }
+  });
+
+  // ── Gráfica donut con centro ──────────────────────────────────────
+  const centerPlugin = {
+    id:'centerText',
+    beforeDraw(chart) {
+      if (chart.config.type !== 'doughnut') return;
+      const {width,height,ctx} = chart;
+      const cx = width/2, cy = height/2;
+      const total = chart.data.datasets[0].data.reduce((a,b)=>a+b,0);
+      ctx.save();
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.font='bold 24px Inter'; ctx.fillStyle='#1d2549';
+      ctx.fillText(total+'%', cx, cy-8);
+      ctx.font='11px Inter'; ctx.fillStyle='#888';
+      ctx.fillText('Total', cx, cy+13);
+      ctx.restore();
+    }
+  };
+
+  const pieCtx = document.getElementById('pieChart').getContext('2d');
+  const pieChart = new Chart(pieCtx, {
+    type: 'doughnut',
+    plugins: [centerPlugin],
+    data: {
+      labels: d0.categorias.map(c=>c.name),
+      datasets: [{
+        data: d0.categorias.map(c=>c.pct),
+        backgroundColor: DONUT_COLORS,
+        borderWidth: 3,
+        borderColor: 'oklch(0.8427 0.0057 31.0560)',
+        hoverOffset: 8,
+      }]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:true, cutout:'62%',
+      plugins: {
+        legend:{display:false},
+        tooltip:{
+          backgroundColor:'white', titleColor:'#333', bodyColor:'#555',
+          borderColor:'#ddd', borderWidth:1, cornerRadius:10,
+          callbacks:{label: ctx=>' '+ctx.label+' '+ctx.parsed+'% — '+datos[getPeriodKey()].categorias[ctx.dataIndex].amount}
+        }
+      }
+    }
+  });
+
+  // ── Custom Select state ───────────────────────────────────────────
+  const csState = { csLine: 'mes', csRot: 'todas', csPie: 'mes' };
+
+  window.toggleCS = function(id) {
+    const wrap = document.getElementById(id);
+    const isOpen = wrap.classList.contains('open');
+    document.querySelectorAll('.cs-wrap.open').forEach(w => w.classList.remove('open'));
+    if (!isOpen) wrap.classList.add('open');
+  };
+
+  window.pickCS = function(id, value, label) {
+    csState[id] = value;
+    document.getElementById(id + 'Label').textContent = label;
+    document.querySelectorAll('#' + id + 'Dropdown .cs-option').forEach(o => {
+      o.classList.toggle('selected', o.dataset.value === value);
+    });
+    document.getElementById(id).classList.remove('open');
+    if (id === 'csLine') updateLineChart();
+    if (id === 'csRot')  filterInventory();
+    if (id === 'csPie')  updatePieChart();
+  };
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.cs-wrap')) {
+      document.querySelectorAll('.cs-wrap.open').forEach(w => w.classList.remove('open'));
+    }
+  });
+
+  function getLineKey()  { const v = csState.csLine; return v === 'año' ? 'anio' : v; }
+  function getPieKey()   { const v = csState.csPie;  return v === 'año' ? 'anio' : v; }
+  function getRotValue() { return csState.csRot; }
+  function getPeriodKey(){ return getLineKey(); }
+
+  // ── Render barras inventario ──────────────────────────────────────
+  function renderInventory(period, search, rotFilter) {
+    const list = document.getElementById('invList');
+    list.innerHTML = '';
+    const q = (search||'').toLowerCase();
+    const rot = rotFilter || 'todas';
+
+    // Umbral de rotación por mult: alta>=7, media>=4, baja>=2.5, critica<2.5
+    const rotBuckets = { alta:7, media:4, baja:2.5 };
+
+    let visIdx = 0;
+    datos[period].productos.forEach((p,i) => {
+      const matchSearch = p.name.toLowerCase().includes(q);
+      let matchRot = true;
+      if (rot === 'alta')   matchRot = p.mult >= 7;
+      else if (rot === 'media')  matchRot = p.mult >= 4 && p.mult < 7;
+      else if (rot === 'baja')   matchRot = p.mult >= 2.5 && p.mult < 4;
+      else if (rot === 'critica')matchRot = p.mult < 2.5;
+      if (!matchSearch || !matchRot) return;
+
+      const color = BAR_COLORS[i] || '#888';
+      const item = document.createElement('div');
+      item.className = 'inv-item';
+      item.style.cssText = 'opacity:0;animation:fadeUp 0.4s cubic-bezier(0.22,1,0.36,1) forwards;animation-delay:'+(visIdx*0.07)+'s';
+      item.innerHTML =
+        '<div class="inv-item-header">'+
+          '<span class="inv-product-name">'+p.name+'</span>'+
+          '<div class="inv-meta">'+
+            '<span>'+p.ventas.toLocaleString('es-MX')+' ventas</span>'+
+            '<span class="inv-mult" style="color:'+color+'">'+p.mult+'x</span>'+
+          '</div>'+
+        '</div>'+
+        '<div class="inv-bar-track">'+
+          '<div class="inv-bar-fill" style="width:0%;background:'+color+';" data-w="'+p.pct+'%"></div>'+
+        '</div>';
+      list.appendChild(item);
+      visIdx++;
+    });
+    setTimeout(() => {
+      list.querySelectorAll('.inv-bar-fill').forEach(b => { b.style.width = b.dataset.w; });
+    }, 60);
+  }
+
+  // ── Render lista categorías ───────────────────────────────────────
+  function renderCategories(period) {
+    const container = document.getElementById('catList');
+    container.innerHTML = '';
+    datos[period].categorias.forEach((cat,i) => {
+      if (i > 0) { const hr = document.createElement('hr'); hr.className='cat-divider'; container.appendChild(hr); }
+      const row = document.createElement('div');
+      row.className = 'cat-row';
+      row.style.cssText = 'opacity:0;animation:fadeUp 0.4s cubic-bezier(0.22,1,0.36,1) forwards;animation-delay:'+(i*0.06)+'s';
+      row.innerHTML =
+        '<div class="cat-row-left">'+
+          '<div class="cat-dot" style="background:'+DONUT_COLORS[i]+'"></div>'+
+          '<span class="cat-name">'+cat.name+'</span>'+
+        '</div>'+
+        '<span class="cat-amount">'+cat.amount+'</span>';
+      container.appendChild(row);
+    });
+  }
+
+  // ── Update gráfica lineal ─────────────────────────────────────────
+  window.updateLineChart = function() {
+    const period = getLineKey();
+    const d = datos[period];
+    lineChart.data.labels = d.labels;
+    lineChart.data.datasets[0].data = d.ventas;
+    lineChart.update();
+  };
+
+  // ── Update gráfica donut ──────────────────────────────────────────
+  window.updatePieChart = function() {
+    const period = getPieKey();
+    const d = datos[period];
+    pieChart.data.labels = d.categorias.map(c=>c.name);
+    pieChart.data.datasets[0].data = d.categorias.map(c=>c.pct);
+    pieChart.data.datasets[0].backgroundColor = DONUT_COLORS;
+    pieChart.update();
+    renderCategories(period);
+  };
+
+  // ── Filtro inventario (búsqueda + rotación) ───────────────────────
+  window.filterInventory = function() {
+    const search = document.getElementById('invSearch').value;
+    const rot    = getRotValue();
+    renderInventory('mes', search, rot);
+  };
+
+  // ── updateCharts legacy (compatibilidad) ──────────────────────────
+  window.updateCharts = function() {
+    updateLineChart();
+    updatePieChart();
+  };
+
+  // ── Render inicial ────────────────────────────────────────────────
+  renderInventory('mes');
+  renderCategories('mes');
+
+}); // end load
+</script>
+</body>
+</html>

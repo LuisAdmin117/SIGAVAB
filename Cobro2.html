@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cobro — SIGAVAB</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --background: oklch(0.9848 0.0013 106.4233);
+    --foreground: oklch(0.2776 0.0671 271.9491);
+    --card: oklch(0.8427 0.0057 31.0560);
+    --card-foreground: oklch(0.2016 0.0389 271.3911);
+    --primary: oklch(0.3408 0.0533 267.6812);
+    --muted-foreground: oklch(0.5510 0.0402 264.1663);
+    --border: oklch(1.0000 0 0);
+    --sidebar: oklch(0.7080 0.0038 39.4732);
+    --shadow-sm: 0px 4px 10px 0px hsl(0 0% 0%/0.30),0px 1px 2px -1px hsl(0 0% 0%/0.30);
+    --font-sans: "Inter", sans-serif;
+    --tracking-normal: -0.01em;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:var(--font-sans); background:var(--background); color:var(--foreground); letter-spacing:var(--tracking-normal); display:flex; min-height:100vh; }
+
+  /* ── SIDEBAR ── */
+  .sidebar { width:265px; min-height:100vh; background:var(--sidebar); display:flex; flex-direction:column; padding:1.5rem 1rem; flex-shrink:0; transition:width 0.2s ease; overflow:hidden; }
+  .sidebar-logo { display:flex; align-items:center; gap:0.6rem; margin-bottom:2rem; padding:0 0.5rem; }
+  .sidebar-logo .logo-icon { width:32px; height:32px; background:oklch(0.2776 0.0671 271.9491); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .sidebar-logo .logo-icon svg { width:18px; height:18px; fill:none; stroke:white; stroke-width:2; }
+  .sidebar-logo span { font-size:1rem; font-weight:700; color:#000; }
+  .sidebar-section-label { font-size:0.65rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:oklch(0.35 0.02 39); margin-bottom:0.5rem; margin-top:1rem; padding:0 0.5rem; }
+  .sidebar-nav { display:flex; flex-direction:column; gap:0.7rem; }
+  .nav-item { display:flex; align-items:center; gap:0.65rem; padding:0.7rem 0.85rem; border-radius:1.35rem; cursor:pointer; font-size:0.89rem; font-weight:500; color:oklch(0.25 0.02 39); transition:background 0.15s,padding 0.2s ease; text-decoration:none; }
+  .nav-item:hover { background:oklch(0.65 0.01 39/0.5); }
+  .nav-item.active { background:oklch(0.2776 0.0671 271.9491); color:#f8fafc; }
+  .nav-item svg { width:16px; height:16px; flex-shrink:0; fill:none; stroke:currentColor; stroke-width:2; }
+  .sidebar-bottom { margin-top:auto; border-top:1px solid oklch(0.65 0.01 39/0.4); padding-top:1rem; }
+  .user-avatar-row { display:flex; align-items:center; gap:0.6rem; padding:0.4rem 0.5rem; border-radius:0.75rem; cursor:pointer; }
+  .user-avatar-row:hover { background:oklch(0.65 0.01 39/0.4); }
+  .avatar { width:30px; height:30px; border-radius:50%; background:oklch(0.3408 0.0533 267.6812); display:flex; align-items:center; justify-content:center; color:white; font-size:0.7rem; font-weight:600; flex-shrink:0; }
+  .user-name { font-size:0.78rem; font-weight:600; color:oklch(0.2 0.02 39); }
+  .user-email { font-size:0.65rem; color:oklch(0.38 0.02 39); }
+  .sidebar.collapsed { width:68px; }
+  .sidebar.collapsed .sidebar-logo span,.sidebar.collapsed .nav-label,.sidebar.collapsed .user-info { display:none; }
+  .sidebar.collapsed .nav-item { justify-content:center; padding:0.7rem 0; }
+  .sidebar.collapsed .sidebar-logo { justify-content:center; padding:0; }
+
+  /* ── LAYOUT ── */
+  .main { flex:1; display:flex; flex-direction:column; overflow:visible; min-width:0; }
+  .main-content { display:flex; flex:1; overflow:visible; min-width:0; }
+  @keyframes fadeUp   { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+  @keyframes fadeLeft { from{opacity:0;transform:translateX(18px);} to{opacity:1;transform:translateX(0);} }
+  .animate-item { opacity:0; animation:fadeUp 0.45s cubic-bezier(0.22,1,0.36,1) forwards; }
+
+  .topbar-sep { border:none; border-top:1px solid oklch(0.9 0 0); width:100%; flex-shrink:0; }
+
+  /* ── LEFT PANEL ── */
+  .left-panel { flex:1; display:flex; flex-direction:column; padding:1.5rem; gap:1rem; overflow-y:auto; min-width:0; }
+
+  /* Header */
+  .pos-header { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+  .pos-title { font-size:1rem; font-weight:700; color:var(--card-foreground); }
+  .pos-subtitle { font-size:0.75rem; color:var(--muted-foreground); margin-top:0.1rem; }
+
+  /* Search card */
+  .search-card { background:var(--card); border:1px solid var(--border); border-radius:1.5rem; box-shadow:var(--shadow-sm); padding:0.85rem 1.1rem; display:flex; align-items:center; gap:0.6rem; }
+  .search-card svg { width:16px; height:16px; flex-shrink:0; fill:none; stroke:var(--muted-foreground); stroke-width:2; }
+  .search-card input { flex:1; border:none; background:transparent; font-family:var(--font-sans); font-size:0.88rem; color:var(--foreground); outline:none; }
+  .search-card input::placeholder { color:var(--muted-foreground); }
+
+  /* Category filters */
+  .cat-filters { display:flex; gap:0.5rem; flex-wrap:wrap; }
+  .cat-btn { padding:0.45rem 1rem; border-radius:9999px; border:1px solid var(--border); background:var(--card); font-family:var(--font-sans); font-size:0.8rem; font-weight:500; color:var(--muted-foreground); cursor:pointer; transition:background 0.13s,color 0.13s,border-color 0.13s; white-space:nowrap; box-shadow:var(--shadow-sm); }
+  .cat-btn:hover { background:oklch(0.65 0.01 39/0.3); }
+  .cat-btn.active { background:#2c3754; color:#f8fafc; border-color:#2c3754; }
+
+  /* Product grid */
+  .product-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0.85rem; padding:0.5rem 0.25rem; }
+
+  /* Product card */
+  .product-card { background:var(--card); border:1px solid var(--border); border-radius:1.35rem; box-shadow:var(--shadow-sm); padding:1rem; display:flex; flex-direction:column; gap:0.5rem; cursor:pointer; transition:transform 0.28s cubic-bezier(0.22,1,0.36,1); position:relative; overflow:hidden; }
+  .product-card:hover { transform:scale(1.04); }
+  .product-card:active { transform:scale(0.98); }
+  @keyframes cardIn {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .card-enter { animation:cardIn 0.38s cubic-bezier(0.22,1,0.36,1) forwards; }
+  .product-img { width:100%; height:90px; background:oklch(0.92 0.004 80); border-radius:0.75rem; display:flex; align-items:center; justify-content:center; margin-bottom:0.2rem; overflow:hidden; }
+  .product-img svg { width:36px; height:36px; fill:none; stroke:var(--muted-foreground); stroke-width:1.5; opacity:0.6; }
+  .product-img img { width:100%; height:100%; object-fit:cover; }
+  .product-name { font-size:0.85rem; font-weight:600; color:var(--card-foreground); line-height:1.3; }
+  .product-cat { font-size:0.7rem; color:var(--muted-foreground); }
+  .product-footer { display:flex; align-items:center; justify-content:space-between; margin-top:0.2rem; }
+  .product-price { font-size:1rem; font-weight:700; color:oklch(0.3408 0.0533 267.6812); }
+  .product-stock { font-size:0.7rem; color:var(--muted-foreground); }
+  .promo-badge { position:absolute; top:0.6rem; right:0.6rem; background:#2c3754; color:#f8fafc; font-size:0.65rem; font-weight:700; padding:0.15rem 0.45rem; border-radius:99px; }
+
+  /* ── RIGHT PANEL — CART ── */
+  .right-panel { width:320px; min-width:320px; max-width:320px; flex-shrink:0; display:flex; flex-direction:column; gap:0.85rem; padding:1.5rem 1.25rem 1.5rem 0; overflow-y:auto; overflow-x:visible; }
+
+  /* Cart card */
+  .cart-card { background:var(--card); border:1px solid var(--border); border-radius:1.5rem; box-shadow:var(--shadow-sm); padding:1.1rem 1.25rem; flex:1; display:flex; flex-direction:column; min-height:0; }
+  .cart-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:0.85rem; }
+  .cart-title { display:flex; align-items:center; gap:0.45rem; font-size:0.92rem; font-weight:700; color:var(--card-foreground); }
+  .cart-title svg { width:16px; height:16px; fill:none; stroke:oklch(0.3408 0.0533 267.6812); stroke-width:2; }
+  .btn-limpiar { display:flex; align-items:center; gap:0.3rem; padding:0.25rem 0.65rem; border-radius:99px; border:none; background:transparent; cursor:pointer; font-family:var(--font-sans); font-size:0.72rem; font-weight:600; color:oklch(0.55 0.18 25); transition:background 0.13s; }
+  .btn-limpiar:hover { background:oklch(0.92 0.06 25/0.15); }
+  .btn-limpiar svg { width:12px; height:12px; fill:none; stroke:currentColor; stroke-width:2.5; }
+  .cart-empty { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.5rem; color:var(--muted-foreground); text-align:center; }
+  .cart-empty svg { width:36px; height:36px; fill:none; stroke:var(--muted-foreground); stroke-width:1.3; opacity:0.4; }
+  .cart-empty p { font-size:0.8rem; }
+  .cart-items { flex:1; display:flex; flex-direction:column; gap:0.55rem; overflow-y:auto; min-height:0; }
+
+  /* Cart item — card style like image */
+  .cart-item {
+    background: oklch(0.93 0.003 80);
+    border-radius: 0.85rem;
+    padding: 0.65rem 0.75rem;
+    display: flex; flex-direction: column; gap: 0.4rem;
+    position: relative;
+  }
+  .cart-item-top { display:flex; align-items:flex-start; justify-content:space-between; gap:0.5rem; padding-right:1.4rem; }
+  .cart-item-name { font-size:0.82rem; font-weight:600; color:var(--card-foreground); flex:1; line-height:1.3; }
+  .cart-item-unit { font-size:0.7rem; color:var(--muted-foreground); }
+  .cart-item-bottom { display:flex; align-items:center; justify-content:space-between; }
+  .cart-item-qty { display:flex; align-items:center; gap:0.35rem; }
+  .qty-btn { width:24px; height:24px; border-radius:50%; border:1px solid var(--border); background:var(--card); font-size:0.85rem; cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--card-foreground); transition:background 0.12s; font-weight:600; }
+  .qty-btn:hover { background:oklch(0.84 0.004 80); }
+  .qty-num { font-size:0.82rem; font-weight:700; min-width:20px; text-align:center; color:var(--card-foreground); }
+  .cart-item-price { font-size:0.9rem; font-weight:700; color:oklch(0.3408 0.0533 267.6812); }
+  .cart-item-del { position:absolute; top:0.45rem; right:0.45rem; width:20px; height:20px; border-radius:50%; border:none; background:oklch(0.85 0.004 80); cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--muted-foreground); transition:background 0.12s,color 0.12s; }
+  .cart-item-del:hover { background:oklch(0.92 0.06 25/0.25); color:oklch(0.45 0.18 25); }
+  .cart-item-del svg { width:10px; height:10px; fill:none; stroke:currentColor; stroke-width:2.5; }
+
+  /* Total card */
+  .total-card { background:var(--card); border:1px solid var(--border); border-radius:1.5rem; box-shadow:var(--shadow-sm); padding:1rem 1.25rem; display:flex; flex-direction:column; gap:0.5rem; }
+  .total-row { display:flex; justify-content:space-between; align-items:center; font-size:0.82rem; color:var(--muted-foreground); }
+  .total-row.main { font-size:1rem; font-weight:700; color:var(--card-foreground); }
+  .total-row.main span:last-child { color:oklch(0.3408 0.0533 267.6812); font-size:1.1rem; }
+  .total-divider { border:none; border-top:1px solid oklch(0.9 0 0); margin:0.15rem 0; }
+
+  /* Custom select */
+  .cs-wrap { position:relative; user-select:none; width:100%; }
+  .cs-trigger { display:flex; align-items:center; justify-content:space-between; gap:0.5rem; padding:0.5rem 0.85rem; border-radius:0.75rem; border:1px solid var(--border); background:oklch(0.93 0.003 80); font-family:var(--font-sans); font-size:0.82rem; font-weight:500; color:var(--card-foreground); cursor:pointer; transition:border-color 0.15s,box-shadow 0.15s; white-space:nowrap; width:100%; box-sizing:border-box; }
+  .cs-trigger svg { width:12px; height:12px; fill:none; stroke:#888; stroke-width:2.5; flex-shrink:0; transition:transform 0.18s; }
+  .cs-trigger .cs-icon { width:14px; height:14px; fill:none; stroke:var(--muted-foreground); stroke-width:2; flex-shrink:0; transition:none; }
+  .cs-trigger-left { display:flex; align-items:center; gap:0.45rem; flex:1; min-width:0; }
+  .cs-placeholder { color:var(--muted-foreground); }
+  .cs-wrap.open .cs-trigger { border-color:oklch(0.3408 0.0533 267.6812); outline:3px solid oklch(0.3408 0.0533 267.6812 / 0.15); outline-offset:0px; }
+  .cs-wrap.open .cs-trigger svg:last-child { transform:rotate(180deg); }
+  .cs-dropdown { display:none; position:fixed; background:var(--card); border:1px solid var(--border); border-radius:1rem; box-shadow:0 8px 24px rgba(0,0,0,0.14); z-index:9999; padding:0.3rem; }
+  .cs-option { padding:0.5rem 0.75rem; border-radius:0.65rem; font-size:0.82rem; font-family:var(--font-sans); color:var(--card-foreground); cursor:pointer; transition:background 0.12s,color 0.12s; display:flex; align-items:center; gap:0.5rem; }
+  .cs-option:hover { background:oklch(0.65 0.01 39 / 0.5); }
+  .cs-option.selected { background:#2c3754; color:#f8fafc; font-weight:600; }
+
+  /* Cliente card */
+  .client-card { overflow:visible;  background:var(--card); border:1px solid var(--border); border-radius:1.5rem; box-shadow:var(--shadow-sm); padding:1rem 1.25rem; }
+  .client-label { font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted-foreground); margin-bottom:0.6rem; }
+  .client-input { display:flex; align-items:center; gap:0.5rem; padding:0.55rem 0.85rem; border-radius:0.75rem; border:1px solid var(--border); background:oklch(0.93 0.003 80); font-size:0.82rem; color:var(--muted-foreground); cursor:pointer; }
+  .client-input svg { width:14px; height:14px; fill:none; stroke:var(--muted-foreground); stroke-width:2; flex-shrink:0; }
+
+  /* Procesar venta btn */
+  .btn-procesar { width:100%; padding:0.85rem; border-radius:1rem; border:none; background:oklch(0.3408 0.0533 267.6812); color:white; font-family:var(--font-sans); font-size:0.92rem; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.5rem; box-shadow:var(--shadow-sm); transition:background 0.15s,transform 0.18s cubic-bezier(0.22,1,0.36,1); }
+  .btn-procesar:hover { background:oklch(0.28 0.055 267); transform:scale(1.02); }
+  .btn-procesar:active { transform:scale(0.98); }
+  .btn-procesar svg { width:18px; height:18px; fill:none; stroke:white; stroke-width:2.5; }
+
+  /* ── Modal kg ── */
+  .modal-overlay-kg {
+    display:none; position:fixed; inset:0; z-index:8000;
+    background:rgba(0,0,0,0.35); backdrop-filter:blur(4px);
+    align-items:center; justify-content:center;
+  }
+  .modal-overlay-kg.open { display:flex; }
+  .modal-kg {
+    background:var(--background); border:1px solid var(--border);
+    border-radius:1.5rem; box-shadow:0 20px 60px rgba(0,0,0,0.25);
+    padding:1.5rem 1.75rem; width:340px; max-width:90vw;
+    animation:fadeUp 0.3s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  .modal-kg-title { font-size:1rem; font-weight:700; color:var(--card-foreground); margin-bottom:0.25rem; }
+  .modal-kg-subtitle { font-size:0.75rem; color:var(--muted-foreground); margin-bottom:1.25rem; }
+  .modal-kg-price-ref {
+    display:flex; align-items:center; justify-content:space-between;
+    background:oklch(0.93 0.003 80); border-radius:0.75rem;
+    padding:0.55rem 0.85rem; margin-bottom:1rem;
+    font-size:0.82rem; color:var(--muted-foreground);
+  }
+  .modal-kg-price-ref span:last-child { font-weight:700; color:oklch(0.3408 0.0533 267.6812); }
+  .modal-kg-field { display:flex; flex-direction:column; gap:0.3rem; margin-bottom:1rem; }
+  .modal-kg-label { font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted-foreground); }
+  .modal-kg-input {
+    padding:0.6rem 0.85rem; border-radius:0.75rem;
+    border:1px solid var(--border); background:oklch(0.93 0.003 80);
+    font-family:var(--font-sans); font-size:0.9rem; font-weight:500;
+    color:var(--card-foreground); outline:none; width:100%;
+    transition:border-color 0.15s, box-shadow 0.15s;
+  }
+  .modal-kg-input:focus { border-color:oklch(0.3408 0.0533 267.6812); box-shadow:0 0 0 3px oklch(0.3408 0.0533 267.6812 / 0.15); }
+  .modal-kg-input#kgPrecioTotal { color:oklch(0.3408 0.0533 267.6812); font-weight:700; }
+  .modal-kg-footer { display:flex; gap:0.6rem; margin-top:1.25rem; }
+  .modal-kg-footer button { flex:1; padding:0.7rem; border-radius:0.85rem; border:none; font-family:var(--font-sans); font-size:0.85rem; font-weight:600; cursor:pointer; transition:background 0.15s, transform 0.15s; }
+  .btn-kg-cancel { background:oklch(0.88 0.003 80); color:var(--muted-foreground); }
+  .btn-kg-cancel:hover { background:oklch(0.84 0.004 80); }
+  .btn-kg-accept { background:oklch(0.3408 0.0533 267.6812); color:#f8fafc; }
+  .btn-kg-accept:hover { background:oklch(0.28 0.055 267); transform:scale(1.02); }
+
+  /* ── Modal Pago ── */
+  .pago-metodos { display:flex; gap:0.55rem; margin-bottom:1.1rem; }
+  .pago-metodo-btn {
+    flex:1; padding:0.55rem 0.5rem; border-radius:0.85rem;
+    border:1.5px solid var(--border); background:oklch(0.93 0.003 80);
+    font-family:var(--font-sans); font-size:0.8rem; font-weight:600;
+    color:var(--muted-foreground); cursor:pointer;
+    display:flex; align-items:center; justify-content:center; gap:0.4rem;
+    transition:background 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .pago-metodo-btn svg { width:15px; height:15px; fill:none; stroke:currentColor; stroke-width:2; }
+  .pago-metodo-btn.active { background:#2c3754; border-color:#2c3754; color:#f8fafc; }
+  .pago-metodo-btn:not(.active):hover { background:oklch(0.88 0.003 80); }
+  .pago-total-ref {
+    display:flex; align-items:center; justify-content:space-between;
+    background:oklch(0.93 0.003 80); border-radius:0.75rem;
+    padding:0.55rem 0.85rem; margin-bottom:1rem;
+    font-size:0.82rem; color:var(--muted-foreground);
+  }
+  .pago-total-ref span:last-child { font-weight:700; color:var(--card-foreground); font-size:1rem; }
+  .cambio-positivo { color:oklch(0.40 0.14 145) !important; font-weight:700; }
+  .cambio-negativo { color:oklch(0.50 0.18 25) !important; }
+
+  /* Topbar pill */
+  .topbar-pill { position:fixed; top:1rem; right:1.5rem; z-index:500; display:flex; align-items:center; gap:0.5rem; background:var(--card); border:1px solid var(--border); border-radius:9999px; padding:0.35rem 0.65rem; box-shadow:var(--shadow-sm); }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar animate-item" id="sidebar" style="animation-delay:0s;">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+    <span class="nav-label">SIGAVAB</span>
+  </div>
+  <div class="sidebar-section-label nav-label">Módulos</div>
+  <nav class="sidebar-nav">
+    <a href="Cobro.html" class="nav-item active">
+      <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span class="nav-label">Cobro</span>
+    </a>
+    <a href="Inventario.html" class="nav-item">
+      <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      <span class="nav-label">Productos</span>
+    </a>
+    <a href="Clientes.html" class="nav-item">
+      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <span class="nav-label">Clientes</span>
+    </a>
+    <a href="Estadisticas.html" class="nav-item">
+      <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      <span class="nav-label">Ventas</span>
+    </a>
+    <a href="FlujoCaja.html" class="nav-item">
+      <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8L6 7h12z"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9.5" y1="14.5" x2="14.5" y2="14.5"/></svg>
+      <span class="nav-label">Cierre de caja</span>
+    </a>
+  </nav>
+  <div class="sidebar-section-label nav-label">Configuración</div>
+  <nav class="sidebar-nav">
+    <a href="Ajustes.html" class="nav-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/></svg>
+      <span class="nav-label">Ajustes</span>
+    </a>
+    <a href="#" class="nav-item" onclick="alert('Sesión cerrada');return false;">
+      <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      <span class="nav-label">Salir</span>
+    </a>
+  </nav>
+  <div class="sidebar-bottom">
+    <div class="user-avatar-row">
+      <div class="avatar">JD</div>
+      <div class="user-info">
+        <div class="user-name">John Doe</div>
+        <div class="user-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="62080d0a0c22110b05031403004c010d0f">[email&#160;protected]</a></div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- TOPBAR PILL -->
+<div class="topbar-pill">
+  <button id="sidebarToggle" title="Ocultar/Mostrar menú" style="box-shadow:none;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;color:var(--foreground);">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+  </button>
+  <button id="bellBtn" style="box-shadow:none;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;color:var(--foreground);">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+  </button>
+  <div style="position:relative;" id="roleWrap">
+    <button id="roleBtn" onclick="toggleRoleMenu()" style="display:flex;align-items:center;gap:0.3rem;padding:0.3rem 0.5rem;border-radius:9999px;border:none;background:transparent;cursor:pointer;color:var(--foreground);">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" id="roleArrow" style="transition:transform 0.18s;"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div id="roleDropdown" style="display:none;position:fixed;background:var(--card);border:1px solid var(--border);border-radius:1rem;box-shadow:0 8px 24px rgba(0,0,0,0.14);z-index:9999;padding:0.35rem;min-width:160px;">
+      <div onclick="selectRole('Gerente')" id="roleOpt1" style="display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.75rem;border-radius:0.65rem;font-size:0.82rem;font-family:var(--font-sans);cursor:pointer;color:var(--foreground);transition:background 0.12s;">
+        <svg width="13" height="13" fill="none" stroke="transparent" stroke-width="2.5" viewBox="0 0 24 24" id="checkGerente"><polyline points="20 6 9 17 4 12"/></svg>Gerente
+      </div>
+      <div onclick="selectRole('Cajero')" id="roleOpt2" style="display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.75rem;border-radius:0.65rem;font-size:0.82rem;font-family:var(--font-sans);cursor:pointer;background:#2c3754;color:#f8fafc;transition:background 0.12s;">
+        <svg width="13" height="13" fill="none" stroke="#f8fafc" stroke-width="2.5" viewBox="0 0 24 24" id="checkCajero"><polyline points="20 6 9 17 4 12"/></svg>Cajero
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- TOPBAR ROW — full width header + separator -->
+  <div class="pos-header animate-item" style="animation-delay:0.08s;padding:1rem 1.5rem;flex-shrink:0;">
+    <div>
+      <div class="pos-title">Nueva Venta</div>
+      <div class="pos-subtitle">Selecciona productos para agregar al carrito</div>
+    </div>
+  </div>
+  <hr class="topbar-sep animate-item" style="animation-delay:0.10s;">
+
+  <!-- CONTENT ROW -->
+  <div class="main-content">
+
+  <!-- LEFT PANEL -->
+  <div class="left-panel" style="padding-top:1rem;">
+
+    <!-- Search -->
+    <div class="animate-item" style="animation-delay:0.13s;background:var(--card);border:1px solid var(--border);border-radius:1.5rem;box-shadow:var(--shadow-sm);padding:0.85rem 1.1rem;">
+      <div class="search-card" style="box-shadow:none;border:none;background:oklch(0.93 0.004 80);border-radius:0.85rem;border:1px solid oklch(0.88 0.003 80);padding:0.45rem 0.85rem;">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" placeholder="Buscar producto o código de barras..." oninput="filterProducts()">
+      </div>
+    </div>
+
+    <!-- Category filters -->
+    <div class="cat-filters animate-item" style="animation-delay:0.17s;">
+      <button class="cat-btn active" onclick="filterCat('todos',this)">Todos</button>
+      <button class="cat-btn" onclick="filterCat('Bebidas',this)">Bebidas</button>
+      <button class="cat-btn" onclick="filterCat('Botanas',this)">Botanas</button>
+      <button class="cat-btn" onclick="filterCat('Panadería',this)">Panadería</button>
+      <button class="cat-btn" onclick="filterCat('Lácteos',this)">Lácteos</button>
+      <button class="cat-btn" onclick="filterCat('Básicos',this)">Básicos</button>
+      <button class="cat-btn" onclick="filterCat('Abarrotes',this)">Abarrotes</button>
+    </div>
+
+    <!-- Product grid -->
+    <div class="product-grid animate-item" id="productGrid" style="animation-delay:0.22s;"></div>
+
+  </div><!-- /left-panel -->
+
+  <!-- RIGHT PANEL -->
+  <div class="right-panel animate-item" style="animation-delay:0.12s;padding-top:1.5rem;">
+
+    <!-- Cart -->
+    <div class="cart-card">
+      <div class="cart-header">
+        <div class="cart-title">
+          <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          Carrito de Compra
+        </div>
+        <button class="btn-limpiar" id="btnLimpiar" onclick="limpiarCarrito()" style="display:none;">
+          <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+          Limpiar
+        </button>
+      </div>
+      <div id="cartEmpty" class="cart-empty">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <p>Carrito vacío<br><span style="font-size:0.72rem;">Selecciona productos para comenzar</span></p>
+      </div>
+      <div id="cartItems" class="cart-items" style="display:none;"></div>
+    </div>
+
+    <!-- Total -->
+    <div class="total-card">
+      <div class="total-row"><span>Subtotal:</span><span id="subtotal">$0.00</span></div>
+      <div class="total-row"><span>IVA (16%):</span><span id="iva">$0.00</span></div>
+      <hr class="total-divider">
+      <div class="total-row main"><span>Total:</span><span id="total">$0.00</span></div>
+    </div>
+
+    <!-- Cliente -->
+    <div class="client-card">
+      <div class="client-label">Cliente</div>
+      <div class="cs-wrap" id="csCliente">
+        <div class="cs-trigger" onclick="toggleCS('csCliente')">
+          <div class="cs-trigger-left">
+            <svg class="cs-icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span id="csClienteLabel" class="cs-placeholder">Seleccionar Cliente (Opcional)</span>
+          </div>
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Procesar -->
+    <button class="btn-procesar" onclick="document.getElementById('overlayPago').style.cssText='display:flex;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:rgba(0,0,0,0.5);align-items:center;justify-content:center;';">
+      <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      Procesar Venta
+    </button>
+
+  </div><!-- /right-panel -->
+    </div><!-- /inner-flex -->
+  </div><!-- /col-wrap -->
+</div><!-- /main -->
+
+<!-- Modal Pago -->
+<div class="modal-overlay-kg" id="overlayPago">
+  <div class="modal-kg" style="width:380px;">
+    <div class="modal-kg-title">Procesar Cobro</div>
+    <div class="modal-kg-subtitle">Selecciona el método de pago y registra el cobro</div>
+    <!-- Métodos de pago -->
+    <div class="pago-metodos">
+      <button class="pago-metodo-btn active" id="btnEfectivo" onclick="selectPagoMetodo('efectivo')">
+        <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        Efectivo
+      </button>
+      <button class="pago-metodo-btn" id="btnCredito" onclick="selectPagoMetodo('credito')">
+        <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        Crédito
+      </button>
+    </div>
+    <!-- Total a cobrar -->
+    <div class="pago-total-ref">
+      <span>Total a cobrar:</span>
+      <span id="pagoTotalRef">$0.00</span>
+    </div>
+    <!-- Pago con -->
+    <div class="modal-kg-field" id="pagoConField">
+      <label class="modal-kg-label">Pago con ($)</label>
+      <input class="modal-kg-input" type="number" id="pagoCon"
+        placeholder="0.00" min="0" step="0.01"
+        oninput="calcCambio(); this.style.borderColor='';">
+    </div>
+    <!-- Cambio -->
+    <div class="modal-kg-field" id="pagoCambioField">
+      <label class="modal-kg-label">Cambio ($)</label>
+      <input class="modal-kg-input" type="number" id="pagoCambio"
+        placeholder="0.00" readonly>
+    </div>
+    <div class="modal-kg-footer">
+      <button class="btn-kg-cancel" onclick="closePagoModal()">Cancelar</button>
+      <button class="btn-kg-accept" onclick="cobrarVenta()">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline;margin-right:0.3rem;vertical-align:middle;"><polyline points="20 6 9 17 4 12"/></svg>
+        Cobrar
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Cantidad por Kg -->
+<div class="modal-overlay-kg" id="overlayKg">
+  <div class="modal-kg" id="modalKgInner">
+    <div class="modal-kg-title" id="kgProductName">Producto</div>
+    <div class="modal-kg-subtitle">Ingresa la cantidad en kilogramos</div>
+    <div class="modal-kg-price-ref">
+      <span>Precio por kg:</span>
+      <span id="kgPrecioRef">$0.00</span>
+    </div>
+    <div class="modal-kg-field">
+      <label class="modal-kg-label">Cantidad (kg)</label>
+      <input class="modal-kg-input" type="number" id="kgCantidad"
+        placeholder="0.000" min="0.001" step="0.001"
+        oninput="calcKgPrecio()">
+    </div>
+    <div class="modal-kg-field">
+      <label class="modal-kg-label">Precio a pagar</label>
+      <input class="modal-kg-input" type="number" id="kgPrecioTotal"
+        placeholder="0.00" min="0.01" step="0.01"
+        oninput="calcKgCantidad()">
+    </div>
+    <div class="modal-kg-footer">
+      <button class="btn-kg-cancel" onclick="closeKgModal()">Cancelar</button>
+      <button class="btn-kg-accept" onclick="acceptKg()">Aceptar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Datos productos ───────────────────────────────────────────────
+const productos = [
+  { id:1,  nombre:'Coca-Cola 600ml',       cat:'Bebidas',   precio:18.00, stock:45, promo:null,   seed:'301' },
+  { id:2,  nombre:'Sabritas Original 45g', cat:'Botanas',   precio:22.00, stock:32, promo:null,   seed:'302' },
+  { id:3,  nombre:'Pan Bimbo Grande',      cat:'Panadería', precio:52.00, stock:18, promo:'2x1',  seed:'303' },
+  { id:4,  nombre:'Leche Lala 1L',         cat:'Lácteos',   precio:28.00, stock:24, promo:null,   seed:'304' },
+  { id:5,  nombre:'Huevos San Juan 12pz',  cat:'Básicos',   precio:58.00, stock:15, promo:'10% OFF', seed:'305' },
+  { id:6,  nombre:'Aceite 123 1L',         cat:'Abarrotes', precio:45.00, stock:28, promo:null,   seed:'306' },
+  { id:7,  nombre:'Arroz Morelos 1kg',     cat:'Abarrotes', precio:32.00, stock:40, promo:null,   seed:'307', kg:true },
+  { id:8,  nombre:'Frijol Negro 1kg',      cat:'Abarrotes', precio:38.00, stock:35, promo:null,   seed:'308', kg:true },
+  { id:9,  nombre:'Agua Ciel 1.5L',        cat:'Bebidas',   precio:16.00, stock:60, promo:null,   seed:'309' },
+  { id:10, nombre:'Galletas Marías',       cat:'Botanas',   precio:19.00, stock:50, promo:null,   seed:'310' },
+  { id:11, nombre:'Tortillas 1kg',         cat:'Básicos',   precio:24.00, stock:55, promo:null,   seed:'311', kg:true },
+  { id:12, nombre:'Yogurt Natural',        cat:'Lácteos',   precio:35.00, stock:20, promo:null,   seed:'312' },
+];
+
+let cart = {};
+let currentCat = 'todos';
+let pagoMetodo = 'efectivo';
+let kgProductId = null;
+
+// ── Render products ───────────────────────────────────────────────
+function renderProducts() {
+  const grid = document.getElementById('productGrid');
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  grid.innerHTML = '';
+  const filtered = productos.filter(p => {
+    const matchCat = currentCat === 'todos' || p.cat === currentCat;
+    const matchQ   = !q || p.nombre.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q);
+    return matchCat && matchQ;
+  });
+  filtered.forEach((p, i) => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.style.opacity = '0';
+    card.style.animationDelay = (i*0.05)+'s';
+    card.classList.add('card-enter');
+    // After animation ends, remove animation so CSS hover transform works freely
+    card.addEventListener('animationend', function() {
+      this.classList.remove('card-enter');
+      this.style.opacity = '1';
+      this.style.animationDelay = '';
+    }, { once: true });
+    card.onclick = () => addToCart(p.id);
+    const promoHtml = p.promo ? '<span class="promo-badge">'+p.promo+'</span>' : '';
+    card.innerHTML =
+      promoHtml +
+      '<div class="product-img">' +
+        '<img src="'+p.seed+'/120/90" alt="'+p.nombre+'" onerror="this.style.display=\'none\'">' +
+      '</div>' +
+      '<div class="product-name">'+p.nombre+'</div>' +
+      '<div class="product-cat">'+p.cat+'</div>' +
+      '<div class="product-footer">' +
+        '<span class="product-price">$'+p.precio.toFixed(2)+'</span>' +
+        '<span class="product-stock">'+p.stock+'</span>' +
+      '</div>';
+    grid.appendChild(card);
+  });
+}
+
+window.filterCat = function(cat, btn) {
+  currentCat = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProducts();
+};
+
+window.filterProducts = function() { renderProducts(); };
+
+// ── Cart ──────────────────────────────────────────────────────────
+function addToCart(id) {
+  const p = productos.find(x => x.id === id);
+  if (p && p.kg) {
+    openKgModal(id);
+  } else {
+    cart[id] = (cart[id] || 0) + 1;
+    renderCart();
+  }
+}
+
+function changeQty(id, delta) {
+  cart[id] = (cart[id] || 0) + delta;
+  if (cart[id] <= 0) delete cart[id];
+  renderCart();
+}
+
+function removeFromCart(id) {
+  delete cart[id];
+  renderCart();
+}
+
+function renderCart() {
+  const ids = Object.keys(cart);
+  const emptyEl   = document.getElementById('cartEmpty');
+  const itemsEl   = document.getElementById('cartItems');
+  const limpiarEl = document.getElementById('btnLimpiar');
+
+  if (ids.length === 0) {
+    emptyEl.style.display   = 'flex';
+    itemsEl.style.display   = 'none';
+    limpiarEl.style.display = 'none';
+    itemsEl.innerHTML = '';
+    return;
+  }
+
+  emptyEl.style.display   = 'none';
+  itemsEl.style.display   = 'flex';
+  limpiarEl.style.display = 'flex';
+
+  // Remove items no longer in cart
+  Array.from(itemsEl.querySelectorAll('.cart-item')).forEach(el => {
+    if (!cart[el.dataset.id]) el.remove();
+  });
+
+  ids.forEach(id => {
+    const p   = productos.find(x => x.id === parseInt(id));
+    const qty = cart[id];
+    const existing = itemsEl.querySelector('.cart-item[data-id="'+id+'"]');
+
+    if (existing) {
+      // Only update qty and price — no animation
+      existing.querySelector('.qty-num').textContent = qty;
+      existing.querySelector('.cart-item-price').textContent = '$'+(p.precio*qty).toFixed(2);
+    } else {
+      // New item — animate with smooth fadeLeft
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.dataset.id = id;
+      div.style.cssText = 'opacity:0;animation:fadeLeft 0.5s cubic-bezier(0.16,1,0.3,1) forwards;';
+      div.innerHTML =
+        '<button class="cart-item-del" onclick="removeFromCart('+id+')" title="Eliminar"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>' +
+        '<div class="cart-item-top">' +
+          '<div>' +
+            '<div class="cart-item-name">'+p.nombre+'</div>' +
+            '<div class="cart-item-unit">$'+p.precio.toFixed(2)+(p.kg ? ' / kg' : ' c/u')+'</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="cart-item-bottom">' +
+          '<div class="cart-item-qty">' +
+            '<button class="qty-btn" onclick="changeQty('+id+',-1)">−</button>' +
+            '<span class="qty-num">'+qty+'</span>' +
+            '<button class="qty-btn" onclick="changeQty('+id+',1)">+</button>' +
+          '</div>' +
+          '<span class="cart-item-price">$'+(p.precio*qty).toFixed(2)+'</span>' +
+        '</div>';
+      itemsEl.appendChild(div);
+    }
+  });
+
+  // Totals
+  const subtotal = ids.reduce((s,id) => {
+    const p = productos.find(x => x.id === parseInt(id));
+    return s + p.precio * cart[id];
+  }, 0);
+  const iva   = subtotal * 0.16;
+  const total = subtotal + iva;
+  document.getElementById('subtotal').textContent = '$'+subtotal.toFixed(2);
+  document.getElementById('iva').textContent      = '$'+iva.toFixed(2);
+  document.getElementById('total').textContent    = '$'+total.toFixed(2);
+}
+
+window.limpiarCarrito = function() {
+  if (Object.keys(cart).length === 0) return;
+  cart = {};
+  renderCart();
+};
+
+window.procesarVenta = function() {
+  if (Object.keys(cart).length === 0) { alert('El carrito está vacío.'); return; }
+  const totalText = document.getElementById('total').textContent.replace('$','').replace(',','');
+  const total = parseFloat(totalText) || 0;
+  document.getElementById('pagoTotalRef').textContent = '$' + total.toFixed(2);
+  document.getElementById('pagoCon').value = '';
+  document.getElementById('pagoCambio').value = '';
+  document.getElementById('pagoCambio').className = 'modal-kg-input';
+  document.getElementById('pagoConField').style.display = 'flex';
+  document.getElementById('pagoCambioField').style.display = 'flex';
+  pagoMetodo = 'efectivo';
+  document.querySelectorAll('.pago-metodo-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('btnEfectivo').classList.add('active');
+  var ov = document.getElementById('overlayPago');
+  ov.style.display = 'flex';
+  ov.style.position = 'fixed';
+  ov.style.inset = '0';
+  ov.style.zIndex = '8000';
+  ov.style.background = 'rgba(0,0,0,0.35)';
+  ov.style.backdropFilter = 'blur(4px)';
+  ov.style.alignItems = 'center';
+  ov.style.justifyContent = 'center';
+  setTimeout(function(){ document.getElementById('pagoCon').focus(); }, 100);
+};
+
+// ── Custom Select ─────────────────────────────────────────────────
+function toggleCS(id) {
+  const wrap = document.getElementById(id);
+  const dd   = document.getElementById(id + 'Dropdown');
+  const isOpen = dd.style.display === 'block';
+  // Close all open dropdowns
+  document.querySelectorAll('.cs-wrap').forEach(w => {
+    const wid = w.id;
+    const wdd = document.getElementById(wid + 'Dropdown');
+    if (wdd) wdd.style.display = 'none';
+    w.classList.remove('open');
+  });
+  if (!isOpen) {
+    wrap.classList.add('open');
+    const trigger = wrap.querySelector('.cs-trigger');
+    const rect = trigger.getBoundingClientRect();
+    dd.style.bottom  = '';
+    dd.style.left    = rect.left + 'px';
+    dd.style.width   = rect.width + 'px';
+    dd.style.display = 'block';
+    // Position above: calculate after display so offsetHeight is available
+    dd.style.top = (rect.top - dd.offsetHeight - 4) + 'px';
+  }
+}
+
+function pickCS(id, value, label) {
+  const labelEl = document.getElementById(id+'Label');
+  labelEl.textContent = label;
+  if (id === 'csCliente') {
+    if (value === 'ninguno') labelEl.classList.add('cs-placeholder');
+    else labelEl.classList.remove('cs-placeholder');
+  }
+  document.querySelectorAll('#'+id+'Dropdown .cs-option').forEach(o => {
+    o.classList.toggle('selected', o.dataset.value === value || o.textContent.trim() === label);
+  });
+  const dd = document.getElementById(id+'Dropdown');
+  if (dd) dd.style.display = 'none';
+  document.getElementById(id).classList.remove('open');
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.cs-wrap') && !e.target.closest('.cs-dropdown')) {
+    document.querySelectorAll('.cs-wrap').forEach(w => {
+      const dd = document.getElementById(w.id + 'Dropdown');
+      if (dd) dd.style.display = 'none';
+      w.classList.remove('open');
+    });
+  }
+});
+
+function posicionarDropdownCliente() {
+  const dd = document.getElementById('csClienteDropdown');
+  if (dd.style.display !== 'block') return;
+  const trigger = document.querySelector('#csCliente .cs-trigger');
+  if (!trigger) return;
+  const rect = trigger.getBoundingClientRect();
+  dd.style.left  = rect.left + 'px';
+  dd.style.width = rect.width + 'px';
+  dd.style.top   = (rect.top - dd.offsetHeight - 4) + 'px';
+}
+
+// Recalculate on scroll and resize
+document.querySelector('.right-panel') && document.querySelector('.right-panel').addEventListener('scroll', posicionarDropdownCliente);
+window.addEventListener('scroll', posicionarDropdownCliente);
+window.addEventListener('resize', posicionarDropdownCliente);
+var sidebarActive = false;
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+  document.getElementById('sidebar').classList.toggle('collapsed');
+  sidebarActive = !sidebarActive;
+  this.style.background   = sidebarActive ? '#2c3754' : 'transparent';
+  this.style.color        = sidebarActive ? '#f8fafc' : '';
+  this.style.borderRadius = sidebarActive ? '50%' : '';
+});
+
+['bellBtn','roleBtn'].forEach(function(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var active = false;
+  el.addEventListener('click', function() {
+    active = !active;
+    el.style.background   = active ? '#2c3754' : 'transparent';
+    el.style.color        = active ? '#f8fafc' : '';
+    el.style.borderRadius = active ? '50%' : '';
+  });
+});
+
+// ── Role dropdown ─────────────────────────────────────────────────
+function toggleRoleMenu() {
+  var dd = document.getElementById('roleDropdown');
+  var arrow = document.getElementById('roleArrow');
+  var isOpen = dd.style.display === 'block';
+  if (isOpen) { dd.style.display='none'; arrow.style.transform='rotate(0deg)'; }
+  else {
+    var rect = document.getElementById('roleWrap').getBoundingClientRect();
+    dd.style.top   = (rect.bottom+6)+'px';
+    dd.style.right = (window.innerWidth-rect.right)+'px';
+    dd.style.left  = 'auto';
+    dd.style.display='block';
+    arrow.style.transform='rotate(180deg)';
+  }
+}
+
+function selectRole(role) {
+  var opt1=document.getElementById('roleOpt1'), opt2=document.getElementById('roleOpt2');
+  if (role==='Gerente') {
+    opt1.style.background='#2c3754'; opt1.style.color='#f8fafc';
+    document.getElementById('checkGerente').style.stroke='#f8fafc';
+    opt2.style.background='transparent'; opt2.style.color='var(--foreground)';
+    document.getElementById('checkCajero').style.stroke='transparent';
+    document.getElementById('roleDropdown').style.display='none';
+    document.getElementById('roleArrow').style.transform='rotate(0deg)';
+    window.location.href = 'Index_prueba.html';
+  } else {
+    opt2.style.background='#2c3754'; opt2.style.color='#f8fafc';
+    document.getElementById('checkCajero').style.stroke='#f8fafc';
+    opt1.style.background='transparent'; opt1.style.color='var(--foreground)';
+    document.getElementById('checkGerente').style.stroke='transparent';
+    document.getElementById('roleDropdown').style.display='none';
+    document.getElementById('roleArrow').style.transform='rotate(0deg)';
+  }
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#roleWrap')) {
+    var dd=document.getElementById('roleDropdown');
+    if (dd && dd.style.display==='block') {
+      dd.style.display='none';
+      document.getElementById('roleArrow').style.transform='rotate(0deg)';
+    }
+  }
+});
+
+['roleOpt1','roleOpt2'].forEach(function(id) {
+  var el=document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('mouseover',function(){ if(el.style.background!=='rgb(44, 55, 84)') el.style.background='oklch(0.65 0.01 39 / 0.5)'; });
+  el.addEventListener('mouseout', function(){ if(el.style.background!=='rgb(44, 55, 84)') el.style.background='transparent'; });
+});
+
+
+// ── Modal Pago ────────────────────────────────────────────────────
+
+function openPagoModal() {
+  const totalText = document.getElementById('total').textContent.replace('$','').replace(',','');
+  const total = parseFloat(totalText) || 0;
+  document.getElementById('pagoTotalRef').textContent = '$' + total.toFixed(2);
+  document.getElementById('pagoCon').value = '';
+  document.getElementById('pagoCambio').value = '';
+  document.getElementById('pagoCambio').className = 'modal-kg-input';
+  document.getElementById('pagoConField').style.display = 'flex';
+  document.getElementById('pagoCambioField').style.display = 'flex';
+  // Reset metodo
+  pagoMetodo = 'efectivo';
+  document.querySelectorAll('.pago-metodo-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('btnEfectivo').classList.add('active');
+  document.getElementById('overlayPago').classList.add('open');
+  setTimeout(() => document.getElementById('pagoCon').focus(), 100);
+}
+
+function closePagoModal() {
+  document.getElementById('overlayPago').style.display = 'none';
+}
+
+function selectPagoMetodo(metodo) {
+  pagoMetodo = metodo;
+  document.querySelectorAll('.pago-metodo-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn' + metodo.charAt(0).toUpperCase() + metodo.slice(1)).classList.add('active');
+  const pagoField  = document.getElementById('pagoConField');
+  const cambioField = document.getElementById('pagoCambioField');
+  const pagoCon    = document.getElementById('pagoCon');
+  if (metodo === 'credito') {
+    pagoField.style.display  = 'none';
+    cambioField.style.display = 'none';
+    pagoCon.value = '';
+    document.getElementById('pagoCambio').value = '';
+  } else {
+    pagoField.style.display  = 'flex';
+    cambioField.style.display = 'flex';
+    pagoCon.disabled = false;
+    setTimeout(() => pagoCon.focus(), 50);
+  }
+}
+
+function calcCambio() {
+  const totalText = document.getElementById('pagoTotalRef').textContent.replace('$','').replace(',','');
+  const total = parseFloat(totalText) || 0;
+  const pago  = parseFloat(document.getElementById('pagoCon').value) || 0;
+  const cambio = pago - total;
+  const cambioEl = document.getElementById('pagoCambio');
+  if (pago === 0) { cambioEl.value = ''; cambioEl.className = 'modal-kg-input'; return; }
+  cambioEl.value = Math.abs(cambio).toFixed(2);
+  cambioEl.className = 'modal-kg-input ' + (cambio >= 0 ? 'cambio-positivo' : 'cambio-negativo');
+}
+
+function cobrarVenta() {
+  const totalText = document.getElementById('pagoTotalRef').textContent.replace('$','').replace(',','');
+  const total = parseFloat(totalText) || 0;
+  if (pagoMetodo === 'efectivo') {
+    const pago = parseFloat(document.getElementById('pagoCon').value) || 0;
+    if (pago < total) {
+      document.getElementById('pagoCon').style.borderColor = 'oklch(0.55 0.18 25)';
+      document.getElementById('pagoCon').focus();
+      return;
+    }
+  }
+  closePagoModal();
+  // Show success and clear cart
+  setTimeout(() => {
+    alert('✅ Venta cobrada correctamente por $' + total.toFixed(2) + ' — Método: ' + pagoMetodo.charAt(0).toUpperCase() + pagoMetodo.slice(1));
+    cart = {};
+    renderCart();
+  }, 150);
+}
+
+// ── Modal Kg ──────────────────────────────────────────────────────
+
+function openKgModal(id) {
+  const p = productos.find(x => x.id === id);
+  kgProductId = id;
+  document.getElementById('kgProductName').textContent = p.nombre;
+  document.getElementById('kgPrecioRef').textContent = '$' + p.precio.toFixed(2);
+  document.getElementById('kgCantidad').value = '';
+  document.getElementById('kgPrecioTotal').value = '';
+  document.getElementById('kgCantidad').style.borderColor = '';
+  document.getElementById('kgPrecioTotal').style.borderColor = '';
+  document.getElementById('overlayKg').classList.add('open');
+  setTimeout(() => document.getElementById('kgCantidad').focus(), 100);
+}
+
+function closeKgModal() {
+  document.getElementById('overlayKg').classList.remove('open');
+  kgProductId = null;
+}
+
+function calcKgPrecio() {
+  if (!kgProductId) return;
+  const p = productos.find(x => x.id === kgProductId);
+  const cant = parseFloat(document.getElementById('kgCantidad').value) || 0;
+  const total = cant * p.precio;
+  const precioEl = document.getElementById('kgPrecioTotal');
+  precioEl.value = total > 0 ? total.toFixed(2) : '';
+}
+
+function calcKgCantidad() {
+  if (!kgProductId) return;
+  const p = productos.find(x => x.id === kgProductId);
+  const precio = parseFloat(document.getElementById('kgPrecioTotal').value) || 0;
+  const cant = precio > 0 ? precio / p.precio : 0;
+  document.getElementById('kgCantidad').value = cant > 0 ? cant.toFixed(3) : '';
+}
+
+function acceptKg() {
+  if (!kgProductId) return;
+  let cant = parseFloat(document.getElementById('kgCantidad').value);
+  if (!cant || cant <= 0) {
+    // Try to get from precio field
+    const p = productos.find(x => x.id === kgProductId);
+    const precio = parseFloat(document.getElementById('kgPrecioTotal').value);
+    if (precio > 0) cant = parseFloat((precio / p.precio).toFixed(3));
+  }
+  if (!cant || cant <= 0) {
+    document.getElementById('kgCantidad').focus();
+    document.getElementById('kgCantidad').style.borderColor = 'oklch(0.55 0.18 25)';
+    return;
+  }
+  // Store decimal quantity in cart — use negative key flag for kg items
+  const p = productos.find(x => x.id === kgProductId);
+  // Add as decimal qty — store separately using float
+  if (!cart[kgProductId]) cart[kgProductId] = 0;
+  cart[kgProductId] = parseFloat((cart[kgProductId] + cant).toFixed(3));
+  closeKgModal();
+  renderCart();
+}
+
+// Close modal clicking overlay
+document.getElementById('overlayKg').addEventListener('click', function(e) { if (e.target === this) closeKgModal(); });
+document.getElementById('overlayPago').addEventListener('click', function(e) { if (e.target === this) closePagoModal(); });
+
+// ── Init ─────────────────────────────────────────────────────
+renderProducts();
+</script>
+
+<!-- Cliente dropdown (fixed, outside all overflow containers) -->
+<div class="cs-dropdown" id="csClienteDropdown" style="display:none;">
+  <div class="cs-option" onclick="pickCS('csCliente','ninguno','Seleccionar Cliente (Opcional)')">— Ninguno —</div>
+  <div class="cs-option" onclick="pickCS('csCliente','c1','María González')">María González</div>
+  <div class="cs-option" onclick="pickCS('csCliente','c2','Carlos Ramírez')">Carlos Ramírez</div>
+  <div class="cs-option" onclick="pickCS('csCliente','c3','Ana Torres')">Ana Torres</div>
+  <div class="cs-option" onclick="pickCS('csCliente','c4','Luis Hernández')">Luis Hernández</div>
+  <div class="cs-option" onclick="pickCS('csCliente','c5','Sofía Martínez')">Sofía Martínez</div>
+</div>
+</body>
+</html>

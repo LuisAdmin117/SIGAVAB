@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clientes y Crédito — SIGAVAB</title>
+<link href="Fuentes/css2.css" rel="stylesheet">
+<link rel="stylesheet" href="css/clientes.css">
+</head>
+<body>
+
+<!-- ── SIDEBAR ─────────────────────────────────────────────────── -->
+<aside class="sidebar animate-item" id="sidebar" style="animation-delay:0s;">
+  <div class="sidebar-logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="nav-label">SIGAVAB</span>
+  </div>
+
+  <div class="sidebar-section-label nav-label">Módulos</div>
+
+  <nav class="sidebar-nav">
+    <a href="Index.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      <span class="nav-label">Panel Gerencial</span>
+    </a>
+    <a href="Inventario.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      <span class="nav-label">Inventario</span>
+    </a>
+    <a href="Clientes.html" class="nav-item active" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      <span class="nav-label">Clientes y crédito</span>
+    </a>
+    <a href="Proveedores.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 4v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      <span class="nav-label">Proveedores</span>
+    </a>
+    <a href="Estadisticas.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <span class="nav-label">Estadísticas</span>
+    </a>
+    <a href="FlujoCaja.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><path d="M8 10.5c0-1.4 1.8-2.5 4-2.5s4 1.1 4 2.5-1.8 2.5-4 2.5-4 1.1-4 2.5 1.8 2.5 4 2.5 4-1.1 4-2.5"/></svg>
+      <span class="nav-label">Flujo de caja</span>
+    </a>
+    <a href="Promociones.html" class="nav-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+      <span class="nav-label">Promociones</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-section-label nav-label">Configuración</div>
+  <nav class="sidebar-nav">
+    <div class="nav-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/></svg>
+      <span class="nav-label">Ajustes</span>
+    </div>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <div class="user-avatar-row">
+      <div class="avatar">JD</div>
+      <div class="user-info">
+        <div class="user-name">John Doe</div>
+        <div class="user-email">john@gmail.com</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ── MAIN ─────────────────────────────────────────────────────── -->
+<div class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar animate-item" style="animation-delay:0.08s;">
+    <div>
+      <div class="topbar-title">Clientes y Crédito</div>
+      <div class="topbar-subtitle">Gestión de clientes y créditos</div>
+    </div>
+    <div class="topbar-right">
+      <div class="icon-btn" id="sidebarToggle" title="Ocultar menú">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </div>
+      <div class="icon-btn">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
+      </div>
+      <div class="icon-btn" style="background:oklch(0.3408 0.0533 267.6812);border:none;color:white;font-size:0.7rem;font-weight:600;">JD</div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- STAT CARDS -->
+    <div class="stats-row animate-item" style="animation-delay:0.14s;grid-template-columns:repeat(3,1fr);">
+      <div class="stat-card">
+        <div class="stat-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="stat-value" id="statTotal">6</div>
+        <div class="stat-label">Total Clientes</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon-wrap">
+          <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <div class="stat-value" id="statWithCredit">4</div>
+        <div class="stat-label">Con Crédito</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon-wrap">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="stat-value" id="statUsed">$6,850</div>
+        <div class="stat-label">Crédito Utilizado</div>
+      </div>
+    </div>
+
+    <!-- TOOLBAR dentro de tarjeta de fondo -->
+    <div class="animate-item" style="animation-delay:0.26s;background:var(--card);border-radius:1.5rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);padding:1rem 1.25rem;">
+      <div class="toolbar">
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="searchInput" placeholder="Buscar cliente..." oninput="filterClients()">
+        </div>
+        <button class="btn-outline" id="btnFilterCredit" onclick="toggleCreditFilter()">
+          <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          Solo con Crédito
+        </button>
+        <button class="btn-primary" onclick="openClientModal(null)">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Nuevo Cliente
+        </button>
+      </div>
+    </div>
+
+    <!-- CLIENT CARDS GRID -->
+    <div class="clients-grid" id="clientsGrid">
+
+      <!-- Cliente 1: María López -->
+      <div class="client-card" data-has-credit="true" data-name="María López García">
+        <div class="cc-header">
+          <div class="cc-header-left">
+            <div class="cc-avatar">ML</div>
+            <div>
+              <div class="cc-name">María López García</div>
+              <span class="badge-credit ok">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Crédito Autorizado
+              </span>
+            </div>
+          </div>
+          <button class="cc-edit-btn" onclick="openClientModal(this)">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+        </div>
+        <div class="cc-contact">
+          <div class="cc-contact-row">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+            477 123 4567
+          </div>
+          <div class="cc-contact-row">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            maria.lopez@gmail.com
+          </div>
+        </div>
+        <hr class="cc-divider">
+        <div class="cc-credit-section">
+          <div class="cc-credit-label-row">
+            <span class="cc-credit-label">Crédito Utilizado</span>
+            <span class="cc-credit-amounts ok">$2,350 / $5,000</span>
+          </div>
+          <div class="cc-progress-bar">
+            <div class="cc-progress-fill ok" style="width:47%"></div>
+          </div>
+        </div>
+        <div class="cc-footer">
+          <div class="cc-date">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            14/2/2025
+          </div>
+          <div class="cc-total">$45,680</div>
+        </div>
+      </div>
+
+      <!-- Cliente 2: Carlos Ruiz -->
+      <div class="client-card" data-has-credit="true" data-name="Carlos Ruiz Hernández">
+        <div class="cc-header">
+          <div class="cc-header-left">
+            <div class="cc-avatar" style="background:oklch(0.45 0.14 145);">CR</div>
+            <div>
+              <div class="cc-name">Carlos Ruiz Hernández</div>
+              <span class="badge-credit ok">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Crédito Autorizado
+              </span>
+            </div>
+          </div>
+          <button class="cc-edit-btn" onclick="openClientModal(this)">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+        </div>
+        <div class="cc-contact">
+          <div class="cc-contact-row">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+            477 234 5678
+          </div>
+          <div class="cc-contact-row">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            carlos.ruiz@gmail.com
+          </div>
+        </div>
+        <hr class="cc-divider">
+        <div class="cc-credit-section">
+          <div class="cc-credit-label-row">
+            <span class="cc-credit-label">Crédito Utilizado</span>
+            <span class="cc-credit-amounts full">$3,000 / $3,000</span>
+          </div>
+          <div class="cc-progress-bar">
+            <div class="cc-progress-fill full" style="width:100%"></div>
+          </div>
+        </div>
+        <div class="cc-footer">
+          <div class="cc-date">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            13/2/2025
+          </div>
+          <div class="cc-total">$28,450</div>
+        </div>
+      </div>
+
+      <!-- Cliente 3: Ana Martínez -->
+      <div class="client-card" data-has-credit="false" data-name="Ana Martínez Soto">
+        <div class="cc-header">
+          <div class="cc-header-left">
+            <div class="cc-avatar" style="background:oklch(0.52 0.10 25);">AM</div>
+            <div>
+              <div class="cc-name">Ana Martínez Soto</div>
+              <span class="badge-credit no">Sin Crédito</span>
+            </div>
+          </div>
+          <button class="cc-edit-btn" onclick="openClientModal(this)">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+        </div>
+        <div class="cc-contact">
+          <div class="cc-contact-row">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+            477 345 6789
+          </div>
+          <div class="cc-contact-row">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            ana.martinez@gmail.com
+          </div>
+        </div>
+        <hr class="cc-divider">
+        <div class="cc-credit-section">
+          <span class="cc-no-credit">Este cliente no tiene crédito asignado.</span>
+        </div>
+        <div class="cc-footer">
+          <div class="cc-date">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            11/2/2025
+          </div>
+          <div class="cc-total">$12,300</div>
+        </div>
+      </div>
+
+      <!-- Cliente 4: Roberto Vega -->
+      <div class="client-card" data-has-credit="true" data-name="Roberto Vega Torres">
+        <div class="cc-header">
+          <div class="cc-header-left">
+            <div class="cc-avatar" style="background:oklch(0.40 0.09 290);">RV</div>
+            <div>
+              <div class="cc-name">Roberto Vega Torres</div>
+              <span class="badge-credit ok">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Crédito Autorizado
+              </span>
+            </div>
+          </div>
+          <button class="cc-edit-btn" onclick="openClientModal(this)">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+        </div>
+        <div class="cc-contact">
+          <div class="cc-contact-row">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+            477 456 7890
+          </div>
+          <div class="cc-contact-row">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            roberto.vega@gmail.com
+          </div>
+        </div>
+        <hr class="cc-divider">
+        <div class="cc-credit-section">
+          <div class="cc-credit-label-row">
+            <span class="cc-credit-label">Crédito Utilizado</span>
+            <span class="cc-credit-amounts ok">$1,500 / $8,000</span>
+          </div>
+          <div class="cc-progress-bar">
+            <div class="cc-progress-fill ok" style="width:19%"></div>
+          </div>
+        </div>
+        <div class="cc-footer">
+          <div class="cc-date">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            5/3/2025
+          </div>
+          <div class="cc-total">$33,900</div>
+        </div>
+      </div>
+
+      <!-- Cliente 5: Lucía Herrera -->
+      <div class="client-card" data-has-credit="false" data-name="Lucía Herrera Campos">
+        <div class="cc-header">
+          <div class="cc-header-left">
+            <div class="cc-avatar" style="background:oklch(0.48 0.12 330);">LH</div>
+            <div>
+              <div class="cc-name">Lucía Herrera Campos</div>
+              <span class="badge-credit no">Sin Crédito</span>
+            </div>
+          </div>
+          <button class="cc-edit-btn" onclick="openClientModal(this)">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+        </div>
+        <div class="cc-contact">
+          <div class="cc-contact-row">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+            477 567 8901
+          </div>
+          <div class="cc-contact-row">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            lucia.herrera@email.com
+          </div>
+        </div>
+        <hr class="cc-divider">
+        <div class="cc-credit-section">
+          <span class="cc-no-credit">Este cliente no tiene crédito asignado.</span>
+        </div>
+        <div class="cc-footer">
+          <div class="cc-date">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            20/2/2025
+          </div>
+          <div class="cc-total">$8,750</div>
+        </div>
+      </div>
+
+      <!-- Cliente 6: Diego Morales -->
+      <div class="client-card" data-has-credit="true" data-name="Diego Morales Fuentes">
+        <div class="cc-header">
+          <div class="cc-header-left">
+            <div class="cc-avatar" style="background:oklch(0.50 0.10 200);">DM</div>
+            <div>
+              <div class="cc-name">Diego Morales Fuentes</div>
+              <span class="badge-credit ok">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Crédito Autorizado
+              </span>
+            </div>
+          </div>
+          <button class="cc-edit-btn" onclick="openClientModal(this)">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+        </div>
+        <div class="cc-contact">
+          <div class="cc-contact-row">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+            477 678 9012
+          </div>
+          <div class="cc-contact-row">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            diego.morales@email.com
+          </div>
+        </div>
+        <hr class="cc-divider">
+        <div class="cc-credit-section">
+          <div class="cc-credit-label-row">
+            <span class="cc-credit-label">Crédito Utilizado</span>
+            <span class="cc-credit-amounts ok">$800 / $4,000</span>
+          </div>
+          <div class="cc-progress-bar">
+            <div class="cc-progress-fill ok" style="width:20%"></div>
+          </div>
+        </div>
+        <div class="cc-footer">
+          <div class="cc-date">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            1/3/2025
+          </div>
+          <div class="cc-total">$19,200</div>
+        </div>
+      </div>
+
+    </div><!-- /clients-grid -->
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<style>
+  /* ── MODAL OVERLAY ──────────────────────────────────────────── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(1.5px);
+    z-index: 1000;
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+
+  @keyframes modalIn {
+    from { opacity:0; transform: translateY(48px) scale(0.97); }
+    to   { opacity:1; transform: translateY(0) scale(1); }
+  }
+  @keyframes fieldUp {
+    from { opacity:0; transform: translateY(18px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+
+  .modal-box {
+    background: var(--background);
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.22);
+    padding: 1.75rem 1.75rem 1.5rem;
+    width: 100%; max-width: 560px;
+    max-height: 90vh; overflow-y: auto;
+    animation: modalIn 0.40s cubic-bezier(0.22,1,0.36,1);
+  }
+
+  .modal-header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    margin-bottom: 1.25rem;
+  }
+  .modal-title { font-size: 1rem; font-weight: 700; color: var(--card-foreground); }
+  .modal-subtitle { font-size: 0.72rem; color: var(--muted-foreground); margin-top: 0.15rem; }
+
+  .modal-close {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 1px solid var(--border); background: var(--card);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; flex-shrink: 0; transition: background 0.13s;
+  }
+  .modal-close:hover { background: oklch(0.80 0.005 80); }
+  .modal-close svg { width: 13px; height: 13px; fill:none; stroke: var(--muted-foreground); stroke-width:2.5; }
+
+  /* Form */
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem 1rem; }
+  .form-grid .full { grid-column: 1 / -1; }
+  .form-field { display: flex; flex-direction: column; gap: 0.3rem; }
+  .form-label { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted-foreground); }
+  .form-input {
+    padding: 0.55rem 0.85rem; border-radius: 0.75rem;
+    border: 1px solid var(--border); background: var(--card);
+    font-family: var(--font-sans); font-size: 0.82rem;
+    color: var(--card-foreground); outline: none; width: 100%;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .form-input:focus {
+    border-color: oklch(0.3408 0.0533 267.6812);
+    box-shadow: 0 0 0 3px oklch(0.3408 0.0533 267.6812 / 0.15);
+  }
+  textarea.form-input { resize: vertical; min-height: 68px; }
+
+  .form-divider { border: none; border-top: 1px solid oklch(0.9 0 0); margin: 0.25rem 0; }
+  .form-section-label { font-size: 0.67rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted-foreground); }
+
+  /* Checkbox row */
+  .check-row {
+    display: flex; align-items: center; gap: 0.55rem;
+    padding: 0.6rem 0.85rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+    background: var(--card);
+    cursor: pointer; user-select: none;
+  }
+  .check-row input[type="checkbox"] {
+    width: 16px; height: 16px; accent-color: oklch(0.3408 0.0533 267.6812);
+    cursor: pointer; flex-shrink: 0;
+  }
+  .check-row span { font-size: 0.82rem; font-weight: 500; color: var(--card-foreground); }
+
+  .credit-field { display: none; }
+  .credit-field.visible { display: flex; flex-direction: column; gap: 0.3rem; }
+
+  /* Footer buttons */
+  .modal-footer { display: flex; justify-content: flex-end; gap: 0.55rem; margin-top: 1.25rem; }
+  .btn-ghost {
+    padding: 0.55rem 1rem; border-radius: 0.75rem;
+    border: 1px solid var(--border); background: var(--card);
+    font-family: var(--font-sans); font-size: 0.8rem; font-weight: 500;
+    color: var(--card-foreground); cursor: pointer;
+    transition: background 0.13s, transform 0.18s cubic-bezier(0.22,1,0.36,1);
+  }
+  .btn-ghost:hover { background: oklch(0.80 0.005 80); transform: scale(1.05); }
+  .btn-ghost:active { transform: scale(0.97); }
+  .btn-save {
+    padding: 0.55rem 1.1rem; border-radius: 0.75rem; border: none;
+    background: oklch(0.3408 0.0533 267.6812);
+    font-family: var(--font-sans); font-size: 0.8rem; font-weight: 600;
+    color: white; cursor: pointer; box-shadow: var(--shadow-sm);
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    transition: background 0.13s, transform 0.18s cubic-bezier(0.22,1,0.36,1);
+  }
+  .btn-save:hover { background: oklch(0.28 0.055 267); transform: scale(1.05); }
+  .btn-save:active { transform: scale(0.97); }
+  .btn-save svg { width:13px; height:13px; fill:none; stroke:white; stroke-width:2.5; }
+</style>
+
+<!-- ── MODAL: CLIENTE ───────────────────────────────────────────── -->
+<div class="modal-overlay" id="overlayClient">
+  <div class="modal-box" id="modalClientInner">
+
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modalClientTitle">Nuevo Cliente</div>
+        <div class="modal-subtitle">Completa los datos del cliente</div>
+      </div>
+      <button class="modal-close" onclick="closeClientModal()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="form-grid">
+      <div class="form-field">
+        <label class="form-label">Nombre</label>
+        <input class="form-input" type="text" id="cNombre" placeholder="Ej. María">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Apellidos</label>
+        <input class="form-input" type="text" id="cApellidos" placeholder="Ej. López García">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Teléfono</label>
+        <input class="form-input" type="tel" id="cTelefono" placeholder="Ej. 477 123 4567">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Correo electrónico</label>
+        <input class="form-input" type="email" id="cCorreo" placeholder="correo@email.com">
+      </div>
+
+      <hr class="form-divider full">
+      <div class="form-section-label full">Domicilio</div>
+
+      <div class="form-field full">
+        <label class="form-label">Domicilio 1</label>
+        <input class="form-input" type="text" id="cDom1" placeholder="Calle y número">
+      </div>
+      <div class="form-field full">
+        <label class="form-label">Domicilio 2</label>
+        <input class="form-input" type="text" id="cDom2" placeholder="Interior, depto., ref. adicional">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Colonia</label>
+        <input class="form-input" type="text" id="cColonia" placeholder="Ej. Centro">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Municipio / Estado</label>
+        <input class="form-input" type="text" id="cMunicipio" placeholder="Ej. León, Guanajuato">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Código Postal</label>
+        <input class="form-input" type="text" id="cCP" placeholder="Ej. 37000">
+      </div>
+
+      <hr class="form-divider full">
+      <div class="form-section-label full">Crédito</div>
+
+      <!-- Checkbox crédito -->
+      <div class="form-field full">
+        <label class="check-row" for="cHasCredit">
+          <input type="checkbox" id="cHasCredit" onchange="toggleCreditInput()">
+          <span>Tiene crédito autorizado</span>
+        </label>
+      </div>
+      <!-- Campo monto crédito (oculto hasta marcar checkbox) -->
+      <div class="credit-field full" id="creditAmountWrap">
+        <label class="form-label">Monto de crédito otorgado ($)</label>
+        <input class="form-input" type="number" id="cCreditAmount" placeholder="Ej. 5000" min="0" step="0.01">
+      </div>
+
+      <hr class="form-divider full">
+      <div class="form-section-label full">Notas</div>
+
+      <div class="form-field full">
+        <label class="form-label">Notas / Comentarios</label>
+        <textarea class="form-input" id="cNotas" placeholder="Observaciones adicionales del cliente..."></textarea>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeClientModal()">Cancelar</button>
+      <button class="btn-save" onclick="saveClient()">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Guardar Cliente
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Sidebar toggle
+document.getElementById('sidebarToggle').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.toggle('collapsed');
+});
+
+// Animación escalonada de tarjetas
+document.querySelectorAll('.client-card').forEach((card, i) => {
+  card.style.opacity = '0';
+  card.style.animation = `fadeUp 0.45s cubic-bezier(0.22,1,0.36,1) forwards`;
+  card.style.animationDelay = (0.32 + i * 0.08) + 's';
+});
+
+// ── Filtro crédito ───────────────────────────────────────────────
+let creditFilterActive = false;
+function toggleCreditFilter() {
+  creditFilterActive = !creditFilterActive;
+  document.getElementById('btnFilterCredit').classList.toggle('active-filter', creditFilterActive);
+  filterClients();
+}
+
+function filterClients() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  let visibleIdx = 0;
+  document.querySelectorAll('.client-card').forEach(card => {
+    const name      = card.dataset.name.toLowerCase();
+    const hasCredit = card.dataset.hasCredit === 'true';
+    const matchSearch = name.includes(q);
+    const matchCredit = !creditFilterActive || hasCredit;
+    const show = matchSearch && matchCredit;
+
+    if (show) {
+      card.style.display = '';
+      // Reiniciar animación fadeUp escalonada
+      card.style.opacity = '0';
+      card.style.animation = 'none';
+      void card.offsetWidth; // reflow
+      card.style.animation = `fadeUp 0.45s cubic-bezier(0.22,1,0.36,1) forwards`;
+      card.style.animationDelay = (visibleIdx * 0.08) + 's';
+      visibleIdx++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// ── Mostrar/ocultar campo de crédito ────────────────────────────
+function toggleCreditInput() {
+  const checked = document.getElementById('cHasCredit').checked;
+  document.getElementById('creditAmountWrap').classList.toggle('visible', checked);
+}
+
+// ── Animar campos del modal ──────────────────────────────────────
+function animateModal(id) {
+  const inner = document.getElementById(id);
+  if (!inner) return;
+  const items = [];
+  Array.from(inner.children).forEach(el => {
+    if (el.classList.contains('form-grid')) {
+      Array.from(el.children).forEach(c => items.push(c));
+    } else {
+      items.push(el);
+    }
+  });
+  items.forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.animation = 'none';
+    void el.offsetWidth;
+    el.style.animation = `fieldUp 0.38s cubic-bezier(0.22,1,0.36,1) forwards`;
+    el.style.animationDelay = (0.06 + i * 0.06) + 's';
+  });
+}
+
+// ── Abrir modal (nuevo o editar) ─────────────────────────────────
+function openClientModal(btn) {
+  const isNew = btn === null;
+  document.getElementById('modalClientTitle').textContent = isNew ? 'Nuevo Cliente' : 'Editar Cliente';
+
+  if (!isNew) {
+    // Pre-llenar con datos de la tarjeta
+    const card = btn.closest('.client-card');
+    const name = card.dataset.name || '';
+    const parts = name.split(' ');
+    document.getElementById('cNombre').value    = parts[0] || '';
+    document.getElementById('cApellidos').value = parts.slice(1).join(' ') || '';
+    const phoneEl = card.querySelector('.cc-contact-row:first-child');
+    document.getElementById('cTelefono').value  = phoneEl ? phoneEl.textContent.trim() : '';
+    const emailEl = card.querySelector('.cc-contact-row:last-child');
+    document.getElementById('cCorreo').value    = emailEl ? emailEl.textContent.trim() : '';
+    const hasCredit = card.dataset.hasCredit === 'true';
+    document.getElementById('cHasCredit').checked = hasCredit;
+    document.getElementById('creditAmountWrap').classList.toggle('visible', hasCredit);
+    if (hasCredit) {
+      const amtsEl = card.querySelector('.cc-credit-amounts');
+      if (amtsEl) {
+        const limit = amtsEl.textContent.split('/')[1]?.replace(/[^0-9.]/g,'').trim() || '';
+        document.getElementById('cCreditAmount').value = limit;
+      }
+    }
+    document.getElementById('cDom1').value = '';
+    document.getElementById('cDom2').value = '';
+    document.getElementById('cColonia').value = '';
+    document.getElementById('cMunicipio').value = '';
+    document.getElementById('cCP').value = '';
+    document.getElementById('cNotas').value = '';
+  } else {
+    // Limpiar formulario
+    ['cNombre','cApellidos','cTelefono','cCorreo','cDom1','cDom2','cColonia','cMunicipio','cCP','cCreditAmount','cNotas'].forEach(id => {
+      document.getElementById(id).value = '';
+    });
+    document.getElementById('cHasCredit').checked = false;
+    document.getElementById('creditAmountWrap').classList.remove('visible');
+  }
+
+  document.getElementById('overlayClient').classList.add('open');
+  animateModal('modalClientInner');
+}
+
+function closeClientModal() {
+  document.getElementById('overlayClient').classList.remove('open');
+}
+
+document.getElementById('overlayClient').addEventListener('click', function(e) {
+  if (e.target === this) closeClientModal();
+});
+
+function saveClient() {
+  const nombre = document.getElementById('cNombre').value.trim();
+  if (!nombre) { document.getElementById('cNombre').focus(); return; }
+  alert('✅ Cliente "' + nombre + ' ' + document.getElementById('cApellidos').value.trim() + '" guardado.\n(Conecta con tu backend para persistir los datos.)');
+  closeClientModal();
+}
+</script>
+</body>
+</html>
